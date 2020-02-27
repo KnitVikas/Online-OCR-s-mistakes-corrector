@@ -20,14 +20,13 @@ def symspell_matched_word(incorrect_word):
     # max edit distance per lookup
     # (max_edit_distance_lookup <= max_dictionary_edit_distance)
 
-    words = ['Natural', 'Language', 'Understanding',
-            'Naturael', 'Longuge', 'Updderctundjing',
-            'Motural', 'Lamnguoge', 'Understaating',
-            'Naturrow', 'Laguage', 'Unddertandink',
-            'Nattural', 'Languagge', 'Umderstoneding']
+    # words = ['Natural', 'Language', 'Understanding',
+    #         'Naturael', 'Longuge', 'Updderctundjing',
+    #         'Motural', 'Lamnguoge', 'Understaating',
+    #         'Naturrow', 'Laguage', 'Unddertandink',
+    #         'Nattural', 'Languagge', 'Umderstoneding']
 
     s=[]
-    # incorrect_word=["weght"]
     for  word in incorrect_word:
         
 
@@ -44,7 +43,7 @@ def symspell_matched_word(incorrect_word):
 
     symspell_matched_words=[]
     for i in range(len(s)):
-        # print(s[i][0],str(s[i][1]).split()[0][0:-1])
+        print(s[i][0],str(s[i][1]).split()[0][0:-1])
         symspell_matched_words.append(str(s[i][1]).split()[0][0:-1])
     return symspell_matched_words
-print(symspell_matched_word("weght"))    
+print(symspell_matched_word("plac"))    
