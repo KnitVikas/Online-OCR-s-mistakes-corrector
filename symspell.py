@@ -27,6 +27,7 @@ def symspell_matched_word(incorrect_word):
     #         'Nattural', 'Languagge', 'Umderstoneding']
 
     s=[]
+    # incorrect_word=["encr3pt"]
     for  word in incorrect_word:
         
 
@@ -42,8 +43,9 @@ def symspell_matched_word(incorrect_word):
             # print(type(suggestion))
 
     symspell_matched_words=[]
+    lis=word
     for i in range(len(s)):
-        print(s[i][0],str(s[i][1]).split()[0][0:-1])
+        # print(s[i][0],str(s[i][1]).split()[0][0:-1])
         symspell_matched_words.append(str(s[i][1]).split()[0][0:-1])
     return symspell_matched_words
-print(symspell_matched_word("plac"))    
+print(symspell_matched_word("nfrmatin"))    

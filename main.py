@@ -105,7 +105,7 @@ def get_similar_words(incorrect_word,word_embeddings_path,white_list_words):
     # print(word_emb_incorrect_word)
 
     similar_word_index=cosine_similar_word_index(word_emb_incorrect_word,word_embeddings)
-    print(similar_word_index)
+    # print(similar_word_index)
     matched_words=[]
     for i in similar_word_index:
         matched_words.append(white_list_words[i])
