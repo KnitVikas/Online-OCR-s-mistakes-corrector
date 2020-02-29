@@ -43,9 +43,8 @@ def symspell_matched_word(incorrect_word):
             # print(type(suggestion))
 
     symspell_matched_words=[]
-    lis=word
     for i in range(len(s)):
         # print(s[i][0],str(s[i][1]).split()[0][0:-1])
         symspell_matched_words.append(str(s[i][1]).split()[0][0:-1])
     return symspell_matched_words
-print(symspell_matched_word("nfrmatin"))    
+# print(symspell_matched_word("informa"))    
