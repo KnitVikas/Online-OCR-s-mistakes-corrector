@@ -1,13 +1,13 @@
 
         
-import pkg_resources
+from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell, Verbosity
 
 
 def symspell_matched_word(incorrect_word):
     incorrect_word=[incorrect_word]    
     sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
-    dictionary_path = pkg_resources.resource_filename(
+    dictionary_path = pkg_resources_filename(
         "symspellpy", "frequency_dictionary_en_82_765.txt")
 
     # term_index is the column of the term and count_index is the
@@ -26,7 +26,7 @@ def symspell_matched_word(incorrect_word):
     #         'Naturrow', 'Laguage', 'Unddertandink',
     #         'Nattural', 'Languagge', 'Umderstoneding']
 
-    s=[]
+    suggested_words = []
     # incorrect_word=["encr3pt"]
     for  word in incorrect_word:
         
@@ -39,12 +39,12 @@ def symspell_matched_word(incorrect_word):
         # display suggestion term, term frequency, and edit distance
         for suggestion in suggestions:
             # print(suggestion)
-            s.append((word,suggestion))
+            suggested_words.append((word,suggestion))
             # print(type(suggestion))
 
     symspell_matched_words=[]
-    for i in range(len(s)):
+    for i in range(len(suggested_words)):
         # print(s[i][0],str(s[i][1]).split()[0][0:-1])
-        symspell_matched_words.append(str(s[i][1]).split()[0][0:-1])
+        symspell_matched_words.append(str(suggested_words[i][1]).split()[0][0:-1])
     return symspell_matched_words
 # print(symspell_matched_word("informa"))    
