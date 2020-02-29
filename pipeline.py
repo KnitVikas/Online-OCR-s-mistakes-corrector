@@ -52,9 +52,9 @@ def get_best_match_common_word(common_words):
     #             word_with_bigger_len.append(i)
              # word_with_bigger_len=[word for word in common_words if len(word)>=7]
 
-        list_incorrect_correct_small_words = [(incorrect_word,word) for word in words_with_small_len if 3<len(i)<7]
+        list_incorrect_correct_small_words = [(incorrect_word,word) for word in common_words if 3<len(word)<7]
         # print("list_incorrect_correct_small_words",list_incorrect_correct_small_words)
-        list_incorrect_correct_long_words = [(incorrect_word,word) for word in word_with_bigger_len if len(word)>7]
+        list_incorrect_correct_long_words = [(incorrect_word,word) for word in common_words if len(word)>7]
         # print("list_incorrect_correct_long_words",list_incorrect_correct_long_words)
        # best  match small words conditions 
         best_match_small_word=word_with_least_change(list_incorrect_correct_small_words)
@@ -130,7 +130,7 @@ if __name__== "__main__":
     
     white_list_words=['information', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
     
-    incorrect_word="p1ecet"
+    incorrect_word="we1ght"
     incorrect_word_symspell=remove_number_from_sym_incorrect_words(incorrect_word)
 
     LENGHT_INCORRECT=len(incorrect_word)
