@@ -21,77 +21,90 @@ char_replace_list = [ ['0','o' 'q','Q','D','a'],
             ['9','g','y','Y'],['m','rn','m'],['w','vv']]
 
 
-def word_with_least_change(list_Of_tuple_incorrect_correct_long_words): 
-    list_incorrect__word_total_change=[]
-    sorted_list_incorrect__word_total_changes=[]
-    for a,b in list_Of_tuple_incorrect_correct_long_words:     
-        # print('{} => {}'.format(a,b))  
-        diff_position=[]
-        
+def get_operations_on_characters(list_of_tuple_incorrect_correct_words):
+
+    for a,b in list_of_tuple_incorrect_correct_words:
+        # print('{} => {}'.format(a,b))
+        list_of_operations=[]
         for i,s in enumerate(difflib.ndiff(a, b)):
-            if s[0]==' ': 
+            if s[0]==' ':
                 continue
+ 
             elif s[0]=='-':
-                print(u'Delete "{}" from position {}'.format(s[-1],i))
-                if i not in diff_position:
-                    diff_position.append(i)
+                # print(u'Delete "{}" from position {}'.format(s[-1],i))
+                list_of_operations.append((i,"Delete",s[-1]))
+ 
             elif s[0]=='+':
-                print(u'Add "{}" to position {}'.format(s[-1],i))
-                if i not in diff_position:
-                    diff_position.append(i) 
-        list_incorrect__word_total_change.append((len(diff_position),b)) 
-    #get incorrect word with the number changes  
-        sorted_list_incorrect__word_total_changes=sorted(list_incorrect__word_total_change,key = lambda i: i[0])[0]
-        # word_with_small_change=sorted_list_incorrect__word_total_changes[0][1]  #get only word
-
-    return sorted_list_incorrect__word_total_changes
+                # print(u'Add "{}" to position {}'.format(s[-1],-1))
+                list_of_operations.append((i,"Add",s[-1]))
+    return list_of_operations
 
 
-
-# def get_best_match_words_not_common(not_common_words):
-
-#     # if single not_common_words
-#     if len(not_common_words)==1:
-#         return (0,not_common_words[0])
+def function_to_check_characters_in_char_list(operation_sequence):
     
-#     elif len(not_common_words)>1:
-#         list_correct_small_words=[]
-#         list_correct_long_words=[]
+    if len(operation_sequence)==1:
+        return True
+    
+    
+    elif len(operation_sequence)==2:
+        for (a,b,c),(d,e,f) in zip(operation_sequence,operation_sequence[1:]):
+            
+            if  a+1 == d and b == 'Delete' and e == "Add" :
+                    
+                    if any([c in list_chars for list_chars in  char_replace_list]) and any([f in list_chars for list_chars in  char_replace_list]) :
+                        return True
+                    else :
+                        return False
+                
+            elif  a+1 == d and b == 'Add' and e == "Delete" :
+                
+                if any([c in list_chars for list_chars in  char_replace_list]) and any([f in list_chars for list_chars in  char_replace_list]) :
+                    return True
+                else :
+                    return False
+            else:
+                return False
 
-#         for word_ in not_common_words:
-#             if 3<len(word_)<7:
-#                     list_correct_small_words.append(word_)
-#                 # list_incorrect_correct_small_words = [(word,incorrect_word) for word in words_with_small_len ]
-#             else:
-#                     list_correct_long_words.append(word_)
-#         print("small words",list_correct_small_words)
-#         print("long words",list_correct_long_words)
-#         best_match_small_word=word_with_least_change(list_correct_long_words)
-#         best_match_long_word=word_with_least_change(list_correct_long_words)
-#         print("best match long word are",best_match_small_word)
-#         print("best match small word are",best_match_long_word)
-#         best_matches_list=[]
-#         sorted_best_matches_list=[]
-        
-#         if best_match_small_word and best_match_small_word[0]<6:
-#             best_matches_list.append(best_match_small_word)
-        
-        
-#         if best_match_long_word and best_match_long_word[0]<9:
-#             best_matches_list.append(best_match_long_word)
-        
-#         else :
-#             pass
+    else :
+        for (a,b,c),(d,e,f),(g,h,i) in zip(operation_sequence,operation_sequence[1:],operation_sequence[2:]):
 
-#         sorted_best_matches_list=sorted(best_matches_list,key = lambda i: i[0])[0]
-        
-#     return sorted_best_matches_list
+            if  a+1 == d==(g-1) and b == 'Delete' and e == "Delete" and  h=='Add' or  b == 'Add' and e == "Delete" and  h=='Delete' or a+1 == d == (g-1) and b == 'Add' and e == "Add" and  h=='Delete' or a+1 == d == (g-1) and b == 'Delete' and e == "Add" and h == 'Add' :
+
+                if  any(["".join([c,f]) in list_chars for list_chars in  char_replace_list]) and any([ i in list_chars for list_chars in  char_replace_list]):
+                    return True
+
+                elif   any([c in list_chars for list_chars in  char_replace_list]) and any([ "".join([f,i]) in list_chars for list_chars in  char_replace_list]):
+                    return True   
+
+                else :
+                    return False
+            
+            elif  a+1 == d and b == 'Delete' and e == "Add" :
+                
+                if any([c in list_chars for list_chars in  char_replace_list]) and any([f in list_chars for list_chars in  char_replace_list]) :
+                    return True
+                else :
+                    return False
+            
+            elif  a+1 == d and b == 'Add' and e == "Delete" :
+                
+                if any([c in list_chars for list_chars in  char_replace_list]) and any([f in list_chars for list_chars in  char_replace_list]) :
+                    return True
+                else :
+                    return False
+            else:
+                False
+
+        else :
+            
+            return False
+
 
 def get_best_match_words_not_common(not_common_words):
 
     # if single not_common_words
     if len(not_common_words)==1:
-        return (0,not_common_words[0])
+        return not_common_words[0]
     
     elif len(not_common_words)>1:
         list_correct_small_words=[]
@@ -106,15 +119,15 @@ def get_best_match_words_not_common(not_common_words):
         # print("small words",list_correct_small_words)
         # print("long words",list_correct_long_words)
         try:
-            best_match_small_word=levenshtein_distance_best_word(list_incorrect_correct_small_words)
+            best_match_small_word=levenshtein_distance_best_word(list_correct_small_words)
         except:
            best_match_small_word=None
         try:
-            best_match_long_word=levenshtein_distance_best_word(list_incorrect_correct_long_words)
+            best_match_long_word=levenshtein_distance_best_word(list_correct_long_words)
         except:
             best_match_long_word=None
-        # print("best match long word are",best_match_small_word)
-        # print("best match small word are",best_match_long_word)
+        print("best match long word are",best_match_small_word)
+        print("best match small word are",best_match_long_word)
         best_matches_list=[]
         sorted_best_matches_list=[]
         
@@ -134,52 +147,46 @@ def get_best_match_words_not_common(not_common_words):
                                                                                                                                    
 
 def get_best_match_word(common_words):
-    list_incorrect_correct_small_words=[]
-    list_incorrect_correct_long_words=[]
-
-    # if single not_common_words
     if len(common_words)==1:
-        return (0,common_words)
+        return common_words[0]
     
     #if common words presents are more then one
     elif len(common_words)>1:
-        for word_ in common_words:
-            if 3<len(word_)<7:
-                    list_incorrect_correct_small_words.append(word_)
-                # list_incorrect_correct_small_words = [(word,incorrect_word) for word in words_with_small_len ]
-            else:
-                    list_incorrect_correct_long_words.append(word_)
-       
-        try:
-            best_match_small_word=levenshtein_distance_best_word(list_incorrect_correct_small_words)
-        except:
-           best_match_small_word=None
-        try:
-            best_match_long_word=levenshtein_distance_best_word(list_incorrect_correct_long_words)
-        except:
-            best_match_long_word=None
 
-        print("this is  match small word",best_match_small_word)
-        # best match long words conditions
-        print("this is match long word",best_match_long_word)
-        best_matches_list=[]
+        
+        best_match_word=levenshtein_distance_best_common_words(common_words)
+        sorted_best_matches_list_words=[]
         sorted_best_matches_list=[]
-        
-        if best_match_small_word and best_match_small_word[0]<9:
-            best_matches_list.append(best_match_small_word)
-        
-        
-        if best_match_long_word and best_match_long_word[0]<12:
-            best_matches_list.append(best_match_long_word)
-        
-        else :
-            pass
+ 
+        if best_match_word:
+        #word to return
+            sorted_best_matches_list=sorted(best_match_word,key = lambda i: i[0])
+            if len(sorted_best_matches_list)==1:
+                sorted_best_matches_list_words.append(sorted_best_matches_list[0][1])
+            
+            else :
+            #select bestmatch
+                common_edit_distance_word=[idx for idx in sorted_best_matches_list if idx[0]==sorted_best_matches_list[0][0]]
+                # print("common_edit_distance_word",common_edit_distance_word)
+                correct_word_containing_char_in_char_list=[]
 
-        sorted_best_matches_list=sorted(best_matches_list,key = lambda i: i[0])[0]
-        print("this is match long word",sorted_best_matches_list)
+                for word in common_edit_distance_word:
+                    operation_sequence = get_operations_on_characters([(incorrect_word,word[1])])
+                    bool_value= function_to_check_characters_in_char_list(operation_sequence)
+
+                    if bool_value == True :
+                        correct_word_containing_char_in_char_list.append((word[1],bool_value))
+                        
+                    else:
+                        correct_word_containing_char_in_char_list.append((word[1],bool_value))
+                
+                matched_word=[idx for idx in correct_word_containing_char_in_char_list if idx[1]==True]
+                sorted_best_matches_list_words.extend(matched_word)
+                # print("matched word",sorted_best_matches_list_words[0][0])
+
+            return sorted_best_matches_list_words[0][0]
         
-    return sorted_best_matches_list
-                                     
+           
     
 def levenshtein_distance_best_word(list_words):
     edit_distance_and_word=[]
@@ -192,11 +199,25 @@ def levenshtein_distance_best_word(list_words):
     sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])[0]
     
     return sorted_list_incorrect__word_total_changes
+
+
+def levenshtein_distance_best_common_words(list_words):
+    edit_distance_and_word=[]
+    sorted_list_incorrect__word_total_changes=[]
+    for similar_word in list_words:
+        d=Levenshtein.distance(incorrect_word,similar_word)
+        edit_distance_and_word.append((d,similar_word))
+    
+    # print("this is edited distance",edit_distance_and_word)
+    sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])
+    
+    return sorted_list_incorrect__word_total_changes
+
   
     # Print string without punctuation 
 
 def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings):
-       
+    
         matched_words_syms = symspell_matched_word(incorrect_word)
         # print("matched_words_syms",matched_words_syms)
         nlp=spacy.load("en")
@@ -204,28 +225,33 @@ def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedd
         nlp=nlp(matched_words_syms_text)
         #lemmatized the matched words 
         matched_words_syms= [word_.lemma_ for word_ in nlp]
-        print("matched_words_syms",matched_words_syms)
+        # print("matched_words_syms",matched_words_syms)
 
         matched_words_char2vec=cosine_similar_words(incorrect_word_embedding,white_list_word_embeddings,white_list_words)
         nlp=spacy.load("en")
         matched_words_char2vec_text = " ".join(matched_words_char2vec)
         nlp=nlp(matched_words_char2vec_text)
         matched_words_char2vec=[word_.lemma_ for word_ in nlp]
-        print("matched_words_char2vec",matched_words_char2vec)
+
+        # print("matched_words_char2vec",matched_words_char2vec)
         
         #finding the common words
-    
         common_words=[word for word in matched_words_char2vec if word in matched_words_syms]
-        print("this is common words",common_words)
+        # print("this is common words",common_words)
 
         try:
         # if common_words exist
             if common_words:
                 matched_word = get_best_match_word(common_words)
-                return matched_word[1]
-                # return common_words
-            # if common words not exist
+                # print("this is the matche one " ,matched_word)
+                return matched_word
+            # elif len(common_words)=22:
+
+            #     peration_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
+            #     bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
+            # # if common words not exist
             else:
+                # print("this must print")
                 
                 best_matched_words_syms = get_best_match_words_not_common(matched_words_syms)
                 best_matched_words_char2vec = get_best_match_words_not_common(matched_words_char2vec)
@@ -233,41 +259,46 @@ def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedd
                 print("best_matched_words_syms",best_matched_words_syms)
                 print("best_matched_words_char2vec",best_matched_words_char2vec)
                 
-                if best_matched_words_syms and best_matched_words_char2vec:
+                if  best_matched_words_syms and best_matched_words_char2vec:
                     if best_matched_words_syms[0] > best_matched_words_char2vec[0]:
                         return best_matched_words_char2vec[1]
 
-                        # return best_matched_words_char2vec[1]
+                    # replaced character if it is in char_list
+                    elif best_matched_words_syms[0] == best_matched_words_char2vec[0] :
+         
+                        
+                        operation_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
+                        bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
+                    
+                        operation_sequence_char2vec = get_operations_on_characters([(incorrect_word,best_matched_words_char2vec[1])])
+                        bool_value_char2vec= function_to_check_characters_in_char_list(operation_sequence_char2vec)
 
-                    elif best_matched_words_syms[0]==best_matched_words_char2vec[0]:
-                        '''    code to be added '''
-
-
-                        return best_matched_words_syms[1]
-
-
-
-
-                        # return best_matched_words_char2vec[1]
-
+                        if bool_value_symspell == True and bool_value_char2vec==True:
+                            return best_matched_words_char2vec[1]
+                        elif bool_value_symspell == False and bool_value_char2vec==True:
+                            return best_matched_words_char2vec[1]
+                        elif bool_value_symspell == True and bool_value_char2vec==False:
+                            return best_matched_words_syms[1]
+                        else:
+                            return best_matched_words_char2vec[1]
+                    
                     else :
-                        # best_matched_words_syms[0] < best_matched_words_char2vec[0] :
                         return best_matched_words_syms[1]
-                        # return best_matched_words_syms[1]
-                elif best_matched_words_syms!=None and best_matched_words_char2vec==None:
+
                 
-                    # if best_matched_words_syms[0]>best_matched_words_char2vec[0]:
+
+
+                       
+                elif best_matched_words_syms!=None and best_matched_words_char2vec==None:
                         return best_matched_words_syms[1]
-                        # return best_matched_words_char2vec[1]
+                       
 
                 elif best_matched_words_syms==None and best_matched_words_char2vec!=None:
-                    
-                    # if best_matched_words_syms[0]>best_matched_words_char2vec[0]:
                         return best_matched_words_char2vec[1]
-                        # return best_matched_words_char2vec[1]
+
                 else:
-                # if  best_matched_words_char2vec==None and best_matched_words_syms==None:
-                    return False
+              
+                    return incorrect_word
         except:
             pass
 
@@ -279,13 +310,12 @@ def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedd
 
 if __name__== "__main__":
     
-    white_list_words=['information', 'place','gjhy', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
+    white_list_words=['information', 'invoice', 'place','gjhy', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
     incorrect_word="plece"
+
     incorrect_word_embedding=get_word_embeddings([incorrect_word])
     white_list_word_embeddings=get_word_embeddings(white_list_words)
 
     # print("this is word_embe")
     word=get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings)
-    print(word)
-        
-    
+    print(word)  
