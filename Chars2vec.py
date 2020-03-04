@@ -9,13 +9,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load Inutition Engineering pretrained model
 # Models names: 'eng_50', 'eng_100', 'eng_150', 'eng_200', 'eng_300'
 
+
 def get_word_embeddings(word):
-    c2v_model = chars2vec.load_model('eng_300')
+    c2v_model = chars2vec.load_model("eng_300")
     # Create word embedding of incorrect word
     word_embeddings = c2v_model.vectorize_words(word)
     # filename = 'word_embeddings.sav'
     # pickle.dump(word_embeddings, open(filename, 'wb'))
     return word_embeddings
+
 
 # load the white list word embedding model from disk
 # def load_pickel_emb(path):
@@ -23,33 +25,31 @@ def get_word_embeddings(word):
 #     return loaded_word_embeddings
 
 
-
-#finding the cosine_similarity 
-def cosine_similar_words(incorrect_word_embedding,words_embedding,white_list_words):
+# finding the cosine_similarity
+def cosine_similar_words(incorrect_word_embedding, words_embedding, white_list_words):
     # dist=cosine_similarity([incorrect_word_embedding[0]],[words_embedding[0]])
-    cosine_distance=[]
+    cosine_distance = []
     for idx in range(len(words_embedding)):
-        dist=cosine_similarity([incorrect_word_embedding[0]], [words_embedding[idx]])
+        dist = cosine_similarity([incorrect_word_embedding[0]], [words_embedding[idx]])
         cosine_distance.append((dist[0][0], words_embedding[idx]))
 
-    
     # print(cosine_distance)
 
     # max_cosine_val=max(cosine_distance,key=lambda item:item[0])[0]
     # print(max_cosine_val)
-    sort_cosine_distance = sorted(cosine_distance, key = lambda i: i[0], reverse=True)[0:3]
+    sort_cosine_distance = sorted(cosine_distance, key=lambda i: i[0], reverse=True)[
+        0:3
+    ]
     # print(len(sort_cosine_distance))
 
-    
-    similar_words=[]
+    similar_words = []
     for idx in range(len(words_embedding)):
         for i in range(len(sort_cosine_distance)):
-            if (sort_cosine_distance[i][1]==words_embedding[idx]).all():
+            if (sort_cosine_distance[i][1] == words_embedding[idx]).all():
                 if white_list_words[idx] not in similar_words:
                     similar_words.append(white_list_words[idx])
 
     return similar_words
-            
 
 
 # Project embeddings on plane using the PCA
@@ -78,7 +78,7 @@ def cosine_similar_words(incorrect_word_embedding,words_embedding,white_list_wor
 # # incorrect_word=["inform"]
 # print(len(white_list_words))
 # word_embeddings_path="word_embeddings52.sav"
-#print(word_embeddings.shape)
+# print(word_embeddings.shape)
 
 # white_list_words = ['information' , 'gjhy' , 'nfmc' , 'mark' , 'part' , 'tariff' , 'quantity' , 'packages' , 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging' , 'group' , 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
 # white_list_embeddings = get_word_embeddings(white_list_words)
@@ -88,6 +88,3 @@ def cosine_similar_words(incorrect_word_embedding,words_embedding,white_list_wor
 # words=cosine_similar_words(incorrect_word_embedding,white_list_embeddings,white_list_words)
 
 # print(words)
-
-
-
