@@ -1,0 +1,36 @@
+default_language_version:
+    python: python3.7
+fail_fast: true
+repos:
+-   repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    - id: black
+      language_version: python3.7
+-   repo: https://github.com/jorisroovers/gitlint
+    rev:  v0.13.1
+    hooks:
+    - id: gitlint
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+    - id: detect-private-key
+      name: Detecting Private Keys
+    - id: end-of-file-fixer
+      language: python
+      types: [python]
+    - id: check-toml
+    - id: check-yaml
+    - id: check-symlinks
+    - id: check-merge-conflict
+    - id: check-added-large-files
+    - id: check-json
+    - id: trailing-whitespace
+      name: Trim Trailing Whitespace
+      description: This hook trims trailing whitespace.
+      language: python
+      types: [python]
+# -   repo: https://gitlab.com/pycqa/flake8
+#     rev: '3.7.9'
+#     hooks:
+#     -   id: flake8
