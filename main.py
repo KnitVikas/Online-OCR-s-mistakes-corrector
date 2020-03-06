@@ -3,6 +3,8 @@ from Chars2vec import cosine_similar_words
 import pkg_resources
 from symspellpy import SymSpell, Verbosity
 import difflib
+from itertools import groupby
+from operator import itemgetter
 import re
 from Chars2vec import get_word_embeddings
 import Levenshtein 
@@ -27,10 +29,10 @@ def get_operations_on_characters(list_of_tuple_incorrect_correct_words):
         # print('{} => {}'.format(a,b))
         list_of_operations=[]
         for i,s in enumerate(difflib.ndiff(a, b)):
-            if s[0]==' ':
+            if s[0]==' ' :
                 continue
  
-            elif s[0]=='-':
+            elif s[0]=='-' :
                 # print(u'Delete "{}" from position {}'.format(s[-1],i))
                 list_of_operations.append((i,"Delete",s[-1]))
  
@@ -40,100 +42,63 @@ def get_operations_on_characters(list_of_tuple_incorrect_correct_words):
     return list_of_operations
 
 
-def function_to_check_characters_in_char_list(operation_sequence):
+def get_best_matched_word_from_operations_using_char_list(operations):
+      
+    # sort the operation on the basis of index of character
+    operations=sorted(operations,key = lambda i: i[0])
+    index_sorted = [tup[0] for tup in operations]
+    print( "operations" ,operations)
+    list_index=[]
+    for k,g in groupby(enumerate(index_sorted),lambda ix :ix[0] - ix[1]):
+        list_index.append(list(map(itemgetter(1),g)))
+    index_to_check=[idx for idx in list_index if len(list_index)>=1]
 
-    if len(operation_sequence) == 1:
-        return True
-
-    elif len(operation_sequence) == 2:
-        for (a, b, c), (d, e, f) in zip(operation_sequence, operation_sequence[1:]):
-
-            if a + 1 == d and b == "Delete" and e == "Add":
-
-                if any([c in list_chars for list_chars in char_replace_list]) and any(
-                    [f in list_chars for list_chars in char_replace_list]
-                ):
-                    return True
-                else:
-                    return False
-
-            elif a + 1 == d and b == "Add" and e == "Delete":
-
-                if any([c in list_chars for list_chars in char_replace_list]) and any(
-                    [f in list_chars for list_chars in char_replace_list]
-                ):
-                    return True
-                else:
-                    return False
-            else:
-                return False
-
-
-
-
-
+    print( "index_to_check" ,index_to_check)
+    list_char_to_check=[]
+    for list_ in index_to_check:
+        list_consecutive_char=[]
+        for index in list_:
+            for operation in operations:
+                if index==operation[0]:
+                    list_consecutive_char.append(operation)
+        list_char_to_check.append(list_consecutive_char)
+    print("this is list_char_to_check" , list_char_to_check)
+    # s=[[(0, 'Delete', '1'), (1, 'Add', 'i')], [(10, 'Delete', '0'), (11, 'Add', 'o')], [(13, 'Delete', 'r'), (14, 'Add', 's')]]
+    list_tup_length_bool_value=[]
+    #list_tup_length_bool_value shape (length of operation on consecutive character, bool==if character found in char list )
     
+    for list_ in list_char_to_check:
+        first_character = ""
+        second_character = ""
+        for (index1, operation1, character1) , (index2, operation2, character2) in zip(list_,list_[1:]):
+            if operation1 == operation2:
+                if not (first_char):
+                    first_character = character1 + character2
 
-
-def function_to_check_characters_in_char_list(operation_sequence):
-    
-    if len(operation_sequence)==1:
-        return True
-    
-    
-    elif len(operation_sequence)==2:
-        for (index1,operation1,character1),(index2,operation2,character2) in zip(operation_sequence,operation_sequence[1:]):
-            
-            if  (index1+1) == index2 and operation1 == 'Delete' and operation2 == "Add" :
-                    
-                    if any([charactor1 in list_chars for list_chars in  char_replace_list]) and any([charactor2 in list_chars for list_chars in  char_replace_list]) :
-                        return True
-                    else :
-                        return False
+                if (first_character) and (second_char) :
+                    second_character = second_character + character2
                 
-            elif  index1+1 == index2 and operation1 == 'Add' and operation2 == "Delete" :
-                
-                if any([character1 in list_chars for list_chars in  char_replace_list]) and any([character2 in list_chars for list_chars in  char_replace_list]) :
-                    return True
                 else :
-                    return False
+                     print("sequence of operation does not  matches")
             else:
-                return False
+                if not (first_character):
+                    first_character = character1
+                if first_character and not second_character:
+                    second_character = character2
 
-#     else :
-#         for (index1,operation1,character1),(index2,operation2,character2),(index3,operation3,character3) in zip(operation_sequence,operation_sequence[1:],operation_sequence[2:]):
-
-#             if  (index1+1) == index2 ==(index3-1) and operation1 == 'Delete' and operation2 == "Delete" and  operation3 =='Add' or (index1+1) == index2 == (index3-1) and operation1 == 'Add' and operation2 == "Delete" and  operation3 =='Delete' or (index1+1) == index2 == (index3-1) and operation1 == 'Add' and operation2 == "Add" and  operation3 =='Delete' or (index1+1) == index2 == (index3-1) and operation1 == 'Delete' and operation2 == "Add" and operation3 == 'Add' :
-
-#                 if  any(["".join([character1,character2]) in list_chars for list_chars in  char_replace_list]) and any([ charcter3 in list_chars for list_chars in  char_replace_list]):
-#                     return True
-
-#                 elif   any([character1 in list_chars for list_chars in  char_replace_list]) and any([ "".join([character2,character3]) in list_chars for list_chars in  char_replace_list]):
-#                     return True   
-
-#                 else :
-#                     return False
-            
-#             elif  (index1+1) == index2 and operation1 == 'Delete' and operation2 == "Add" :
-                
-#                 if any([charater1 in list_chars for list_chars in  char_replace_list]) and any([character2 in list_chars for list_chars in  char_replace_list]) :
-#                     return True
-#                 else :
-#                     return False
-            
-#             elif  (index1+1)== index2 and operation1 == 'Add' and operation2 == "Delete" :
-                
-#                 if any([character1 in list_chars for list_chars in  char_replace_list]) and any([character2 in list_chars for list_chars in  char_replace_list]) :
-#                     return True
-#                 else :
-#                     return False
-#             else:
-#                 False
-
-#         else :
-            
-#             return False
-
+                print("sequence of operation does not  matches")
+        if first_char and second_char:
+            if in_same_group(first_character,second_character): 
+                # print("this got in")
+                list_tup_length_bool_value.append((len(first_char), True))
+            else :
+                # print("this not got in")
+                list_tup_length_bool_value,append((len(first_char),False))
+        else:
+            list_tup_length_bool_value,append((len(first_char),False))
+                # ''' work on list_tup_length_bool_value '''
+         
+    return list_tup_length_bool_value
 
 def get_best_match_words_not_common(not_common_words):
 
@@ -142,43 +107,36 @@ def get_best_match_words_not_common(not_common_words):
         return not_common_words[0]
     
     elif len(not_common_words)>1:
-        list_correct_small_words=[]
-        list_correct_long_words=[]
+        list_correct_small_words=[word for word in not_common_words if 3<len(word_)<7 ]
+        list_correct_long_words=[ word for word in not_common_words if len(word_)>=7 ]
+       
+        word_prob=[]
+        try:
+            best_match_small_word_edited_distance=levenshtein_distance_best_common_words(list_correct_small_words)
+            for word in best_match_small_word_edited_distance:
+                
+                if word[0]<=2:
+                    probability=get_best_matched_word_from_operations(word[1])
+                    word_prob.append((word[0],probability,word[1]))
+                else:
+                    pass
 
-        for word_ in not_common_words:
-            if 3<len(word_)<7:
-                    list_correct_small_words.append(word_)
-                # list_incorrect_correct_small_words = [(word,incorrect_word) for word in words_with_small_len ]
-            else:
-                    list_correct_long_words.append(word_)
-        # print("small words",list_correct_small_words)
-        # print("long words",list_correct_long_words)
-        try:
-            best_match_small_word=levenshtein_distance_best_word(list_correct_small_words)
         except:
-           best_match_small_word=None
+           pass
+
         try:
-            best_match_long_word=levenshtein_distance_best_word(list_correct_long_words)
+            best_match_long_word_edited_distance=levenshtein_distance_best_common_words(list_correct_long_words)
+            for word in best_match_long_word_edited_distance:
+                if word<=4:
+                    probability = get_best_matched_word_from_operations((word[1],probabaility))
+                    word_prob.append((word[0],probability,word[1]))
         except:
-            best_match_long_word=None
-        print("best match long word are",best_match_small_word)
-        print("best match small word are",best_match_long_word)
-        best_matches_list=[]
-        sorted_best_matches_list=[]
-        
-        if best_match_small_word and best_match_small_word[0]<9:
-            best_matches_list.append(best_match_small_word)
-        
-        
-        if best_match_long_word and best_match_long_word[0]<12:
-            best_matches_list.append(best_match_long_word)
-        
-        else :
             pass
 
-        sorted_best_matches_list=sorted(best_matches_list,key = lambda i: i[0])[0]
+        sorted_best_matches_list=sorted(word_prob,key = lambda element:(element[0],element[1]))
+        sorted_best_matches_list=[prob for prob in sorted_best_matches_list if prob[0]==sorted_best_matches_list[0]]
         
-    return sorted_best_matches_list
+    return sorted_best_matches_list[-1][2]
                                                                                                                                    
 
 def get_best_match_word(common_words):
@@ -232,6 +190,7 @@ def levenshtein_distance_best_word(list_words):
     
     # print("this is edited distance",edit_distance_and_word)
     sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])[0]
+
     
     return sorted_list_incorrect__word_total_changes
 
@@ -245,6 +204,8 @@ def levenshtein_distance_best_common_words(list_words):
     
     # print("this is edited distance",edit_distance_and_word)
     sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])
+    sorted_list_incorrect__word_total_changes=[word for word in sorted_list_incorrect__word_total_changes if word[0]==sorted_list_incorrect__word_total_changes[0][0]]
+
     
     return sorted_list_incorrect__word_total_changes
 
@@ -352,5 +313,5 @@ if __name__== "__main__":
     white_list_word_embeddings=get_word_embeddings(white_list_words)
 
     # print("this is word_embe")
-    word=get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings)
-    print(word)  
+    # word=get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings)
+    # print(word)  
