@@ -82,7 +82,7 @@ def cosine_similar_words(incorrect_word_embedding, words_embedding, white_list_w
 
 # white_list_words = ['information' , 'gjhy' , 'nfmc' , 'mark' , 'part' , 'tariff' , 'quantity' , 'packages' , 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging' , 'group' , 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
 # white_list_embeddings = get_word_embeddings(white_list_words)
-# incorrect_word_embedding=get_word_embeddings(["quants"])
+# incorrect_word_embedding=get_word_embeddings(["imvoice"])
 # # print(incorrect_word_embedding)
 
 # words=cosine_similar_words(incorrect_word_embedding,white_list_embeddings,white_list_words)
