@@ -212,7 +212,7 @@ def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedd
                 
                 if  best_matched_words_syms and best_matched_words_char2vec:
                     best_matched_words_from_symspell_Char2vec = [best_matched_words_syms,best_matched_words_char2vec]
-                    sorted_best_matches_list = sorted(best_matched_words_from_symspell_Char2vec, key = lambda element:(element[0], element[1]))
+                    sorted_best_matches_list = sorted(best_matched_words_from_symspell_Char2vec, key = lambda element:(element[0], element[1]))[0]
                     
                     # print("get in ",sorted_best_matches_list)
                 
