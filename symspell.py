@@ -1,8 +1,5 @@
-
-        
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell, Verbosity
-
 
 def symspell_matched_word(incorrect_word):
     incorrect_word=[incorrect_word]    
@@ -46,4 +43,13 @@ def symspell_matched_word(incorrect_word):
         # print(s[i][0],str(s[i][1]).split()[0][0:-1])
         symspell_matched_words.append(str(suggested_words[i][1]).split()[0][0:-1])
     return symspell_matched_words
-# print(symspell_matched_word("we1ght"))    
+import time
+import timeit
+# start=timeit.process_time()
+# print(symspell_matched_word("we1ght"))
+# end=time.process_time()
+# print('time',(end-start))
+start=timeit.default_timer()
+print(symspell_matched_word("we1ght"))
+end=timeit.default_timer()
+print('time',(end-start))

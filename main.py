@@ -1,3 +1,4 @@
+
 from symspell import symspell_matched_word
 from Chars2vec import cosine_similar_words
 import pkg_resources
@@ -7,7 +8,9 @@ import re
 from Chars2vec import get_word_embeddings
 import Levenshtein 
 import spacy
-
+import timeit
+import time
+from cython_utils.utils import mean_var_sigma
 
 
 char_replace_list = [ ['0','o' 'q','Q','D','a'],
@@ -20,9 +23,9 @@ char_replace_list = [ ['0','o' 'q','Q','D','a'],
             ['7','T','j'],            
             ['9','g','y','Y'],['m','rn','m'],['w','vv']]
 
-
 def get_operations_on_characters(list_of_tuple_incorrect_correct_words):
-
+    
+    start=timeit.default_timer()
     for a,b in list_of_tuple_incorrect_correct_words:
         # print('{} => {}'.format(a,b))
         list_of_operations=[]
@@ -37,10 +40,14 @@ def get_operations_on_characters(list_of_tuple_incorrect_correct_words):
             elif s[0]=='+':
                 # print(u'Add "{}" to position {}'.format(s[-1],-1))
                 list_of_operations.append((i,"Add",s[-1]))
+    end=timeit.default_timer()
+    print("time taken by get_operations_on_characters {}".format(end-start))
+    # print("list_of_operations",list_of_operations)
     return list_of_operations
 
 
 def function_to_check_characters_in_char_list(operation_sequence):
+    start=timeit.default_timer()
     
     if len(operation_sequence)==1:
         return True
@@ -95,12 +102,16 @@ def function_to_check_characters_in_char_list(operation_sequence):
             else:
                 False
 
-        else :
+        
+
+    end=timeit.default_timer()
+    print("time taken by function_to_check_characters_in_char_list {}".format(end-start))
             
-            return False
+    return False
 
 
 def get_best_match_words_not_common(not_common_words):
+    start=timeit.default_timer()
 
     # if single not_common_words
     if len(not_common_words)==1:
@@ -141,21 +152,25 @@ def get_best_match_words_not_common(not_common_words):
         else :
             pass
 
-        sorted_best_matches_list=sorted(best_matches_list,key = lambda i: i[0])[0]
-        
+    #     sorted_best_matches_list=sorted(best_matches_list,key = lambda i: i[0])[0]
+    start = timeit.default_timer() 
+    print("time taken by function_to_check_characters_in_char_list {}".format(end-start)) 
     return sorted_best_matches_list
                                                                                                                                    
 
 def get_best_match_word(common_words):
+    start=timeit.default_timer()
     if len(common_words)==1:
         return common_words[0]
     
     #if common words presents are more then one
     elif len(common_words)>1:
 
-        
+        start= timeit.default_timer()
         best_match_word=levenshtein_distance_best_common_words(common_words)
-        sorted_best_matches_list_words=[]
+        end=timeit.default_timer()
+        print("time taken by levenshtein_distance_best_common_words {}" .format(end-start))
+        sorted_best_matches_list_words=[],
         sorted_best_matches_list=[]
  
         if best_match_word:
@@ -169,11 +184,15 @@ def get_best_match_word(common_words):
                 common_edit_distance_word=[idx for idx in sorted_best_matches_list if idx[0]==sorted_best_matches_list[0][0]]
                 # print("common_edit_distance_word",common_edit_distance_word)
                 correct_word_containing_char_in_char_list=[]
-
+                
+                start=timeit.default_timer() #time
+                
                 for word in common_edit_distance_word:
                     operation_sequence = get_operations_on_characters([(incorrect_word,word[1])])
+                    start=timeit.default_timer()
                     bool_value= function_to_check_characters_in_char_list(operation_sequence)
-
+                    end=timeit.default_timer()
+                    print("time taken by function_to_check_characters_in_char_list for one word", (end-start))
                     if bool_value == True :
                         correct_word_containing_char_in_char_list.append((word[1],bool_value))
                         
@@ -183,12 +202,14 @@ def get_best_match_word(common_words):
                 matched_word=[idx for idx in correct_word_containing_char_in_char_list if idx[1]==True]
                 sorted_best_matches_list_words.extend(matched_word)
                 # print("matched word",sorted_best_matches_list_words[0][0])
-
-            return sorted_best_matches_list_words[0][0]
+    end=timeit.default_timer()
+    print("get_best_match_word {}".format(end-start))
+    return sorted_best_matches_list_words[0][0]
         
            
     
 def levenshtein_distance_best_word(list_words):
+    start=timeit.default_timer()
     edit_distance_and_word=[]
     sorted_list_incorrect__word_total_changes=[]
     for similar_word in list_words:
@@ -196,12 +217,15 @@ def levenshtein_distance_best_word(list_words):
         edit_distance_and_word.append((d,similar_word))
     
     # print("this is edited distance",edit_distance_and_word)
-    sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])[0]
     
+    sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])[0]
+    end=timeit.default_timer()
+    print("levenshtein_distance_best_word {}".format(end-start))
     return sorted_list_incorrect__word_total_changes
 
 
 def levenshtein_distance_best_common_words(list_words):
+    start=timeit.default_timer()
     edit_distance_and_word=[]
     sorted_list_incorrect__word_total_changes=[]
     for similar_word in list_words:
@@ -210,97 +234,107 @@ def levenshtein_distance_best_common_words(list_words):
     
     # print("this is edited distance",edit_distance_and_word)
     sorted_list_incorrect__word_total_changes=sorted(edit_distance_and_word,key = lambda i: i[0])
-    
+    end = timeit.default_timer()
+    print("time taken by levenshtein_distance_best_common_words",end-start)
     return sorted_list_incorrect__word_total_changes
 
   
     # Print string without punctuation 
 
 def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings):
+    start = timeit.default_timer()
+    matched_words_syms = symspell_matched_word(incorrect_word)
+    # print("matched_words_syms",matched_words_syms)
+    nlp=spacy.load("en")
+    matched_words_syms_text = " ".join(matched_words_syms)
+    nlp=nlp(matched_words_syms_text)
+    #lemmatized the matched words 
+    matched_words_syms= [word_.lemma_ for word_ in nlp]
+    # print("matched_words_syms",matched_words_syms)
+
+    matched_words_char2vec=cosine_similar_words(incorrect_word_embedding,white_list_word_embeddings,white_list_words)
+    nlp=spacy.load("en")
+    matched_words_char2vec_text = " ".join(matched_words_char2vec)
+    nlp=nlp(matched_words_char2vec_text)
+    matched_words_char2vec=[word_.lemma_ for word_ in nlp]
+
+    # print("matched_words_char2vec",matched_words_char2vec)
     
-        matched_words_syms = symspell_matched_word(incorrect_word)
-        # print("matched_words_syms",matched_words_syms)
-        nlp=spacy.load("en")
-        matched_words_syms_text = " ".join(matched_words_syms)
-        nlp=nlp(matched_words_syms_text)
-        #lemmatized the matched words 
-        matched_words_syms= [word_.lemma_ for word_ in nlp]
-        # print("matched_words_syms",matched_words_syms)
+    #finding the common words
+    common_words=[word for word in matched_words_char2vec if word in matched_words_syms]
+    print("this is common words",common_words)
 
-        matched_words_char2vec=cosine_similar_words(incorrect_word_embedding,white_list_word_embeddings,white_list_words)
-        nlp=spacy.load("en")
-        matched_words_char2vec_text = " ".join(matched_words_char2vec)
-        nlp=nlp(matched_words_char2vec_text)
-        matched_words_char2vec=[word_.lemma_ for word_ in nlp]
+    try:
+    # if common_words exist
+        if common_words:
+            start=timeit.default_timer()
+            matched_word = get_best_match_word(common_words)
+            end=timeit.default_timer()
+            print("this is the get_best_match_word  " ,end-start)
+            return matched_word
+        # elif len(common_words)=22:
 
-        # print("matched_words_char2vec",matched_words_char2vec)
+        #     peration_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
+        #     bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
+        # # if common words not exist
+        else:
+            # print("this must print")
+            start=time.process_time()
+            best_matched_words_syms = get_best_match_words_not_common(matched_words_syms)
+            end1=time.process_time()
+            print("time taken by get_best_match_words_not_common",end1-start)
+            start1=timeit.default_timer()
+            best_matched_words_char2vec = get_best_match_words_not_common(matched_words_char2vec)
+            end2=timeit.default_timer()
+            print("time taken by get_best_match_words_not_common", end2-start1)
+            print("best_matched_words_syms",best_matched_words_syms)
+            print("best_matched_words_char2vec",best_matched_words_char2vec)
+            
+            if  best_matched_words_syms and best_matched_words_char2vec:
+                if best_matched_words_syms[0] > best_matched_words_char2vec[0]:
+                    return best_matched_words_char2vec[1]
+
+                # replaced character if it is in char_list
+                elif best_matched_words_syms[0] == best_matched_words_char2vec[0] :
         
-        #finding the common words
-        common_words=[word for word in matched_words_char2vec if word in matched_words_syms]
-        # print("this is common words",common_words)
+                    
+                    operation_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
+                    bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
+                
+                    operation_sequence_char2vec = get_operations_on_characters([(incorrect_word,best_matched_words_char2vec[1])])
+                    bool_value_char2vec= function_to_check_characters_in_char_list(operation_sequence_char2vec)
 
-        try:
-        # if common_words exist
-            if common_words:
-                matched_word = get_best_match_word(common_words)
-                # print("this is the matche one " ,matched_word)
-                return matched_word
-            # elif len(common_words)=22:
+                    if bool_value_symspell == True and bool_value_char2vec==True:
+                        return best_matched_words_char2vec[1]
+                    elif bool_value_symspell == False and bool_value_char2vec==True:
+                        return best_matched_words_char2vec[1]
+                    elif bool_value_symspell == True and bool_value_char2vec==False:
+                        return best_matched_words_syms[1]
+                    else:
+                        return best_matched_words_char2vec[1]
+                
+                else :
+                    return best_matched_words_syms[1]
 
-            #     peration_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
-            #     bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
-            # # if common words not exist
+            
+
+
+                    
+            elif best_matched_words_syms!=None and best_matched_words_char2vec==None:
+                    return best_matched_words_syms[1]
+                    
+
+            elif best_matched_words_syms==None and best_matched_words_char2vec!=None:
+                    return best_matched_words_char2vec[1]
+
             else:
-                # print("this must print")
-                
-                best_matched_words_syms = get_best_match_words_not_common(matched_words_syms)
-                best_matched_words_char2vec = get_best_match_words_not_common(matched_words_char2vec)
-                # print("this must print")
-                print("best_matched_words_syms",best_matched_words_syms)
-                print("best_matched_words_char2vec",best_matched_words_char2vec)
-                
-                if  best_matched_words_syms and best_matched_words_char2vec:
-                    if best_matched_words_syms[0] > best_matched_words_char2vec[0]:
-                        return best_matched_words_char2vec[1]
-
-                    # replaced character if it is in char_list
-                    elif best_matched_words_syms[0] == best_matched_words_char2vec[0] :
-         
-                        
-                        operation_sequence_syms = get_operations_on_characters([(incorrect_word,best_matched_words_syms[1])])
-                        bool_value_symspell = function_to_check_characters_in_char_list(operation_sequence_syms)
-                    
-                        operation_sequence_char2vec = get_operations_on_characters([(incorrect_word,best_matched_words_char2vec[1])])
-                        bool_value_char2vec= function_to_check_characters_in_char_list(operation_sequence_char2vec)
-
-                        if bool_value_symspell == True and bool_value_char2vec==True:
-                            return best_matched_words_char2vec[1]
-                        elif bool_value_symspell == False and bool_value_char2vec==True:
-                            return best_matched_words_char2vec[1]
-                        elif bool_value_symspell == True and bool_value_char2vec==False:
-                            return best_matched_words_syms[1]
-                        else:
-                            return best_matched_words_char2vec[1]
-                    
-                    else :
-                        return best_matched_words_syms[1]
-
-                
-
-
-                       
-                elif best_matched_words_syms!=None and best_matched_words_char2vec==None:
-                        return best_matched_words_syms[1]
-                       
-
-                elif best_matched_words_syms==None and best_matched_words_char2vec!=None:
-                        return best_matched_words_char2vec[1]
-
-                else:
-              
-                    return incorrect_word
-        except:
-            pass
+                return incorrect_word
+        end=timeit.default_timer()
+        print("get_final_similar_word",end-start) 
+               
+    except Exception as e:
+        
+        print("some exception has occured",e)
 
 
 
@@ -308,14 +342,22 @@ def get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedd
 
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
     
-    white_list_words=['information', 'invoice', 'place','gjhy', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
-    incorrect_word="plece"
+    white_list_words=[ 'invoice', 'place','gjhy', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
+    incorrect_word="1mvoice"
 
     incorrect_word_embedding=get_word_embeddings([incorrect_word])
     white_list_word_embeddings=get_word_embeddings(white_list_words)
 
     # print("this is word_embe")
+    start=timeit.default_timer()
     word=get_final_similar_word(white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings)
-    print(word)  
+    end=timeit.default_timer()
+    print(word,end-start)  
+    # s=mean_var_sigma([2,3,4,4])
+    # print(s)
+    # import sys
+    # print(sys.path)
+
+
