@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/welcome/anaconda3/envs/spellcorrector/bin/python"
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+    "python.formatting.provider": "yapf"
 }
