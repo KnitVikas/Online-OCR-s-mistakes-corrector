@@ -27,8 +27,10 @@ char_replace_list = [
     ["w", "vv"],
     ["io", "10"],
 ]
-incorrect_word= "1nvoice"
 
+
+
+incorrect_word = "1mvoice"
 
 cdef int sort_key_Levenshtein(tuple tup ):
     return tup[0]
@@ -123,9 +125,9 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
        #declare a tuple datatype with name tup_ (int, bool)
 
      
-    print("this need to be print",operations_sorted_index)
+    #print("this need to be print",operations_sorted_index)
     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]
-    print(split_at_index)
+    #print(split_at_index)
     list_character_to_check = []
     last_idx = 0
     for index in split_at_index:
@@ -134,7 +136,7 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
         last_idx += len(new_list)
     list_character_to_check.append([tuple_ for tuple_ in operations_sorted_index[last_idx:]])
 
-    print("this need to be list_character_to_check",list_character_to_check)
+    #print("this need to be list_character_to_check",list_character_to_check)
     # print("list_character_to_check",list_character_to_check)
     # s=[[(0, 'Delete', '1'), (1, 'Add', 'i')], [(10, 'Delete', '0'), (11, 'Add', 'o')], [(13, 'Delete', 'r'), (14, 'Add', 's')]]
     # list_character_length_and_boolean_values shape (length of operation on consecutive character, bool==if character found in char list )
@@ -219,6 +221,7 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):
             list sorted_word_probability
             str string
             list sorted_best_matches_list
+            tuple word=(int,str)
             
             # declare word as tuple data type (int, str)
 
@@ -235,17 +238,20 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):
                 list_correct_small_words)
 
     #         end = timeit.default_timer()
-            print("levenshtein_distance_best_common_words")
+            #print("levenshtein_distance_best_common_words")
 
             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
             for  word in best_match_small_word_edited_distance:
                 if word[0] <= 2:
 
                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
+                    start = timeit.default_timer()
                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
-
-                    print("get_probability_of_corret_character_replacement used in loop ",probability)
+                    end = timeit.default_timer()
+                    print("get_probability_of_correct_character_replacement time %s" %(end-start))
+                    #print("get_probability_of_corret_character_replacement used in loop ",probability)
                     word_probability.append((word[0], probability, word[1]))
+                    
                 else:
                     print("edit distance is much bigger for small word")
         else:
@@ -259,7 +265,10 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):
                     operations_on_characters = get_operations_on_characters(
                         [(incorrect_word, word[1])]
                     )
+                    start = timeit.default_timer()
                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
+                    end = timeit.default_timer()
+                    print("get_probability_of_correct_character_replacement time %s"%(end-start))
                     word_probability.append((word[0], probability, word[1]))
                 else:
                     print("edit distance is much bigger for long word")
@@ -296,7 +305,7 @@ def get_final_similar_word(
     nlp = nlp(matched_words_syms_text)
     # lemmatized the matched words
     matched_words_syms = [word_.lemma_ for word_ in nlp]
-    print("lemmatize matched words syms",matched_words_syms)
+    #print("lemmatize matched words syms",matched_words_syms)
 
     matched_words_char2vec = cosine_similar_words(
         incorrect_word_embedding, white_list_word_embeddings, white_list_words
@@ -306,7 +315,7 @@ def get_final_similar_word(
     nlp = nlp(matched_words_char2vec_text)
     matched_words_char2vec = [word_.lemma_ for word_ in nlp]
 
-    print("lemmatize matched words char2vec",matched_words_char2vec)
+    #print("lemmatize matched words char2vec",matched_words_char2vec)
 
     # finding the common words
     common_words = [word for word in matched_words_char2vec if word in matched_words_syms]
@@ -318,21 +327,27 @@ def get_final_similar_word(
             start = timeit.default_timer()
             matched_word = get_word_with_probability_and_edit_distance(common_words)
             end = timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance", end - start)
+            print("get_word_with_probability_and_edit_distance %s"%(end - start))
             # print("this is the common word matched " ,matched_word)
             return matched_word[2]
 
         else:
-
+            start=timeit.default_timer()
             best_matched_words_syms = get_word_with_probability_and_edit_distance(
                 matched_words_syms
             )
+            end= timeit.default_timer()
+            print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
+            
+            start= timeit.default_timer()
             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
                 matched_words_char2vec
             )
+            end=timeit.default_timer()
+            print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
             # best_matched_words_syms shape (edit distance, probability, word )
-            print("best matched symspell word with probability and edit distance",best_matched_words_syms)
-            print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
+            #print("best matched symspell word with probability and edit distance",best_matched_words_syms)
+            #print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
 
             if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:
                 best_matched_words_from_symspell_Char2vec = [
@@ -356,7 +371,10 @@ def get_final_similar_word(
                 print("none of the matched word found")
     except Exception as e:
         print("some exception has occured",e)
-        pass
+        
+
+#if __name__ == "__main__":
+
 
 white_list_words = [
     "place",
@@ -414,13 +432,17 @@ white_list_words = [
 ]
 
 
+
 incorrect_word_embedding = get_word_embeddings([incorrect_word])
 white_list_word_embeddings = get_word_embeddings(white_list_words)
-
-# end=timeit.default_timer()
-# print("time lap ",end-start)
-
-import cProfile
-cProfile.run("get_final_similar_word(white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
+start=timeit.default_timer()
+word = get_final_similar_word(
+white_list_words,
+incorrect_word,
+incorrect_word_embedding,
+white_list_word_embeddings,
+)
+end=timeit.default_timer()
+print("time lap ",end-start)
 print("get_final_similar_word",word)
 

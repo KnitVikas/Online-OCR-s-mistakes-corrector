@@ -9,12 +9,12 @@
                 "1"
             ]
         ],
-        "name": "experiments",
+        "name": "main",
         "sources": [
-            "experiments.pyx"
+            "main.pyx"
         ]
     },
-    "module_name": "experiments"
+    "module_name": "main"
 }
 END: Cython Metadata */
 
@@ -610,8 +610,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__experiments
-#define __PYX_HAVE_API__experiments
+#define __PYX_HAVE__main
+#define __PYX_HAVE_API__main
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -821,7 +821,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "experiments.pyx",
+  "main.pyx",
   "stringsource",
 };
 
@@ -1577,23 +1577,23 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'experiments' */
+/* Module declarations from 'main' */
 static PyTypeObject *__pyx_ptype___pyx_scope_struct____Pyx_CFunc_int____tuple___to_py = 0;
 static PyTypeObject *__pyx_ptype___pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py = 0;
-static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *); /*proto*/
-static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(PyObject *); /*proto*/
-static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *); /*proto*/
-static PyObject *__pyx_f_11experiments_sort_key(PyObject *); /*proto*/
-static int __pyx_f_11experiments_is_in_same_list(PyObject *, PyObject *); /*proto*/
-static float __pyx_f_11experiments_get_probability_of_correct_character_replacement(PyObject *); /*proto*/
-static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distance(PyObject *, int __pyx_skip_dispatch); /*proto*/
+static int __pyx_f_4main_sort_key_Levenshtein(PyObject *); /*proto*/
+static PyObject *__pyx_f_4main_levenshtein_distance_best_common_words(PyObject *); /*proto*/
+static PyObject *__pyx_f_4main_get_operations_on_characters(PyObject *); /*proto*/
+static PyObject *__pyx_f_4main_sort_key(PyObject *); /*proto*/
+static int __pyx_f_4main_is_in_same_list(PyObject *, PyObject *); /*proto*/
+static float __pyx_f_4main_get_probability_of_correct_character_replacement(PyObject *); /*proto*/
+static PyObject *__pyx_f_4main_get_word_with_probability_and_edit_distance(PyObject *, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__Pyx_CFunc_int____tuple___to_py(int (*)(PyObject *)); /*proto*/
 static PyObject *__Pyx_CFunc_tuple____tuple___to_py(PyObject *(*)(PyObject *)); /*proto*/
-#define __Pyx_MODULE_NAME "experiments"
-extern int __pyx_module_is_main_experiments;
-int __pyx_module_is_main_experiments = 0;
+#define __Pyx_MODULE_NAME "main"
+extern int __pyx_module_is_main_main;
+int __pyx_module_is_main_main = 0;
 
-/* Implementation of 'experiments' */
+/* Implementation of 'main' */
 static PyObject *__pyx_builtin_sorted;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_zip;
@@ -1655,7 +1655,7 @@ static const char __pyx_k_hash[] = "hash";
 static const char __pyx_k_item[] = "item";
 static const char __pyx_k_join[] = "join";
 static const char __pyx_k_load[] = "load";
-static const char __pyx_k_main[] = "__main__";
+static const char __pyx_k_main[] = "main";
 static const char __pyx_k_mark[] = "mark";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_part[] = "part";
@@ -1690,6 +1690,7 @@ static const char __pyx_k_amount[] = "amount";
 static const char __pyx_k_charge[] = "charge";
 static const char __pyx_k_hazmat[] = "hazmat";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_main_2[] = "__main__";
 static const char __pyx_k_nature[] = "nature";
 static const char __pyx_k_pallet[] = "pallet";
 static const char __pyx_k_pieces[] = "pieces";
@@ -1713,6 +1714,7 @@ static const char __pyx_k_product[] = "product";
 static const char __pyx_k_SymSpell[] = "SymSpell";
 static const char __pyx_k_distance[] = "distance";
 static const char __pyx_k_division[] = "division";
+static const char __pyx_k_main_pyx[] = "main.pyx";
 static const char __pyx_k_packages[] = "packages";
 static const char __pyx_k_quantity[] = "quantity";
 static const char __pyx_k_shipping[] = "shipping";
@@ -1731,7 +1733,6 @@ static const char __pyx_k_symspellpy[] = "symspellpy";
 static const char __pyx_k_Levenshtein[] = "Levenshtein";
 static const char __pyx_k_cfunc_to_py[] = "cfunc.to_py";
 static const char __pyx_k_description[] = "description";
-static const char __pyx_k_experiments[] = "experiments";
 static const char __pyx_k_information[] = "information";
 static const char __pyx_k_measurement[] = "measurement";
 static const char __pyx_k_common_words[] = "common_words";
@@ -1741,7 +1742,6 @@ static const char __pyx_k_default_timer[] = "default_timer";
 static const char __pyx_k_pkg_resources[] = "pkg_resources";
 static const char __pyx_k_en_core_web_sm[] = "en_core_web_sm";
 static const char __pyx_k_incorrect_word[] = "incorrect_word";
-static const char __pyx_k_experiments_pyx[] = "experiments.pyx";
 static const char __pyx_k_white_list_words[] = "white_list_words";
 static const char __pyx_k_char_replace_list[] = "char_replace_list";
 static const char __pyx_k_correct_word_list[] = "correct_word_list";
@@ -1752,7 +1752,6 @@ static const char __pyx_k_No_long_words_founds[] = "No long words founds";
 static const char __pyx_k_cosine_similar_words[] = "cosine_similar_words";
 static const char __pyx_k_No_small_words_founds[] = "No small words founds";
 static const char __pyx_k_symspell_matched_word[] = "symspell_matched_word";
-static const char __pyx_k_this_need_to_be_print[] = "this need to be print";
 static const char __pyx_k_get_final_similar_word[] = "get_final_similar_word";
 static const char __pyx_k_matched_words_char2vec[] = "matched_words_char2vec";
 static const char __pyx_k_best_matched_words_syms[] = "best_matched_words_syms";
@@ -1763,24 +1762,18 @@ static const char __pyx_k_some_exception_has_occured[] = "some exception has occ
 static const char __pyx_k_white_list_word_embeddings[] = "white_list_word_embeddings";
 static const char __pyx_k_best_matched_words_char2vec[] = "best_matched_words_char2vec";
 static const char __pyx_k_matched_words_char2vec_text[] = "matched_words_char2vec_text";
-static const char __pyx_k_lemmatize_matched_words_syms[] = "lemmatize matched words syms";
 static const char __pyx_k_Pyx_CFunc_tuple____tuple___to[] = "__Pyx_CFunc_tuple____tuple___to_py.<locals>.wrap";
 static const char __pyx_k_Pyx_CFunc_int____tuple___to_py[] = "__Pyx_CFunc_int____tuple___to_py.<locals>.wrap";
 static const char __pyx_k_none_of_the_matched_word_found[] = "none of the matched word found";
-static const char __pyx_k_best_matched_char2vec_word_with[] = "best matched char2vec word with probability and edit distance";
-static const char __pyx_k_best_matched_symspell_word_with[] = "best matched symspell word with probability and edit distance";
 static const char __pyx_k_any_of_first_and_second_characte[] = "any of first and second character to be matched in character replace list is empty";
 static const char __pyx_k_best_matched_words_from_symspell[] = "best_matched_words_from_symspell_Char2vec";
 static const char __pyx_k_edit_distance_is_much_bigger_for[] = "edit distance is much bigger for small word";
 static const char __pyx_k_either_first_character_or_second[] = "either first_character or second_chacter are not satisfying the condition when operations are equal";
 static const char __pyx_k_get_probability_of_correct_chara[] = "get_probability_of_correct_character_replacement.<locals>.<lambda>";
 static const char __pyx_k_get_word_with_probability_and_ed[] = "get_word_with_probability_and_edit_distance %s";
-static const char __pyx_k_lemmatize_matched_words_char2vec[] = "lemmatize matched words char2vec";
-static const char __pyx_k_levenshtein_distance_best_common[] = "levenshtein_distance_best_common_words";
-static const char __pyx_k_this_need_to_be_list_character_t[] = "this need to be list_character_to_check";
 static const char __pyx_k_edit_distance_is_much_bigger_for_2[] = "edit distance is much bigger for long word";
 static const char __pyx_k_either_first_character_or_second_2[] = "either first_character or second_chacter are not satisfying the condition when operations are  not equal";
-static const char __pyx_k_get_probability_of_correct_chara_2[] = "get_probability_of_correct_character_replacement time ";
+static const char __pyx_k_get_probability_of_correct_chara_2[] = "get_probability_of_correct_character_replacement time %s";
 static const char __pyx_k_get_word_with_probability_and_ed_2[] = "get_word_with_probability_and_edit_distance time taken %s";
 static const char __pyx_k_get_word_with_probability_and_ed_3[] = "get_word_with_probability_and_edit_distance";
 static PyObject *__pyx_kp_s_;
@@ -1826,8 +1819,6 @@ static PyObject *__pyx_n_s_amount;
 static PyObject *__pyx_kp_s_any_of_first_and_second_characte;
 static PyObject *__pyx_n_s_b;
 static PyObject *__pyx_n_s_batch;
-static PyObject *__pyx_kp_s_best_matched_char2vec_word_with;
-static PyObject *__pyx_kp_s_best_matched_symspell_word_with;
 static PyObject *__pyx_n_s_best_matched_words_char2vec;
 static PyObject *__pyx_n_s_best_matched_words_from_symspell;
 static PyObject *__pyx_n_s_best_matched_words_syms;
@@ -1860,8 +1851,6 @@ static PyObject *__pyx_n_s_element;
 static PyObject *__pyx_n_s_en_core_web_sm;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_enumerate;
-static PyObject *__pyx_n_s_experiments;
-static PyObject *__pyx_kp_s_experiments_pyx;
 static PyObject *__pyx_n_s_expiration;
 static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_g;
@@ -1890,12 +1879,11 @@ static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_key;
 static PyObject *__pyx_n_s_l;
 static PyObject *__pyx_n_s_lemma;
-static PyObject *__pyx_kp_s_lemmatize_matched_words_char2vec;
-static PyObject *__pyx_kp_s_lemmatize_matched_words_syms;
-static PyObject *__pyx_n_s_levenshtein_distance_best_common;
 static PyObject *__pyx_n_s_load;
 static PyObject *__pyx_n_s_m;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_main_2;
+static PyObject *__pyx_kp_s_main_pyx;
 static PyObject *__pyx_n_s_mark;
 static PyObject *__pyx_n_s_marks;
 static PyObject *__pyx_n_s_matched_word;
@@ -1947,8 +1935,6 @@ static PyObject *__pyx_n_s_symspellpy;
 static PyObject *__pyx_n_s_t;
 static PyObject *__pyx_n_s_tariff;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_kp_s_this_need_to_be_list_character_t;
-static PyObject *__pyx_kp_s_this_need_to_be_print;
 static PyObject *__pyx_kp_s_time_lap;
 static PyObject *__pyx_n_s_timeit;
 static PyObject *__pyx_n_s_tons;
@@ -1970,8 +1956,8 @@ static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_z;
 static PyObject *__pyx_n_s_zip;
 static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_tuple_); /* proto */
-static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /* proto */
-static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_white_list_words, PyObject *__pyx_v_incorrect_word, PyObject *__pyx_v_incorrect_word_embedding, PyObject *__pyx_v_white_list_word_embeddings); /* proto */
+static PyObject *__pyx_pf_4main_get_word_with_probability_and_edit_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /* proto */
+static PyObject *__pyx_pf_4main_2get_final_similar_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_white_list_words, PyObject *__pyx_v_incorrect_word, PyObject *__pyx_v_incorrect_word_embedding, PyObject *__pyx_v_white_list_word_embeddings); /* proto */
 static PyObject *__pyx_pf_11cfunc_dot_to_py_32__Pyx_CFunc_int____tuple___to_py_wrap(PyObject *__pyx_self, PyObject *__pyx_v_tup); /* proto */
 static PyObject *__pyx_pf_11cfunc_dot_to_py_34__Pyx_CFunc_tuple____tuple___to_py_wrap(PyObject *__pyx_self, PyObject *__pyx_v_element); /* proto */
 static PyObject *__pyx_tp_new___pyx_scope_struct____Pyx_CFunc_int____tuple___to_py(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -1991,7 +1977,7 @@ static PyObject *__pyx_codeobj__9;
 static PyObject *__pyx_codeobj__11;
 /* Late includes */
 
-/* "experiments.pyx":35
+/* "main.pyx":35
  * incorrect_word = "1mvoice"
  * 
  * cdef int sort_key_Levenshtein(tuple tup ):             # <<<<<<<<<<<<<<
@@ -1999,7 +1985,7 @@ static PyObject *__pyx_codeobj__11;
  * 
  */
 
-static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
+static int __pyx_f_4main_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
   int __pyx_r;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -2008,7 +1994,7 @@ static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
   __Pyx_RefNannySetupContext("sort_key_Levenshtein", 0);
   __Pyx_TraceCall("sort_key_Levenshtein", __pyx_f[0], 35, 0, __PYX_ERR(0, 35, __pyx_L1_error));
 
-  /* "experiments.pyx":36
+  /* "main.pyx":36
  * 
  * cdef int sort_key_Levenshtein(tuple tup ):
  *     return tup[0]             # <<<<<<<<<<<<<<
@@ -2027,7 +2013,7 @@ static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "experiments.pyx":35
+  /* "main.pyx":35
  * incorrect_word = "1mvoice"
  * 
  * cdef int sort_key_Levenshtein(tuple tup ):             # <<<<<<<<<<<<<<
@@ -2038,7 +2024,7 @@ static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_WriteUnraisable("experiments.sort_key_Levenshtein", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("main.sort_key_Levenshtein", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_TraceReturn(Py_None, 0);
@@ -2046,7 +2032,7 @@ static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
   return __pyx_r;
 }
 
-/* "experiments.pyx":38
+/* "main.pyx":38
  *     return tup[0]
  * 
  * cdef list levenshtein_distance_best_common_words(list list_words):             # <<<<<<<<<<<<<<
@@ -2054,7 +2040,7 @@ static int __pyx_f_11experiments_sort_key_Levenshtein(PyObject *__pyx_v_tup) {
  *         list edit_distance_and_word =[]
  */
 
-static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(PyObject *__pyx_v_list_words) {
+static PyObject *__pyx_f_4main_levenshtein_distance_best_common_words(PyObject *__pyx_v_list_words) {
   PyObject *__pyx_v_edit_distance_and_word = 0;
   PyObject *__pyx_v_sorted_list_incorrect__word_total_changes = 0;
   PyObject *__pyx_v_similar_word = 0;
@@ -2077,7 +2063,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __Pyx_RefNannySetupContext("levenshtein_distance_best_common_words", 0);
   __Pyx_TraceCall("levenshtein_distance_best_common_words", __pyx_f[0], 38, 0, __PYX_ERR(0, 38, __pyx_L1_error));
 
-  /* "experiments.pyx":40
+  /* "main.pyx":40
  * cdef list levenshtein_distance_best_common_words(list list_words):
  *     cdef:
  *         list edit_distance_and_word =[]             # <<<<<<<<<<<<<<
@@ -2090,7 +2076,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __pyx_v_edit_distance_and_word = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":48
+  /* "main.pyx":48
  *         list sorted_list_incorrect__word_total_change
  * 
  *     for similar_word in list_words:             # <<<<<<<<<<<<<<
@@ -2115,7 +2101,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
     __Pyx_XDECREF_SET(__pyx_v_similar_word, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "experiments.pyx":49
+    /* "main.pyx":49
  * 
  *     for similar_word in list_words:
  *         d = Levenshtein.distance(incorrect_word, similar_word)             # <<<<<<<<<<<<<<
@@ -2181,7 +2167,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_d = __pyx_t_7;
 
-    /* "experiments.pyx":50
+    /* "main.pyx":50
  *     for similar_word in list_words:
  *         d = Levenshtein.distance(incorrect_word, similar_word)
  *         edit_distance_and_word.append((d, similar_word))             # <<<<<<<<<<<<<<
@@ -2202,7 +2188,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
     __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_edit_distance_and_word, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "experiments.pyx":48
+    /* "main.pyx":48
  *         list sorted_list_incorrect__word_total_change
  * 
  *     for similar_word in list_words:             # <<<<<<<<<<<<<<
@@ -2213,7 +2199,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":53
+  /* "main.pyx":53
  * 
  *     # print("this is edited distance",edit_distance_and_word)
  *     sorted_list_incorrect__word_total_changes = sorted( edit_distance_and_word, key=sort_key_Levenshtein)             # <<<<<<<<<<<<<<
@@ -2228,7 +2214,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_edit_distance_and_word);
   __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_CFunc_int____tuple___to_py(__pyx_f_11experiments_sort_key_Levenshtein); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CFunc_int____tuple___to_py(__pyx_f_4main_sort_key_Levenshtein); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2240,7 +2226,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __pyx_v_sorted_list_incorrect__word_total_changes = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":54
+  /* "main.pyx":54
  *     # print("this is edited distance",edit_distance_and_word)
  *     sorted_list_incorrect__word_total_changes = sorted( edit_distance_and_word, key=sort_key_Levenshtein)
  *     sorted_list_incorrect__word_total_change = [ word for word in sorted_list_incorrect__word_total_changes if word[0] == sorted_list_incorrect__word_total_changes[0][0]]             # <<<<<<<<<<<<<<
@@ -2289,7 +2275,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __pyx_v_sorted_list_incorrect__word_total_change = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":55
+  /* "main.pyx":55
  *     sorted_list_incorrect__word_total_changes = sorted( edit_distance_and_word, key=sort_key_Levenshtein)
  *     sorted_list_incorrect__word_total_change = [ word for word in sorted_list_incorrect__word_total_changes if word[0] == sorted_list_incorrect__word_total_changes[0][0]]
  *     return sorted_list_incorrect__word_total_change             # <<<<<<<<<<<<<<
@@ -2302,7 +2288,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __pyx_r = __pyx_v_sorted_list_incorrect__word_total_change;
   goto __pyx_L0;
 
-  /* "experiments.pyx":38
+  /* "main.pyx":38
  *     return tup[0]
  * 
  * cdef list levenshtein_distance_best_common_words(list list_words):             # <<<<<<<<<<<<<<
@@ -2318,7 +2304,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("experiments.levenshtein_distance_best_common_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.levenshtein_distance_best_common_words", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_edit_distance_and_word);
@@ -2332,7 +2318,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
   return __pyx_r;
 }
 
-/* "experiments.pyx":58
+/* "main.pyx":58
  * 
  * 
  * cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word):             # <<<<<<<<<<<<<<
@@ -2340,7 +2326,7 @@ static PyObject *__pyx_f_11experiments_levenshtein_distance_best_common_words(Py
  *         list list_of_tuple_incorrect_correct_words
  */
 
-static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__pyx_v_list_of_tuple_incorrect_correct_word) {
+static PyObject *__pyx_f_4main_get_operations_on_characters(PyObject *__pyx_v_list_of_tuple_incorrect_correct_word) {
   PyObject *__pyx_v_list_of_tuple_incorrect_correct_words = 0;
   PyObject *__pyx_v_correct_word = 0;
   PyObject *__pyx_v_incorrect_word = 0;
@@ -2366,7 +2352,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   __Pyx_RefNannySetupContext("get_operations_on_characters", 0);
   __Pyx_TraceCall("get_operations_on_characters", __pyx_f[0], 58, 0, __PYX_ERR(0, 58, __pyx_L1_error));
 
-  /* "experiments.pyx":66
+  /* "main.pyx":66
  *         str operation
  * 
  *     list_of_tuple_incorrect_correct_words = list_of_tuple_incorrect_correct_word             # <<<<<<<<<<<<<<
@@ -2377,7 +2363,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   __Pyx_INCREF(__pyx_v_list_of_tuple_incorrect_correct_word);
   __pyx_v_list_of_tuple_incorrect_correct_words = __pyx_v_list_of_tuple_incorrect_correct_word;
 
-  /* "experiments.pyx":68
+  /* "main.pyx":68
  *     list_of_tuple_incorrect_correct_words = list_of_tuple_incorrect_correct_word
  * 
  *     for correct_word, incorrect_word in list_of_tuple_incorrect_correct_words:             # <<<<<<<<<<<<<<
@@ -2451,7 +2437,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
     __Pyx_XDECREF_SET(__pyx_v_incorrect_word, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "experiments.pyx":70
+    /* "main.pyx":70
  *     for correct_word, incorrect_word in list_of_tuple_incorrect_correct_words:
  *         # print('{} => {}'.format(correct_word,incorrect_word))
  *         list_of_operations = []             # <<<<<<<<<<<<<<
@@ -2464,7 +2450,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
     __Pyx_XDECREF_SET(__pyx_v_list_of_operations, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "experiments.pyx":71
+    /* "main.pyx":71
  *         # print('{} => {}'.format(correct_word,incorrect_word))
  *         list_of_operations = []
  *         for idx, operation in enumerate(difflib.ndiff(correct_word, incorrect_word)):             # <<<<<<<<<<<<<<
@@ -2569,7 +2555,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
       __pyx_v_idx = __pyx_t_8;
       __pyx_t_8 = (__pyx_t_8 + 1);
 
-      /* "experiments.pyx":72
+      /* "main.pyx":72
  *         list_of_operations = []
  *         for idx, operation in enumerate(difflib.ndiff(correct_word, incorrect_word)):
  *             if operation[0] == " ":             # <<<<<<<<<<<<<<
@@ -2583,7 +2569,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_12) {
 
-        /* "experiments.pyx":74
+        /* "main.pyx":74
  *             if operation[0] == " ":
  *                 # nothing changes at this character location
  *                 continue             # <<<<<<<<<<<<<<
@@ -2593,7 +2579,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
         __Pyx_TraceLine(74,0,__PYX_ERR(0, 74, __pyx_L1_error))
         goto __pyx_L7_continue;
 
-        /* "experiments.pyx":72
+        /* "main.pyx":72
  *         list_of_operations = []
  *         for idx, operation in enumerate(difflib.ndiff(correct_word, incorrect_word)):
  *             if operation[0] == " ":             # <<<<<<<<<<<<<<
@@ -2602,7 +2588,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
  */
       }
 
-      /* "experiments.pyx":76
+      /* "main.pyx":76
  *                 continue
  * 
  *             elif operation[0] == "-":             # <<<<<<<<<<<<<<
@@ -2616,7 +2602,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_12) {
 
-        /* "experiments.pyx":78
+        /* "main.pyx":78
  *             elif operation[0] == "-":
  *                 # print(u'Delete "{}" from position {}'.format(operation[-1],idx))
  *                 list_of_operations.append((idx, "Delete", operation[-1]))             # <<<<<<<<<<<<<<
@@ -2642,7 +2628,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
         __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_list_of_operations, __pyx_t_5); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "experiments.pyx":76
+        /* "main.pyx":76
  *                 continue
  * 
  *             elif operation[0] == "-":             # <<<<<<<<<<<<<<
@@ -2652,7 +2638,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
         goto __pyx_L9;
       }
 
-      /* "experiments.pyx":80
+      /* "main.pyx":80
  *                 list_of_operations.append((idx, "Delete", operation[-1]))
  * 
  *             elif operation[0] == "+":             # <<<<<<<<<<<<<<
@@ -2666,7 +2652,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       if (__pyx_t_12) {
 
-        /* "experiments.pyx":82
+        /* "main.pyx":82
  *             elif operation[0] == "+":
  *                 # print(u'Add "{}" to position {}'.format(operation[-1],-1))
  *                 list_of_operations.append((idx, "Add", operation[-1]))             # <<<<<<<<<<<<<<
@@ -2692,7 +2678,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
         __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_list_of_operations, __pyx_t_3); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "experiments.pyx":80
+        /* "main.pyx":80
  *                 list_of_operations.append((idx, "Delete", operation[-1]))
  * 
  *             elif operation[0] == "+":             # <<<<<<<<<<<<<<
@@ -2702,7 +2688,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
       }
       __pyx_L9:;
 
-      /* "experiments.pyx":71
+      /* "main.pyx":71
  *         # print('{} => {}'.format(correct_word,incorrect_word))
  *         list_of_operations = []
  *         for idx, operation in enumerate(difflib.ndiff(correct_word, incorrect_word)):             # <<<<<<<<<<<<<<
@@ -2714,7 +2700,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "experiments.pyx":68
+    /* "main.pyx":68
  *     list_of_tuple_incorrect_correct_words = list_of_tuple_incorrect_correct_word
  * 
  *     for correct_word, incorrect_word in list_of_tuple_incorrect_correct_words:             # <<<<<<<<<<<<<<
@@ -2725,7 +2711,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":83
+  /* "main.pyx":83
  *                 # print(u'Add "{}" to position {}'.format(operation[-1],-1))
  *                 list_of_operations.append((idx, "Add", operation[-1]))
  *     return list_of_operations             # <<<<<<<<<<<<<<
@@ -2739,7 +2725,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   __pyx_r = __pyx_v_list_of_operations;
   goto __pyx_L0;
 
-  /* "experiments.pyx":58
+  /* "main.pyx":58
  * 
  * 
  * cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word):             # <<<<<<<<<<<<<<
@@ -2754,7 +2740,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("experiments.get_operations_on_characters", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_operations_on_characters", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_list_of_tuple_incorrect_correct_words);
@@ -2768,7 +2754,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
   return __pyx_r;
 }
 
-/* "experiments.pyx":87
+/* "main.pyx":87
  * 
  * 
  * cdef tuple sort_key(tuple element):             # <<<<<<<<<<<<<<
@@ -2776,7 +2762,7 @@ static PyObject *__pyx_f_11experiments_get_operations_on_characters(PyObject *__
  * 
  */
 
-static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
+static PyObject *__pyx_f_4main_sort_key(PyObject *__pyx_v_element) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -2786,7 +2772,7 @@ static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
   __Pyx_RefNannySetupContext("sort_key", 0);
   __Pyx_TraceCall("sort_key", __pyx_f[0], 87, 0, __PYX_ERR(0, 87, __pyx_L1_error));
 
-  /* "experiments.pyx":88
+  /* "main.pyx":88
  * 
  * cdef tuple sort_key(tuple element):
  *     return (element[0], element[1])             # <<<<<<<<<<<<<<
@@ -2819,7 +2805,7 @@ static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "experiments.pyx":87
+  /* "main.pyx":87
  * 
  * 
  * cdef tuple sort_key(tuple element):             # <<<<<<<<<<<<<<
@@ -2832,7 +2818,7 @@ static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("experiments.sort_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.sort_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2841,7 +2827,7 @@ static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
   return __pyx_r;
 }
 
-/* "experiments.pyx":91
+/* "main.pyx":91
  * 
  * 
  * cdef bint is_in_same_list(str character1, str character2):             # <<<<<<<<<<<<<<
@@ -2849,7 +2835,7 @@ static PyObject *__pyx_f_11experiments_sort_key(PyObject *__pyx_v_element) {
  *         list list_
  */
 
-static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, PyObject *__pyx_v_character2) {
+static int __pyx_f_4main_is_in_same_list(PyObject *__pyx_v_character1, PyObject *__pyx_v_character2) {
   PyObject *__pyx_v_list_ = 0;
   int __pyx_r;
   __Pyx_TraceDeclarations
@@ -2864,7 +2850,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
   __Pyx_RefNannySetupContext("is_in_same_list", 0);
   __Pyx_TraceCall("is_in_same_list", __pyx_f[0], 91, 0, __PYX_ERR(0, 91, __pyx_L1_error));
 
-  /* "experiments.pyx":95
+  /* "main.pyx":95
  *         list list_
  * 
  *     for list_ in char_replace_list:             # <<<<<<<<<<<<<<
@@ -2918,7 +2904,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
     __Pyx_XDECREF_SET(__pyx_v_list_, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "experiments.pyx":96
+    /* "main.pyx":96
  * 
  *     for list_ in char_replace_list:
  *         if character1 in list_ and character2 in list_:             # <<<<<<<<<<<<<<
@@ -2939,7 +2925,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_5) {
 
-      /* "experiments.pyx":97
+      /* "main.pyx":97
  *     for list_ in char_replace_list:
  *         if character1 in list_ and character2 in list_:
  *             return True             # <<<<<<<<<<<<<<
@@ -2951,7 +2937,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "experiments.pyx":96
+      /* "main.pyx":96
  * 
  *     for list_ in char_replace_list:
  *         if character1 in list_ and character2 in list_:             # <<<<<<<<<<<<<<
@@ -2960,7 +2946,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
  */
     }
 
-    /* "experiments.pyx":95
+    /* "main.pyx":95
  *         list list_
  * 
  *     for list_ in char_replace_list:             # <<<<<<<<<<<<<<
@@ -2971,7 +2957,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "experiments.pyx":98
+  /* "main.pyx":98
  *         if character1 in list_ and character2 in list_:
  *             return True
  *     return False             # <<<<<<<<<<<<<<
@@ -2982,7 +2968,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "experiments.pyx":91
+  /* "main.pyx":91
  * 
  * 
  * cdef bint is_in_same_list(str character1, str character2):             # <<<<<<<<<<<<<<
@@ -2994,7 +2980,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_WriteUnraisable("experiments.is_in_same_list", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("main.is_in_same_list", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_list_);
@@ -3003,7 +2989,7 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
   return __pyx_r;
 }
 
-/* "experiments.pyx":106
+/* "main.pyx":106
  *     # sort the operation on the basis of index of character
  *     cdef :
  *         list operations_sorted_index = sorted(operations_on_characters, key=lambda tuple_: tuple_[0])             # <<<<<<<<<<<<<<
@@ -3012,9 +2998,9 @@ static int __pyx_f_11experiments_is_in_same_list(PyObject *__pyx_v_character1, P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11experiments_48get_probability_of_correct_character_replacement_lambda(PyObject *__pyx_self, PyObject *__pyx_v_tuple_); /*proto*/
-static PyMethodDef __pyx_mdef_11experiments_48get_probability_of_correct_character_replacement_lambda = {"lambda", (PyCFunction)__pyx_pw_11experiments_48get_probability_of_correct_character_replacement_lambda, METH_O, 0};
-static PyObject *__pyx_pw_11experiments_48get_probability_of_correct_character_replacement_lambda(PyObject *__pyx_self, PyObject *__pyx_v_tuple_) {
+static PyObject *__pyx_pw_4main_48get_probability_of_correct_character_replacement_lambda(PyObject *__pyx_self, PyObject *__pyx_v_tuple_); /*proto*/
+static PyMethodDef __pyx_mdef_4main_48get_probability_of_correct_character_replacement_lambda = {"lambda", (PyCFunction)__pyx_pw_4main_48get_probability_of_correct_character_replacement_lambda, METH_O, 0};
+static PyObject *__pyx_pw_4main_48get_probability_of_correct_character_replacement_lambda(PyObject *__pyx_self, PyObject *__pyx_v_tuple_) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lambda (wrapper)", 0);
@@ -3042,7 +3028,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("experiments.get_probability_of_correct_character_replacement.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_probability_of_correct_character_replacement.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3051,7 +3037,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "experiments.pyx":103
+/* "main.pyx":103
  * 
  * @cython.cdivision(True)
  * cdef float get_probability_of_correct_character_replacement(list operations_on_characters):             # <<<<<<<<<<<<<<
@@ -3059,7 +3045,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
  *     cdef :
  */
 
-static float __pyx_f_11experiments_get_probability_of_correct_character_replacement(PyObject *__pyx_v_operations_on_characters) {
+static float __pyx_f_4main_get_probability_of_correct_character_replacement(PyObject *__pyx_v_operations_on_characters) {
   PyObject *__pyx_v_operations_sorted_index = 0;
   int __pyx_v_index1;
   int __pyx_v_index2;
@@ -3105,7 +3091,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __Pyx_RefNannySetupContext("get_probability_of_correct_character_replacement", 0);
   __Pyx_TraceCall("get_probability_of_correct_character_replacement", __pyx_f[0], 103, 0, __PYX_ERR(0, 103, __pyx_L1_error));
 
-  /* "experiments.pyx":106
+  /* "main.pyx":106
  *     # sort the operation on the basis of index of character
  *     cdef :
  *         list operations_sorted_index = sorted(operations_on_characters, key=lambda tuple_: tuple_[0])             # <<<<<<<<<<<<<<
@@ -3120,7 +3106,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_operations_on_characters);
   __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_11experiments_48get_probability_of_correct_character_replacement_lambda, 0, __pyx_n_s_get_probability_of_correct_chara, NULL, __pyx_n_s_experiments, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_4main_48get_probability_of_correct_character_replacement_lambda, 0, __pyx_n_s_get_probability_of_correct_chara, NULL, __pyx_n_s_main, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3132,30 +3118,11 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_v_operations_sorted_index = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":128
+  /* "main.pyx":129
  * 
- * 
- *     print("this need to be print",operations_sorted_index)             # <<<<<<<<<<<<<<
- *     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]
- *     print(split_at_index)
- */
-  __Pyx_TraceLine(128,0,__PYX_ERR(0, 128, __pyx_L1_error))
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_INCREF(__pyx_kp_s_this_need_to_be_print);
-  __Pyx_GIVEREF(__pyx_kp_s_this_need_to_be_print);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_this_need_to_be_print);
-  __Pyx_INCREF(__pyx_v_operations_sorted_index);
-  __Pyx_GIVEREF(__pyx_v_operations_sorted_index);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_operations_sorted_index);
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "experiments.pyx":129
- * 
- *     print("this need to be print",operations_sorted_index)
+ *     #print("this need to be print",operations_sorted_index)
  *     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]             # <<<<<<<<<<<<<<
- *     print(split_at_index)
+ *     #print(split_at_index)
  *     list_character_to_check = []
  */
   __Pyx_TraceLine(129,0,__PYX_ERR(0, 129, __pyx_L1_error))
@@ -3400,19 +3367,9 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_v_split_at_index = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":130
- *     print("this need to be print",operations_sorted_index)
+  /* "main.pyx":131
  *     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]
- *     print(split_at_index)             # <<<<<<<<<<<<<<
- *     list_character_to_check = []
- *     last_idx = 0
- */
-  __Pyx_TraceLine(130,0,__PYX_ERR(0, 130, __pyx_L1_error))
-  if (__Pyx_PrintOne(0, __pyx_v_split_at_index) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
-
-  /* "experiments.pyx":131
- *     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]
- *     print(split_at_index)
+ *     #print(split_at_index)
  *     list_character_to_check = []             # <<<<<<<<<<<<<<
  *     last_idx = 0
  *     for index in split_at_index:
@@ -3423,8 +3380,8 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_v_list_character_to_check = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":132
- *     print(split_at_index)
+  /* "main.pyx":132
+ *     #print(split_at_index)
  *     list_character_to_check = []
  *     last_idx = 0             # <<<<<<<<<<<<<<
  *     for index in split_at_index:
@@ -3433,7 +3390,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __Pyx_TraceLine(132,0,__PYX_ERR(0, 132, __pyx_L1_error))
   __pyx_v_last_idx = 0;
 
-  /* "experiments.pyx":133
+  /* "main.pyx":133
  *     list_character_to_check = []
  *     last_idx = 0
  *     for index in split_at_index:             # <<<<<<<<<<<<<<
@@ -3454,7 +3411,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_index = __pyx_t_13;
 
-    /* "experiments.pyx":134
+    /* "main.pyx":134
  *     last_idx = 0
  *     for index in split_at_index:
  *         new_list = [idx for idx in operations_sorted_index[last_idx:] if idx[0] < index]             # <<<<<<<<<<<<<<
@@ -3499,7 +3456,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __Pyx_XDECREF_SET(__pyx_v_new_list, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "experiments.pyx":135
+    /* "main.pyx":135
  *     for index in split_at_index:
  *         new_list = [idx for idx in operations_sorted_index[last_idx:] if idx[0] < index]
  *         list_character_to_check.append(new_list)             # <<<<<<<<<<<<<<
@@ -3509,7 +3466,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __Pyx_TraceLine(135,0,__PYX_ERR(0, 135, __pyx_L1_error))
     __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_list_character_to_check, __pyx_v_new_list); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
 
-    /* "experiments.pyx":136
+    /* "main.pyx":136
  *         new_list = [idx for idx in operations_sorted_index[last_idx:] if idx[0] < index]
  *         list_character_to_check.append(new_list)
  *         last_idx += len(new_list)             # <<<<<<<<<<<<<<
@@ -3520,7 +3477,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __pyx_t_15 = PyList_GET_SIZE(__pyx_v_new_list); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 136, __pyx_L1_error)
     __pyx_v_last_idx = (__pyx_v_last_idx + __pyx_t_15);
 
-    /* "experiments.pyx":133
+    /* "main.pyx":133
  *     list_character_to_check = []
  *     last_idx = 0
  *     for index in split_at_index:             # <<<<<<<<<<<<<<
@@ -3531,12 +3488,12 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "experiments.pyx":137
+  /* "main.pyx":137
  *         list_character_to_check.append(new_list)
  *         last_idx += len(new_list)
  *     list_character_to_check.append([tuple_ for tuple_ in operations_sorted_index[last_idx:]])             # <<<<<<<<<<<<<<
  * 
- *     print("this need to be list_character_to_check",list_character_to_check)
+ *     #print("this need to be list_character_to_check",list_character_to_check)
  */
   __Pyx_TraceLine(137,0,__PYX_ERR(0, 137, __pyx_L1_error))
   __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
@@ -3565,26 +3522,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_list_character_to_check, __pyx_t_3); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "experiments.pyx":139
- *     list_character_to_check.append([tuple_ for tuple_ in operations_sorted_index[last_idx:]])
- * 
- *     print("this need to be list_character_to_check",list_character_to_check)             # <<<<<<<<<<<<<<
- *     # print("list_character_to_check",list_character_to_check)
- *     # s=[[(0, 'Delete', '1'), (1, 'Add', 'i')], [(10, 'Delete', '0'), (11, 'Add', 'o')], [(13, 'Delete', 'r'), (14, 'Add', 's')]]
- */
-  __Pyx_TraceLine(139,0,__PYX_ERR(0, 139, __pyx_L1_error))
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_INCREF(__pyx_kp_s_this_need_to_be_list_character_t);
-  __Pyx_GIVEREF(__pyx_kp_s_this_need_to_be_list_character_t);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_this_need_to_be_list_character_t);
-  __Pyx_INCREF(__pyx_v_list_character_to_check);
-  __Pyx_GIVEREF(__pyx_v_list_character_to_check);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_list_character_to_check);
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "experiments.pyx":143
+  /* "main.pyx":143
  *     # s=[[(0, 'Delete', '1'), (1, 'Add', 'i')], [(10, 'Delete', '0'), (11, 'Add', 'o')], [(13, 'Delete', 'r'), (14, 'Add', 's')]]
  *     # list_character_length_and_boolean_values shape (length of operation on consecutive character, bool==if character found in char list )
  *     list_character_length_and_boolean_values = []             # <<<<<<<<<<<<<<
@@ -3597,7 +3535,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_v_list_character_length_and_boolean_values = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "experiments.pyx":144
+  /* "main.pyx":144
  *     # list_character_length_and_boolean_values shape (length of operation on consecutive character, bool==if character found in char list )
  *     list_character_length_and_boolean_values = []
  *     if len(list_character_to_check) == 1 and len(list_character_to_check[0]) == 1:             # <<<<<<<<<<<<<<
@@ -3621,7 +3559,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __pyx_L20_bool_binop_done:;
   if (__pyx_t_14) {
 
-    /* "experiments.pyx":145
+    /* "main.pyx":145
  *     list_character_length_and_boolean_values = []
  *     if len(list_character_to_check) == 1 and len(list_character_to_check[0]) == 1:
  *         return 0.0             # <<<<<<<<<<<<<<
@@ -3632,7 +3570,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __pyx_r = 0.0;
     goto __pyx_L0;
 
-    /* "experiments.pyx":144
+    /* "main.pyx":144
  *     # list_character_length_and_boolean_values shape (length of operation on consecutive character, bool==if character found in char list )
  *     list_character_length_and_boolean_values = []
  *     if len(list_character_to_check) == 1 and len(list_character_to_check[0]) == 1:             # <<<<<<<<<<<<<<
@@ -3641,7 +3579,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  */
   }
 
-  /* "experiments.pyx":148
+  /* "main.pyx":148
  *     else:
  * 
  *         for list_ in list_character_to_check:             # <<<<<<<<<<<<<<
@@ -3663,7 +3601,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
       __Pyx_XDECREF_SET(__pyx_v_list_, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "experiments.pyx":149
+      /* "main.pyx":149
  * 
  *         for list_ in list_character_to_check:
  *             if len(list_) == 1:             # <<<<<<<<<<<<<<
@@ -3679,7 +3617,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
       __pyx_t_14 = ((__pyx_t_15 == 1) != 0);
       if (__pyx_t_14) {
 
-        /* "experiments.pyx":150
+        /* "main.pyx":150
  *         for list_ in list_character_to_check:
  *             if len(list_) == 1:
  *                 list_character_length_and_boolean_values.append((1, False))             # <<<<<<<<<<<<<<
@@ -3689,7 +3627,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         __Pyx_TraceLine(150,0,__PYX_ERR(0, 150, __pyx_L1_error))
         __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_list_character_length_and_boolean_values, __pyx_tuple__4); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 150, __pyx_L1_error)
 
-        /* "experiments.pyx":149
+        /* "main.pyx":149
  * 
  *         for list_ in list_character_to_check:
  *             if len(list_) == 1:             # <<<<<<<<<<<<<<
@@ -3699,7 +3637,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         goto __pyx_L24;
       }
 
-      /* "experiments.pyx":154
+      /* "main.pyx":154
  *             else:
  *                # convert string to cython data types
  *                 first_character = ""             # <<<<<<<<<<<<<<
@@ -3711,7 +3649,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         __Pyx_INCREF(__pyx_kp_s__5);
         __Pyx_XDECREF_SET(__pyx_v_first_character, __pyx_kp_s__5);
 
-        /* "experiments.pyx":155
+        /* "main.pyx":155
  *                # convert string to cython data types
  *                 first_character = ""
  *                 second_character = ""             # <<<<<<<<<<<<<<
@@ -3722,7 +3660,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         __Pyx_INCREF(__pyx_kp_s__5);
         __Pyx_XDECREF_SET(__pyx_v_second_character, __pyx_kp_s__5);
 
-        /* "experiments.pyx":158
+        /* "main.pyx":158
  *                 for ((index1, operation1, character1),
  *                     (index2, operation2, character2),
  *                 ) in zip(list_, list_[1:]):             # <<<<<<<<<<<<<<
@@ -3834,7 +3772,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_L28_unpacking_done:;
           }
 
-          /* "experiments.pyx":156
+          /* "main.pyx":156
  *                 first_character = ""
  *                 second_character = ""
  *                 for ((index1, operation1, character1),             # <<<<<<<<<<<<<<
@@ -3958,7 +3896,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_L32_unpacking_done:;
           }
 
-          /* "experiments.pyx":157
+          /* "main.pyx":157
  *                 second_character = ""
  *                 for ((index1, operation1, character1),
  *                     (index2, operation2, character2),             # <<<<<<<<<<<<<<
@@ -3976,7 +3914,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           __Pyx_XDECREF_SET(__pyx_v_character2, ((PyObject*)__pyx_t_2));
           __pyx_t_2 = 0;
 
-          /* "experiments.pyx":159
+          /* "main.pyx":159
  *                     (index2, operation2, character2),
  *                 ) in zip(list_, list_[1:]):
  *                     if operation1 == operation2:             # <<<<<<<<<<<<<<
@@ -3988,7 +3926,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           __pyx_t_17 = (__pyx_t_14 != 0);
           if (__pyx_t_17) {
 
-            /* "experiments.pyx":160
+            /* "main.pyx":160
  *                 ) in zip(list_, list_[1:]):
  *                     if operation1 == operation2:
  *                         if not (first_character):             # <<<<<<<<<<<<<<
@@ -4000,7 +3938,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_t_14 = ((!__pyx_t_17) != 0);
             if (__pyx_t_14) {
 
-              /* "experiments.pyx":161
+              /* "main.pyx":161
  *                     if operation1 == operation2:
  *                         if not (first_character):
  *                             first_character = character1 + character2             # <<<<<<<<<<<<<<
@@ -4013,7 +3951,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               __Pyx_DECREF_SET(__pyx_v_first_character, ((PyObject*)__pyx_t_7));
               __pyx_t_7 = 0;
 
-              /* "experiments.pyx":160
+              /* "main.pyx":160
  *                 ) in zip(list_, list_[1:]):
  *                     if operation1 == operation2:
  *                         if not (first_character):             # <<<<<<<<<<<<<<
@@ -4022,7 +3960,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  */
             }
 
-            /* "experiments.pyx":163
+            /* "main.pyx":163
  *                             first_character = character1 + character2
  * 
  *                         if (first_character) and (second_character):             # <<<<<<<<<<<<<<
@@ -4041,7 +3979,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_L36_bool_binop_done:;
             if (__pyx_t_14) {
 
-              /* "experiments.pyx":164
+              /* "main.pyx":164
  * 
  *                         if (first_character) and (second_character):
  *                             second_character = second_character + character2             # <<<<<<<<<<<<<<
@@ -4054,7 +3992,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               __Pyx_DECREF_SET(__pyx_v_second_character, ((PyObject*)__pyx_t_7));
               __pyx_t_7 = 0;
 
-              /* "experiments.pyx":163
+              /* "main.pyx":163
  *                             first_character = character1 + character2
  * 
  *                         if (first_character) and (second_character):             # <<<<<<<<<<<<<<
@@ -4064,7 +4002,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               goto __pyx_L35;
             }
 
-            /* "experiments.pyx":167
+            /* "main.pyx":167
  * 
  *                         else:
  *                             print(             # <<<<<<<<<<<<<<
@@ -4077,7 +4015,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             }
             __pyx_L35:;
 
-            /* "experiments.pyx":159
+            /* "main.pyx":159
  *                     (index2, operation2, character2),
  *                 ) in zip(list_, list_[1:]):
  *                     if operation1 == operation2:             # <<<<<<<<<<<<<<
@@ -4087,7 +4025,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             goto __pyx_L33;
           }
 
-          /* "experiments.pyx":171
+          /* "main.pyx":171
  *                             )
  *                     else:
  *                         if not (first_character):             # <<<<<<<<<<<<<<
@@ -4100,7 +4038,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_t_17 = ((!__pyx_t_14) != 0);
             if (__pyx_t_17) {
 
-              /* "experiments.pyx":172
+              /* "main.pyx":172
  *                     else:
  *                         if not (first_character):
  *                             first_character = character1             # <<<<<<<<<<<<<<
@@ -4111,7 +4049,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               __Pyx_INCREF(__pyx_v_character1);
               __Pyx_DECREF_SET(__pyx_v_first_character, __pyx_v_character1);
 
-              /* "experiments.pyx":171
+              /* "main.pyx":171
  *                             )
  *                     else:
  *                         if not (first_character):             # <<<<<<<<<<<<<<
@@ -4120,7 +4058,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  */
             }
 
-            /* "experiments.pyx":174
+            /* "main.pyx":174
  *                             first_character = character1
  * 
  *                         if first_character and not second_character:             # <<<<<<<<<<<<<<
@@ -4140,7 +4078,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_L40_bool_binop_done:;
             if (__pyx_t_17) {
 
-              /* "experiments.pyx":175
+              /* "main.pyx":175
  * 
  *                         if first_character and not second_character:
  *                             second_character = character2             # <<<<<<<<<<<<<<
@@ -4151,7 +4089,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               __Pyx_INCREF(__pyx_v_character2);
               __Pyx_DECREF_SET(__pyx_v_second_character, __pyx_v_character2);
 
-              /* "experiments.pyx":174
+              /* "main.pyx":174
  *                             first_character = character1
  * 
  *                         if first_character and not second_character:             # <<<<<<<<<<<<<<
@@ -4161,7 +4099,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
               goto __pyx_L39;
             }
 
-            /* "experiments.pyx":178
+            /* "main.pyx":178
  * 
  *                         else:
  *                             print(             # <<<<<<<<<<<<<<
@@ -4176,7 +4114,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           }
           __pyx_L33:;
 
-          /* "experiments.pyx":156
+          /* "main.pyx":156
  *                 first_character = ""
  *                 second_character = ""
  *                 for ((index1, operation1, character1),             # <<<<<<<<<<<<<<
@@ -4187,7 +4125,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "experiments.pyx":183
+        /* "main.pyx":183
  *                 # print("first_character","second_character",first_character,second_character)
  * #                 cdef int length_first_character = len(first_character)
  *                 if first_character and second_character:             # <<<<<<<<<<<<<<
@@ -4206,7 +4144,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
         __pyx_L43_bool_binop_done:;
         if (__pyx_t_17) {
 
-          /* "experiments.pyx":185
+          /* "main.pyx":185
  *                 if first_character and second_character:
  * 
  *                     if is_in_same_list(first_character, second_character):             # <<<<<<<<<<<<<<
@@ -4214,10 +4152,10 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  *                         list_character_length_and_boolean_values.append(
  */
           __Pyx_TraceLine(185,0,__PYX_ERR(0, 185, __pyx_L1_error))
-          __pyx_t_17 = (__pyx_f_11experiments_is_in_same_list(__pyx_v_first_character, __pyx_v_second_character) != 0);
+          __pyx_t_17 = (__pyx_f_4main_is_in_same_list(__pyx_v_first_character, __pyx_v_second_character) != 0);
           if (__pyx_t_17) {
 
-            /* "experiments.pyx":188
+            /* "main.pyx":188
  *                         # print("replace character matched in replace_char_list")
  *                         list_character_length_and_boolean_values.append(
  *                             (len(first_character), True)             # <<<<<<<<<<<<<<
@@ -4237,7 +4175,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             PyTuple_SET_ITEM(__pyx_t_7, 1, Py_True);
             __pyx_t_1 = 0;
 
-            /* "experiments.pyx":187
+            /* "main.pyx":187
  *                     if is_in_same_list(first_character, second_character):
  *                         # print("replace character matched in replace_char_list")
  *                         list_character_length_and_boolean_values.append(             # <<<<<<<<<<<<<<
@@ -4248,7 +4186,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             __pyx_t_16 = __Pyx_PyList_Append(__pyx_v_list_character_length_and_boolean_values, __pyx_t_7); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-            /* "experiments.pyx":185
+            /* "main.pyx":185
  *                 if first_character and second_character:
  * 
  *                     if is_in_same_list(first_character, second_character):             # <<<<<<<<<<<<<<
@@ -4258,7 +4196,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             goto __pyx_L45;
           }
 
-          /* "experiments.pyx":192
+          /* "main.pyx":192
  *                     else:
  *                         # print("replace character not matched in replace_char_list ")
  *                         list_character_length_and_boolean_values.append(             # <<<<<<<<<<<<<<
@@ -4268,7 +4206,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           __Pyx_TraceLine(192,0,__PYX_ERR(0, 192, __pyx_L1_error))
           /*else*/ {
 
-            /* "experiments.pyx":193
+            /* "main.pyx":193
  *                         # print("replace character not matched in replace_char_list ")
  *                         list_character_length_and_boolean_values.append(
  *                             (len(first_character), False)             # <<<<<<<<<<<<<<
@@ -4288,7 +4226,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
             PyTuple_SET_ITEM(__pyx_t_1, 1, Py_False);
             __pyx_t_7 = 0;
 
-            /* "experiments.pyx":192
+            /* "main.pyx":192
  *                     else:
  *                         # print("replace character not matched in replace_char_list ")
  *                         list_character_length_and_boolean_values.append(             # <<<<<<<<<<<<<<
@@ -4301,7 +4239,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           }
           __pyx_L45:;
 
-          /* "experiments.pyx":183
+          /* "main.pyx":183
  *                 # print("first_character","second_character",first_character,second_character)
  * #                 cdef int length_first_character = len(first_character)
  *                 if first_character and second_character:             # <<<<<<<<<<<<<<
@@ -4311,7 +4249,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
           goto __pyx_L42;
         }
 
-        /* "experiments.pyx":196
+        /* "main.pyx":196
  *                         )
  *                 else:
  *                     print("any of first and second character to be matched in character replace list is empty")             # <<<<<<<<<<<<<<
@@ -4326,7 +4264,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
       }
       __pyx_L24:;
 
-      /* "experiments.pyx":148
+      /* "main.pyx":148
  *     else:
  * 
  *         for list_ in list_character_to_check:             # <<<<<<<<<<<<<<
@@ -4337,7 +4275,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "experiments.pyx":201
+    /* "main.pyx":201
  *         # print("list_character_length _and_boolean_values", list_character_length_and_boolean_values)
  * 
  *         probability_of_correct_characters_updated = len([ tup_ for tup_ in list_character_length_and_boolean_values if tup_[1] == True])             # <<<<<<<<<<<<<<
@@ -4373,7 +4311,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_probability_of_correct_characters_updated = __pyx_t_4;
 
-    /* "experiments.pyx":202
+    /* "main.pyx":202
  * 
  *         probability_of_correct_characters_updated = len([ tup_ for tup_ in list_character_length_and_boolean_values if tup_[1] == True])
  *         length_list_character_length_and_boolean_values = len(list_character_length_and_boolean_values)             # <<<<<<<<<<<<<<
@@ -4384,7 +4322,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __pyx_t_4 = PyList_GET_SIZE(__pyx_v_list_character_length_and_boolean_values); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 202, __pyx_L1_error)
     __pyx_v_length_list_character_length_and_boolean_values = __pyx_t_4;
 
-    /* "experiments.pyx":204
+    /* "main.pyx":204
  *         length_list_character_length_and_boolean_values = len(list_character_length_and_boolean_values)
  * 
  *         if list_character_length_and_boolean_values:             # <<<<<<<<<<<<<<
@@ -4395,7 +4333,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     __pyx_t_17 = (PyList_GET_SIZE(__pyx_v_list_character_length_and_boolean_values) != 0);
     if (__pyx_t_17) {
 
-      /* "experiments.pyx":205
+      /* "main.pyx":205
  * 
  *         if list_character_length_and_boolean_values:
  *             probability_of_correct_characters_updated = probability_of_correct_characters_updated / length_list_character_length_and_boolean_values             # <<<<<<<<<<<<<<
@@ -4405,7 +4343,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
       __Pyx_TraceLine(205,0,__PYX_ERR(0, 205, __pyx_L1_error))
       __pyx_v_probability_of_correct_characters_updated = (__pyx_v_probability_of_correct_characters_updated / __pyx_v_length_list_character_length_and_boolean_values);
 
-      /* "experiments.pyx":206
+      /* "main.pyx":206
  *         if list_character_length_and_boolean_values:
  *             probability_of_correct_characters_updated = probability_of_correct_characters_updated / length_list_character_length_and_boolean_values
  *             return probability_of_correct_characters_updated             # <<<<<<<<<<<<<<
@@ -4416,7 +4354,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
       __pyx_r = __pyx_v_probability_of_correct_characters_updated;
       goto __pyx_L0;
 
-      /* "experiments.pyx":204
+      /* "main.pyx":204
  *         length_list_character_length_and_boolean_values = len(list_character_length_and_boolean_values)
  * 
  *         if list_character_length_and_boolean_values:             # <<<<<<<<<<<<<<
@@ -4425,7 +4363,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  */
     }
 
-    /* "experiments.pyx":208
+    /* "main.pyx":208
  *             return probability_of_correct_characters_updated
  *         else:
  *             return 0.0             # <<<<<<<<<<<<<<
@@ -4439,7 +4377,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
     }
   }
 
-  /* "experiments.pyx":103
+  /* "main.pyx":103
  * 
  * @cython.cdivision(True)
  * cdef float get_probability_of_correct_character_replacement(list operations_on_characters):             # <<<<<<<<<<<<<<
@@ -4458,7 +4396,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_WriteUnraisable("experiments.get_probability_of_correct_character_replacement", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("main.get_probability_of_correct_character_replacement", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_operations_sorted_index);
@@ -4481,7 +4419,7 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
   return __pyx_r;
 }
 
-/* "experiments.pyx":212
+/* "main.pyx":212
  * 
  * 
  * cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):             # <<<<<<<<<<<<<<
@@ -4489,8 +4427,8 @@ static float __pyx_f_11experiments_get_probability_of_correct_character_replacem
  *         cdef:
  */
 
-static PyObject *__pyx_pw_11experiments_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /*proto*/
-static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distance(PyObject *__pyx_v_correct_word_list, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_4main_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /*proto*/
+static PyObject *__pyx_f_4main_get_word_with_probability_and_edit_distance(PyObject *__pyx_v_correct_word_list, CYTHON_UNUSED int __pyx_skip_dispatch) {
   float __pyx_v_probability;
   PyObject *__pyx_v_list_correct_small_words = 0;
   PyObject *__pyx_v_list_correct_long_words = 0;
@@ -4523,7 +4461,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __Pyx_RefNannySetupContext("get_word_with_probability_and_edit_distance", 0);
   __Pyx_TraceCall("get_word_with_probability_and_edit_distance", __pyx_f[0], 212, 0, __PYX_ERR(0, 212, __pyx_L1_error));
 
-  /* "experiments.pyx":220
+  /* "main.pyx":220
  *             list operations_on_characters
  *             list best_match_small_word_edited_distance
  *             list word_probability=[]             # <<<<<<<<<<<<<<
@@ -4536,7 +4474,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_word_probability = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":224
+  /* "main.pyx":224
  *             str string
  *             list sorted_best_matches_list
  *             tuple word=(int,str)             # <<<<<<<<<<<<<<
@@ -4555,7 +4493,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_word = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":234
+  /* "main.pyx":234
  *         # print("list_correct_small_words",list_correct_small_words)
  *         # print("list_correct_long_words",list_correct_long_words)
  *         list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]             # <<<<<<<<<<<<<<
@@ -4595,7 +4533,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_list_correct_small_words = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":235
+  /* "main.pyx":235
  *         # print("list_correct_long_words",list_correct_long_words)
  *         list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
  *         list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7]             # <<<<<<<<<<<<<<
@@ -4631,7 +4569,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_list_correct_long_words = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":236
+  /* "main.pyx":236
  *         list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
  *         list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7]
  *         if list_correct_small_words:             # <<<<<<<<<<<<<<
@@ -4642,7 +4580,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_t_7 = (PyList_GET_SIZE(__pyx_v_list_correct_small_words) != 0);
   if (__pyx_t_7) {
 
-    /* "experiments.pyx":237
+    /* "main.pyx":237
  *         list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7]
  *         if list_correct_small_words:
  *             best_match_small_word_edited_distance = levenshtein_distance_best_common_words(             # <<<<<<<<<<<<<<
@@ -4650,22 +4588,12 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  * 
  */
     __Pyx_TraceLine(237,0,__PYX_ERR(0, 237, __pyx_L1_error))
-    __pyx_t_1 = __pyx_f_11experiments_levenshtein_distance_best_common_words(__pyx_v_list_correct_small_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_4main_levenshtein_distance_best_common_words(__pyx_v_list_correct_small_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_best_match_small_word_edited_distance = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "experiments.pyx":241
- * 
- *     #         end = timeit.default_timer()
- *             print("levenshtein_distance_best_common_words")             # <<<<<<<<<<<<<<
- * 
- *             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
- */
-    __Pyx_TraceLine(241,0,__PYX_ERR(0, 241, __pyx_L1_error))
-    if (__Pyx_PrintOne(0, __pyx_n_s_levenshtein_distance_best_common) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
-
-    /* "experiments.pyx":244
+    /* "main.pyx":244
  * 
  *             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
  *             for  word in best_match_small_word_edited_distance:             # <<<<<<<<<<<<<<
@@ -4690,7 +4618,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       __Pyx_DECREF_SET(__pyx_v_word, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "experiments.pyx":245
+      /* "main.pyx":245
  *             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
  *             for  word in best_match_small_word_edited_distance:
  *                 if word[0] <= 2:             # <<<<<<<<<<<<<<
@@ -4710,7 +4638,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_7) {
 
-        /* "experiments.pyx":247
+        /* "main.pyx":247
  *                 if word[0] <= 2:
  * 
  *                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])             # <<<<<<<<<<<<<<
@@ -4739,13 +4667,13 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __Pyx_GIVEREF(__pyx_t_8);
         PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_8 = __pyx_f_11experiments_get_operations_on_characters(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 247, __pyx_L1_error)
+        __pyx_t_8 = __pyx_f_4main_get_operations_on_characters(((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 247, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_v_operations_on_characters, ((PyObject*)__pyx_t_8));
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":248
+        /* "main.pyx":248
  * 
  *                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
  *                     start = timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -4776,21 +4704,21 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":249
+        /* "main.pyx":249
  *                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
  *                     start = timeit.default_timer()
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)             # <<<<<<<<<<<<<<
  *                     end = timeit.default_timer()
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+ *                     print("get_probability_of_correct_character_replacement time %s" %(end-start))
  */
         __Pyx_TraceLine(249,0,__PYX_ERR(0, 249, __pyx_L1_error))
-        __pyx_v_probability = __pyx_f_11experiments_get_probability_of_correct_character_replacement(__pyx_v_operations_on_characters);
+        __pyx_v_probability = __pyx_f_4main_get_probability_of_correct_character_replacement(__pyx_v_operations_on_characters);
 
-        /* "experiments.pyx":250
+        /* "main.pyx":250
  *                     start = timeit.default_timer()
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
  *                     end = timeit.default_timer()             # <<<<<<<<<<<<<<
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+ *                     print("get_probability_of_correct_character_replacement time %s" %(end-start))
  *                     #print("get_probability_of_corret_character_replacement used in loop ",probability)
  */
         __Pyx_TraceLine(250,0,__PYX_ERR(0, 250, __pyx_L1_error))
@@ -4817,29 +4745,24 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __Pyx_XDECREF_SET(__pyx_v_end, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":251
+        /* "main.pyx":251
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
  *                     end = timeit.default_timer()
- *                     print("get_probability_of_correct_character_replacement time ",end-start)             # <<<<<<<<<<<<<<
+ *                     print("get_probability_of_correct_character_replacement time %s" %(end-start))             # <<<<<<<<<<<<<<
  *                     #print("get_probability_of_corret_character_replacement used in loop ",probability)
  *                     word_probability.append((word[0], probability, word[1]))
  */
         __Pyx_TraceLine(251,0,__PYX_ERR(0, 251, __pyx_L1_error))
         __pyx_t_8 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 251, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyString_FormatSafe(__pyx_kp_s_get_probability_of_correct_chara_2, __pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_INCREF(__pyx_kp_s_get_probability_of_correct_chara_2);
-        __Pyx_GIVEREF(__pyx_kp_s_get_probability_of_correct_chara_2);
-        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_get_probability_of_correct_chara_2);
-        __Pyx_GIVEREF(__pyx_t_8);
-        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_8);
-        __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 251, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "experiments.pyx":253
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+        /* "main.pyx":253
+ *                     print("get_probability_of_correct_character_replacement time %s" %(end-start))
  *                     #print("get_probability_of_corret_character_replacement used in loop ",probability)
  *                     word_probability.append((word[0], probability, word[1]))             # <<<<<<<<<<<<<<
  * 
@@ -4874,7 +4797,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_word_probability, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 253, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "experiments.pyx":245
+        /* "main.pyx":245
  *             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
  *             for  word in best_match_small_word_edited_distance:
  *                 if word[0] <= 2:             # <<<<<<<<<<<<<<
@@ -4884,7 +4807,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         goto __pyx_L12;
       }
 
-      /* "experiments.pyx":256
+      /* "main.pyx":256
  * 
  *                 else:
  *                     print("edit distance is much bigger for small word")             # <<<<<<<<<<<<<<
@@ -4897,7 +4820,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       }
       __pyx_L12:;
 
-      /* "experiments.pyx":244
+      /* "main.pyx":244
  * 
  *             # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
  *             for  word in best_match_small_word_edited_distance:             # <<<<<<<<<<<<<<
@@ -4908,7 +4831,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "experiments.pyx":236
+    /* "main.pyx":236
  *         list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
  *         list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7]
  *         if list_correct_small_words:             # <<<<<<<<<<<<<<
@@ -4918,7 +4841,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     goto __pyx_L9;
   }
 
-  /* "experiments.pyx":258
+  /* "main.pyx":258
  *                     print("edit distance is much bigger for small word")
  *         else:
  *             print("No small words founds")             # <<<<<<<<<<<<<<
@@ -4931,7 +4854,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   }
   __pyx_L9:;
 
-  /* "experiments.pyx":260
+  /* "main.pyx":260
  *             print("No small words founds")
  * 
  *         if list_correct_long_words:             # <<<<<<<<<<<<<<
@@ -4942,7 +4865,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_t_7 = (PyList_GET_SIZE(__pyx_v_list_correct_long_words) != 0);
   if (__pyx_t_7) {
 
-    /* "experiments.pyx":261
+    /* "main.pyx":261
  * 
  *         if list_correct_long_words:
  *             best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words)             # <<<<<<<<<<<<<<
@@ -4950,12 +4873,12 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  *             for word in best_match_long_word_edited_distance:
  */
     __Pyx_TraceLine(261,0,__PYX_ERR(0, 261, __pyx_L1_error))
-    __pyx_t_1 = __pyx_f_11experiments_levenshtein_distance_best_common_words(__pyx_v_list_correct_long_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_4main_levenshtein_distance_best_common_words(__pyx_v_list_correct_long_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_best_match_long_word_edited_distance = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "experiments.pyx":263
+    /* "main.pyx":263
  *             best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words)
  *             # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
  *             for word in best_match_long_word_edited_distance:             # <<<<<<<<<<<<<<
@@ -4980,7 +4903,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       __Pyx_DECREF_SET(__pyx_v_word, ((PyObject*)__pyx_t_9));
       __pyx_t_9 = 0;
 
-      /* "experiments.pyx":264
+      /* "main.pyx":264
  *             # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
  *             for word in best_match_long_word_edited_distance:
  *                 if word[0] <= 4:             # <<<<<<<<<<<<<<
@@ -5000,7 +4923,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_7) {
 
-        /* "experiments.pyx":266
+        /* "main.pyx":266
  *                 if word[0] <= 4:
  *                     operations_on_characters = get_operations_on_characters(
  *                         [(incorrect_word, word[1])]             # <<<<<<<<<<<<<<
@@ -5030,7 +4953,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         PyList_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":265
+        /* "main.pyx":265
  *             for word in best_match_long_word_edited_distance:
  *                 if word[0] <= 4:
  *                     operations_on_characters = get_operations_on_characters(             # <<<<<<<<<<<<<<
@@ -5038,13 +4961,13 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  *                     )
  */
         __Pyx_TraceLine(265,0,__PYX_ERR(0, 265, __pyx_L1_error))
-        __pyx_t_8 = __pyx_f_11experiments_get_operations_on_characters(((PyObject*)__pyx_t_9)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
+        __pyx_t_8 = __pyx_f_4main_get_operations_on_characters(((PyObject*)__pyx_t_9)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_XDECREF_SET(__pyx_v_operations_on_characters, ((PyObject*)__pyx_t_8));
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":268
+        /* "main.pyx":268
  *                         [(incorrect_word, word[1])]
  *                     )
  *                     start = timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -5075,21 +4998,21 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":269
+        /* "main.pyx":269
  *                     )
  *                     start = timeit.default_timer()
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)             # <<<<<<<<<<<<<<
  *                     end = timeit.default_timer()
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+ *                     print("get_probability_of_correct_character_replacement time %s"%(end-start))
  */
         __Pyx_TraceLine(269,0,__PYX_ERR(0, 269, __pyx_L1_error))
-        __pyx_v_probability = __pyx_f_11experiments_get_probability_of_correct_character_replacement(__pyx_v_operations_on_characters);
+        __pyx_v_probability = __pyx_f_4main_get_probability_of_correct_character_replacement(__pyx_v_operations_on_characters);
 
-        /* "experiments.pyx":270
+        /* "main.pyx":270
  *                     start = timeit.default_timer()
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
  *                     end = timeit.default_timer()             # <<<<<<<<<<<<<<
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+ *                     print("get_probability_of_correct_character_replacement time %s"%(end-start))
  *                     word_probability.append((word[0], probability, word[1]))
  */
         __Pyx_TraceLine(270,0,__PYX_ERR(0, 270, __pyx_L1_error))
@@ -5116,30 +5039,25 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __Pyx_XDECREF_SET(__pyx_v_end, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "experiments.pyx":271
+        /* "main.pyx":271
  *                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
  *                     end = timeit.default_timer()
- *                     print("get_probability_of_correct_character_replacement time ",end-start)             # <<<<<<<<<<<<<<
+ *                     print("get_probability_of_correct_character_replacement time %s"%(end-start))             # <<<<<<<<<<<<<<
  *                     word_probability.append((word[0], probability, word[1]))
  *                 else:
  */
         __Pyx_TraceLine(271,0,__PYX_ERR(0, 271, __pyx_L1_error))
         __pyx_t_8 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 271, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 271, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyString_FormatSafe(__pyx_kp_s_get_probability_of_correct_chara_2, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 271, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_INCREF(__pyx_kp_s_get_probability_of_correct_chara_2);
-        __Pyx_GIVEREF(__pyx_kp_s_get_probability_of_correct_chara_2);
-        PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_kp_s_get_probability_of_correct_chara_2);
-        __Pyx_GIVEREF(__pyx_t_8);
-        PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
-        __pyx_t_8 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (__Pyx_PrintOne(0, __pyx_t_9) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "experiments.pyx":272
+        /* "main.pyx":272
  *                     end = timeit.default_timer()
- *                     print("get_probability_of_correct_character_replacement time ",end-start)
+ *                     print("get_probability_of_correct_character_replacement time %s"%(end-start))
  *                     word_probability.append((word[0], probability, word[1]))             # <<<<<<<<<<<<<<
  *                 else:
  *                     print("edit distance is much bigger for long word")
@@ -5173,7 +5091,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_word_probability, __pyx_t_2); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 272, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "experiments.pyx":264
+        /* "main.pyx":264
  *             # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
  *             for word in best_match_long_word_edited_distance:
  *                 if word[0] <= 4:             # <<<<<<<<<<<<<<
@@ -5183,7 +5101,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
         goto __pyx_L16;
       }
 
-      /* "experiments.pyx":274
+      /* "main.pyx":274
  *                     word_probability.append((word[0], probability, word[1]))
  *                 else:
  *                     print("edit distance is much bigger for long word")             # <<<<<<<<<<<<<<
@@ -5196,7 +5114,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       }
       __pyx_L16:;
 
-      /* "experiments.pyx":263
+      /* "main.pyx":263
  *             best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words)
  *             # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
  *             for word in best_match_long_word_edited_distance:             # <<<<<<<<<<<<<<
@@ -5207,7 +5125,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "experiments.pyx":276
+    /* "main.pyx":276
  *                     print("edit distance is much bigger for long word")
  *     #     else:
  *             print("No long words founds")             # <<<<<<<<<<<<<<
@@ -5217,7 +5135,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     __Pyx_TraceLine(276,0,__PYX_ERR(0, 276, __pyx_L1_error))
     if (__Pyx_PrintOne(0, __pyx_kp_s_No_long_words_founds) < 0) __PYX_ERR(0, 276, __pyx_L1_error)
 
-    /* "experiments.pyx":260
+    /* "main.pyx":260
  *             print("No small words founds")
  * 
  *         if list_correct_long_words:             # <<<<<<<<<<<<<<
@@ -5226,7 +5144,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  */
   }
 
-  /* "experiments.pyx":280
+  /* "main.pyx":280
  *         # print("word_probability ",word_probability)
  * 
  *         sorted_word_probability = sorted(             # <<<<<<<<<<<<<<
@@ -5240,7 +5158,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __Pyx_GIVEREF(__pyx_v_word_probability);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_word_probability);
 
-  /* "experiments.pyx":281
+  /* "main.pyx":281
  * 
  *         sorted_word_probability = sorted(
  *             word_probability, key=sort_key             # <<<<<<<<<<<<<<
@@ -5250,12 +5168,12 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __Pyx_TraceLine(281,0,__PYX_ERR(0, 281, __pyx_L1_error))
   __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_CFunc_tuple____tuple___to_py(__pyx_f_11experiments_sort_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CFunc_tuple____tuple___to_py(__pyx_f_4main_sort_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_key, __pyx_t_4) < 0) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "experiments.pyx":280
+  /* "main.pyx":280
  *         # print("word_probability ",word_probability)
  * 
  *         sorted_word_probability = sorted(             # <<<<<<<<<<<<<<
@@ -5271,7 +5189,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_sorted_word_probability = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "experiments.pyx":283
+  /* "main.pyx":283
  *             word_probability, key=sort_key
  *         )
  *         sorted_best_matches_list = [             # <<<<<<<<<<<<<<
@@ -5282,7 +5200,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "experiments.pyx":285
+  /* "main.pyx":285
  *         sorted_best_matches_list = [
  *             tuple_
  *             for tuple_ in sorted_word_probability             # <<<<<<<<<<<<<<
@@ -5306,7 +5224,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     __Pyx_XDECREF_SET(__pyx_v_tuple_, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "experiments.pyx":286
+    /* "main.pyx":286
  *             tuple_
  *             for tuple_ in sorted_word_probability
  *             if tuple_[0] == sorted_word_probability[0][0]             # <<<<<<<<<<<<<<
@@ -5332,7 +5250,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_7) {
 
-      /* "experiments.pyx":284
+      /* "main.pyx":284
  *         )
  *         sorted_best_matches_list = [
  *             tuple_             # <<<<<<<<<<<<<<
@@ -5342,7 +5260,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
       __Pyx_TraceLine(284,0,__PYX_ERR(0, 284, __pyx_L1_error))
       if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_tuple_))) __PYX_ERR(0, 283, __pyx_L1_error)
 
-      /* "experiments.pyx":286
+      /* "main.pyx":286
  *             tuple_
  *             for tuple_ in sorted_word_probability
  *             if tuple_[0] == sorted_word_probability[0][0]             # <<<<<<<<<<<<<<
@@ -5351,7 +5269,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  */
     }
 
-    /* "experiments.pyx":285
+    /* "main.pyx":285
  *         sorted_best_matches_list = [
  *             tuple_
  *             for tuple_ in sorted_word_probability             # <<<<<<<<<<<<<<
@@ -5364,7 +5282,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_v_sorted_best_matches_list = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "experiments.pyx":289
+  /* "main.pyx":289
  *         ]
  *         # print("sorted_best_matches_list",sorted_best_matches_list)
  *         if sorted_best_matches_list:             # <<<<<<<<<<<<<<
@@ -5375,7 +5293,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __pyx_t_7 = (PyList_GET_SIZE(__pyx_v_sorted_best_matches_list) != 0);
   if (__pyx_t_7) {
 
-    /* "experiments.pyx":290
+    /* "main.pyx":290
  *         # print("sorted_best_matches_list",sorted_best_matches_list)
  *         if sorted_best_matches_list:
  *             return list(sorted_best_matches_list[-1])             # <<<<<<<<<<<<<<
@@ -5393,7 +5311,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "experiments.pyx":289
+    /* "main.pyx":289
  *         ]
  *         # print("sorted_best_matches_list",sorted_best_matches_list)
  *         if sorted_best_matches_list:             # <<<<<<<<<<<<<<
@@ -5402,7 +5320,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
  */
   }
 
-  /* "experiments.pyx":292
+  /* "main.pyx":292
  *             return list(sorted_best_matches_list[-1])
  *         else:
  *             empty_list=[]             # <<<<<<<<<<<<<<
@@ -5416,7 +5334,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     __pyx_v_empty_list = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "experiments.pyx":293
+    /* "main.pyx":293
  *         else:
  *             empty_list=[]
  *             return empty_list             # <<<<<<<<<<<<<<
@@ -5430,7 +5348,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
     goto __pyx_L0;
   }
 
-  /* "experiments.pyx":212
+  /* "main.pyx":212
  * 
  * 
  * cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):             # <<<<<<<<<<<<<<
@@ -5445,7 +5363,7 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("experiments.get_word_with_probability_and_edit_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_word_with_probability_and_edit_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_list_correct_small_words);
@@ -5469,14 +5387,14 @@ static PyObject *__pyx_f_11experiments_get_word_with_probability_and_edit_distan
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11experiments_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /*proto*/
-static PyMethodDef __pyx_mdef_11experiments_1get_word_with_probability_and_edit_distance = {"get_word_with_probability_and_edit_distance", (PyCFunction)__pyx_pw_11experiments_1get_word_with_probability_and_edit_distance, METH_O, 0};
-static PyObject *__pyx_pw_11experiments_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list) {
+static PyObject *__pyx_pw_4main_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list); /*proto*/
+static PyMethodDef __pyx_mdef_4main_1get_word_with_probability_and_edit_distance = {"get_word_with_probability_and_edit_distance", (PyCFunction)__pyx_pw_4main_1get_word_with_probability_and_edit_distance, METH_O, 0};
+static PyObject *__pyx_pw_4main_1get_word_with_probability_and_edit_distance(PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_word_with_probability_and_edit_distance (wrapper)", 0);
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_correct_word_list), (&PyList_Type), 1, "correct_word_list", 1))) __PYX_ERR(0, 212, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11experiments_get_word_with_probability_and_edit_distance(__pyx_self, ((PyObject*)__pyx_v_correct_word_list));
+  __pyx_r = __pyx_pf_4main_get_word_with_probability_and_edit_distance(__pyx_self, ((PyObject*)__pyx_v_correct_word_list));
 
   /* function exit code */
   goto __pyx_L0;
@@ -5487,7 +5405,7 @@ static PyObject *__pyx_pw_11experiments_1get_word_with_probability_and_edit_dist
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list) {
+static PyObject *__pyx_pf_4main_get_word_with_probability_and_edit_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_correct_word_list) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
@@ -5496,7 +5414,7 @@ static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_dista
   __Pyx_RefNannySetupContext("get_word_with_probability_and_edit_distance", 0);
   __Pyx_TraceCall("get_word_with_probability_and_edit_distance (wrapper)", __pyx_f[0], 212, 0, __PYX_ERR(0, 212, __pyx_L1_error));
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11experiments_get_word_with_probability_and_edit_distance(__pyx_v_correct_word_list, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_4main_get_word_with_probability_and_edit_distance(__pyx_v_correct_word_list, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5505,7 +5423,7 @@ static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_dista
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("experiments.get_word_with_probability_and_edit_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_word_with_probability_and_edit_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5514,7 +5432,7 @@ static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_dista
   return __pyx_r;
 }
 
-/* "experiments.pyx":294
+/* "main.pyx":294
  *             empty_list=[]
  *             return empty_list
  * def get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -5523,9 +5441,9 @@ static PyObject *__pyx_pf_11experiments_get_word_with_probability_and_edit_dista
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11experiments_3get_final_similar_word(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_11experiments_3get_final_similar_word = {"get_final_similar_word", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11experiments_3get_final_similar_word, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_11experiments_3get_final_similar_word(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_4main_3get_final_similar_word(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_4main_3get_final_similar_word = {"get_final_similar_word", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_4main_3get_final_similar_word, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4main_3get_final_similar_word(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_white_list_words = 0;
   PyObject *__pyx_v_incorrect_word = 0;
   PyObject *__pyx_v_incorrect_word_embedding = 0;
@@ -5595,18 +5513,18 @@ static PyObject *__pyx_pw_11experiments_3get_final_similar_word(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("get_final_similar_word", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 294, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("experiments.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11experiments_2get_final_similar_word(__pyx_self, __pyx_v_white_list_words, __pyx_v_incorrect_word, __pyx_v_incorrect_word_embedding, __pyx_v_white_list_word_embeddings);
+  __pyx_r = __pyx_pf_4main_2get_final_similar_word(__pyx_self, __pyx_v_white_list_words, __pyx_v_incorrect_word, __pyx_v_incorrect_word_embedding, __pyx_v_white_list_word_embeddings);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_white_list_words, PyObject *__pyx_v_incorrect_word, PyObject *__pyx_v_incorrect_word_embedding, PyObject *__pyx_v_white_list_word_embeddings) {
+static PyObject *__pyx_pf_4main_2get_final_similar_word(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_white_list_words, PyObject *__pyx_v_incorrect_word, PyObject *__pyx_v_incorrect_word_embedding, PyObject *__pyx_v_white_list_word_embeddings) {
   PyObject *__pyx_v_matched_words_syms = NULL;
   PyObject *__pyx_v_nlp = NULL;
   PyObject *__pyx_v_matched_words_syms_text = NULL;
@@ -5642,7 +5560,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_RefNannySetupContext("get_final_similar_word", 0);
   __Pyx_TraceCall("get_final_similar_word", __pyx_f[0], 294, 0, __PYX_ERR(0, 294, __pyx_L1_error));
 
-  /* "experiments.pyx":301
+  /* "main.pyx":301
  * ):
  * 
  *     matched_words_syms = symspell_matched_word(incorrect_word)             # <<<<<<<<<<<<<<
@@ -5670,7 +5588,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_matched_words_syms = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":303
+  /* "main.pyx":303
  *     matched_words_syms = symspell_matched_word(incorrect_word)
  *     # print("matched_words_syms",matched_words_syms)
  *     nlp = spacy.load("en_core_web_sm")             # <<<<<<<<<<<<<<
@@ -5701,7 +5619,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_nlp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":304
+  /* "main.pyx":304
  *     # print("matched_words_syms",matched_words_syms)
  *     nlp = spacy.load("en_core_web_sm")
  *     matched_words_syms_text = " ".join(matched_words_syms)             # <<<<<<<<<<<<<<
@@ -5714,7 +5632,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_matched_words_syms_text = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":305
+  /* "main.pyx":305
  *     nlp = spacy.load("en_core_web_sm")
  *     matched_words_syms_text = " ".join(matched_words_syms)
  *     nlp = nlp(matched_words_syms_text)             # <<<<<<<<<<<<<<
@@ -5741,11 +5659,11 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_DECREF_SET(__pyx_v_nlp, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":307
+  /* "main.pyx":307
  *     nlp = nlp(matched_words_syms_text)
  *     # lemmatized the matched words
  *     matched_words_syms = [word_.lemma_ for word_ in nlp]             # <<<<<<<<<<<<<<
- *     print("lemmatize matched words syms",matched_words_syms)
+ *     #print("lemmatize matched words syms",matched_words_syms)
  * 
  */
   __Pyx_TraceLine(307,0,__PYX_ERR(0, 307, __pyx_L1_error))
@@ -5801,27 +5719,8 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_DECREF_SET(__pyx_v_matched_words_syms, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":308
- *     # lemmatized the matched words
- *     matched_words_syms = [word_.lemma_ for word_ in nlp]
- *     print("lemmatize matched words syms",matched_words_syms)             # <<<<<<<<<<<<<<
- * 
- *     matched_words_char2vec = cosine_similar_words(
- */
-  __Pyx_TraceLine(308,0,__PYX_ERR(0, 308, __pyx_L1_error))
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_kp_s_lemmatize_matched_words_syms);
-  __Pyx_GIVEREF(__pyx_kp_s_lemmatize_matched_words_syms);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_s_lemmatize_matched_words_syms);
-  __Pyx_INCREF(__pyx_v_matched_words_syms);
-  __Pyx_GIVEREF(__pyx_v_matched_words_syms);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_matched_words_syms);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "experiments.pyx":310
- *     print("lemmatize matched words syms",matched_words_syms)
+  /* "main.pyx":310
+ *     #print("lemmatize matched words syms",matched_words_syms)
  * 
  *     matched_words_char2vec = cosine_similar_words(             # <<<<<<<<<<<<<<
  *         incorrect_word_embedding, white_list_word_embeddings, white_list_words
@@ -5831,7 +5730,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_cosine_similar_words); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "experiments.pyx":311
+  /* "main.pyx":311
  * 
  *     matched_words_char2vec = cosine_similar_words(
  *         incorrect_word_embedding, white_list_word_embeddings, white_list_words             # <<<<<<<<<<<<<<
@@ -5890,7 +5789,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_matched_words_char2vec = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":313
+  /* "main.pyx":313
  *         incorrect_word_embedding, white_list_word_embeddings, white_list_words
  *     )
  *     nlp = spacy.load("en_core_web_sm")             # <<<<<<<<<<<<<<
@@ -5921,7 +5820,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_DECREF_SET(__pyx_v_nlp, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":314
+  /* "main.pyx":314
  *     )
  *     nlp = spacy.load("en_core_web_sm")
  *     matched_words_char2vec_text = " ".join(matched_words_char2vec)             # <<<<<<<<<<<<<<
@@ -5934,7 +5833,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_matched_words_char2vec_text = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":315
+  /* "main.pyx":315
  *     nlp = spacy.load("en_core_web_sm")
  *     matched_words_char2vec_text = " ".join(matched_words_char2vec)
  *     nlp = nlp(matched_words_char2vec_text)             # <<<<<<<<<<<<<<
@@ -5961,12 +5860,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_DECREF_SET(__pyx_v_nlp, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":316
+  /* "main.pyx":316
  *     matched_words_char2vec_text = " ".join(matched_words_char2vec)
  *     nlp = nlp(matched_words_char2vec_text)
  *     matched_words_char2vec = [word_.lemma_ for word_ in nlp]             # <<<<<<<<<<<<<<
  * 
- *     print("lemmatize matched words char2vec",matched_words_char2vec)
+ *     #print("lemmatize matched words char2vec",matched_words_char2vec)
  */
   __Pyx_TraceLine(316,0,__PYX_ERR(0, 316, __pyx_L1_error))
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
@@ -6021,26 +5920,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_DECREF_SET(__pyx_v_matched_words_char2vec, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":318
- *     matched_words_char2vec = [word_.lemma_ for word_ in nlp]
- * 
- *     print("lemmatize matched words char2vec",matched_words_char2vec)             # <<<<<<<<<<<<<<
- * 
- *     # finding the common words
- */
-  __Pyx_TraceLine(318,0,__PYX_ERR(0, 318, __pyx_L1_error))
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 318, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_kp_s_lemmatize_matched_words_char2vec);
-  __Pyx_GIVEREF(__pyx_kp_s_lemmatize_matched_words_char2vec);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_s_lemmatize_matched_words_char2vec);
-  __Pyx_INCREF(__pyx_v_matched_words_char2vec);
-  __Pyx_GIVEREF(__pyx_v_matched_words_char2vec);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_matched_words_char2vec);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 318, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "experiments.pyx":321
+  /* "main.pyx":321
  * 
  *     # finding the common words
  *     common_words = [word for word in matched_words_char2vec if word in matched_words_syms]             # <<<<<<<<<<<<<<
@@ -6071,7 +5951,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __pyx_v_common_words = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "experiments.pyx":324
+  /* "main.pyx":324
  *     # print("these are common words", common_words)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -6088,7 +5968,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "experiments.pyx":326
+      /* "main.pyx":326
  *     try:
  *         # if common_words exist
  *         if common_words:             # <<<<<<<<<<<<<<
@@ -6099,7 +5979,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
       __pyx_t_9 = (PyList_GET_SIZE(__pyx_v_common_words) != 0);
       if (__pyx_t_9) {
 
-        /* "experiments.pyx":327
+        /* "main.pyx":327
  *         # if common_words exist
  *         if common_words:
  *             start = timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6130,7 +6010,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_v_start = __pyx_t_1;
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":328
+        /* "main.pyx":328
  *         if common_words:
  *             start = timeit.default_timer()
  *             matched_word = get_word_with_probability_and_edit_distance(common_words)             # <<<<<<<<<<<<<<
@@ -6138,12 +6018,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  *             print("get_word_with_probability_and_edit_distance %s"%(end - start))
  */
         __Pyx_TraceLine(328,0,__PYX_ERR(0, 328, __pyx_L10_error))
-        __pyx_t_1 = __pyx_f_11experiments_get_word_with_probability_and_edit_distance(__pyx_v_common_words, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L10_error)
+        __pyx_t_1 = __pyx_f_4main_get_word_with_probability_and_edit_distance(__pyx_v_common_words, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L10_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_v_matched_word = ((PyObject*)__pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":329
+        /* "main.pyx":329
  *             start = timeit.default_timer()
  *             matched_word = get_word_with_probability_and_edit_distance(common_words)
  *             end = timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6174,7 +6054,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_v_end = __pyx_t_1;
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":330
+        /* "main.pyx":330
  *             matched_word = get_word_with_probability_and_edit_distance(common_words)
  *             end = timeit.default_timer()
  *             print("get_word_with_probability_and_edit_distance %s"%(end - start))             # <<<<<<<<<<<<<<
@@ -6190,7 +6070,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         if (__Pyx_PrintOne(0, __pyx_t_7) < 0) __PYX_ERR(0, 330, __pyx_L10_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "experiments.pyx":332
+        /* "main.pyx":332
  *             print("get_word_with_probability_and_edit_distance %s"%(end - start))
  *             # print("this is the common word matched " ,matched_word)
  *             return matched_word[2]             # <<<<<<<<<<<<<<
@@ -6209,7 +6089,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_t_7 = 0;
         goto __pyx_L14_try_return;
 
-        /* "experiments.pyx":326
+        /* "main.pyx":326
  *     try:
  *         # if common_words exist
  *         if common_words:             # <<<<<<<<<<<<<<
@@ -6218,7 +6098,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  */
       }
 
-      /* "experiments.pyx":335
+      /* "main.pyx":335
  * 
  *         else:
  *             start=timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6250,7 +6130,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_v_start = __pyx_t_7;
         __pyx_t_7 = 0;
 
-        /* "experiments.pyx":337
+        /* "main.pyx":337
  *             start=timeit.default_timer()
  *             best_matched_words_syms = get_word_with_probability_and_edit_distance(
  *                 matched_words_syms             # <<<<<<<<<<<<<<
@@ -6260,7 +6140,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __Pyx_TraceLine(337,0,__PYX_ERR(0, 337, __pyx_L10_error))
         if (!(likely(PyList_CheckExact(__pyx_v_matched_words_syms))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_matched_words_syms)->tp_name), 0))) __PYX_ERR(0, 337, __pyx_L10_error)
 
-        /* "experiments.pyx":336
+        /* "main.pyx":336
  *         else:
  *             start=timeit.default_timer()
  *             best_matched_words_syms = get_word_with_probability_and_edit_distance(             # <<<<<<<<<<<<<<
@@ -6268,12 +6148,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  *             )
  */
         __Pyx_TraceLine(336,0,__PYX_ERR(0, 336, __pyx_L10_error))
-        __pyx_t_7 = __pyx_f_11experiments_get_word_with_probability_and_edit_distance(((PyObject*)__pyx_v_matched_words_syms), 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L10_error)
+        __pyx_t_7 = __pyx_f_4main_get_word_with_probability_and_edit_distance(((PyObject*)__pyx_v_matched_words_syms), 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L10_error)
         __Pyx_GOTREF(__pyx_t_7);
         __pyx_v_best_matched_words_syms = ((PyObject*)__pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "experiments.pyx":339
+        /* "main.pyx":339
  *                 matched_words_syms
  *             )
  *             end= timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6304,7 +6184,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_v_end = __pyx_t_7;
         __pyx_t_7 = 0;
 
-        /* "experiments.pyx":340
+        /* "main.pyx":340
  *             )
  *             end= timeit.default_timer()
  *             print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))             # <<<<<<<<<<<<<<
@@ -6320,7 +6200,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 340, __pyx_L10_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "experiments.pyx":342
+        /* "main.pyx":342
  *             print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
  * 
  *             start= timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6351,7 +6231,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __Pyx_DECREF_SET(__pyx_v_start, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":344
+        /* "main.pyx":344
  *             start= timeit.default_timer()
  *             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
  *                 matched_words_char2vec             # <<<<<<<<<<<<<<
@@ -6361,7 +6241,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __Pyx_TraceLine(344,0,__PYX_ERR(0, 344, __pyx_L10_error))
         if (!(likely(PyList_CheckExact(__pyx_v_matched_words_char2vec))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_matched_words_char2vec)->tp_name), 0))) __PYX_ERR(0, 344, __pyx_L10_error)
 
-        /* "experiments.pyx":343
+        /* "main.pyx":343
  * 
  *             start= timeit.default_timer()
  *             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(             # <<<<<<<<<<<<<<
@@ -6369,12 +6249,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  *             )
  */
         __Pyx_TraceLine(343,0,__PYX_ERR(0, 343, __pyx_L10_error))
-        __pyx_t_1 = __pyx_f_11experiments_get_word_with_probability_and_edit_distance(((PyObject*)__pyx_v_matched_words_char2vec), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L10_error)
+        __pyx_t_1 = __pyx_f_4main_get_word_with_probability_and_edit_distance(((PyObject*)__pyx_v_matched_words_char2vec), 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L10_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_v_best_matched_words_char2vec = ((PyObject*)__pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":346
+        /* "main.pyx":346
  *                 matched_words_char2vec
  *             )
  *             end=timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -6405,12 +6285,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __Pyx_DECREF_SET(__pyx_v_end, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "experiments.pyx":347
+        /* "main.pyx":347
  *             )
  *             end=timeit.default_timer()
  *             print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))             # <<<<<<<<<<<<<<
  *             # best_matched_words_syms shape (edit distance, probability, word )
- *             print("best matched symspell word with probability and edit distance",best_matched_words_syms)
+ *             #print("best matched symspell word with probability and edit distance",best_matched_words_syms)
  */
         __Pyx_TraceLine(347,0,__PYX_ERR(0, 347, __pyx_L10_error))
         __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L10_error)
@@ -6421,46 +6301,8 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         if (__Pyx_PrintOne(0, __pyx_t_7) < 0) __PYX_ERR(0, 347, __pyx_L10_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "experiments.pyx":349
- *             print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
- *             # best_matched_words_syms shape (edit distance, probability, word )
- *             print("best matched symspell word with probability and edit distance",best_matched_words_syms)             # <<<<<<<<<<<<<<
- *             print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
- * 
- */
-        __Pyx_TraceLine(349,0,__PYX_ERR(0, 349, __pyx_L10_error))
-        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 349, __pyx_L10_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_INCREF(__pyx_kp_s_best_matched_symspell_word_with);
-        __Pyx_GIVEREF(__pyx_kp_s_best_matched_symspell_word_with);
-        PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_kp_s_best_matched_symspell_word_with);
-        __Pyx_INCREF(__pyx_v_best_matched_words_syms);
-        __Pyx_GIVEREF(__pyx_v_best_matched_words_syms);
-        PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_best_matched_words_syms);
-        if (__Pyx_PrintOne(0, __pyx_t_7) < 0) __PYX_ERR(0, 349, __pyx_L10_error)
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-        /* "experiments.pyx":350
- *             # best_matched_words_syms shape (edit distance, probability, word )
- *             print("best matched symspell word with probability and edit distance",best_matched_words_syms)
- *             print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)             # <<<<<<<<<<<<<<
- * 
- *             if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:
- */
-        __Pyx_TraceLine(350,0,__PYX_ERR(0, 350, __pyx_L10_error))
-        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 350, __pyx_L10_error)
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_INCREF(__pyx_kp_s_best_matched_char2vec_word_with);
-        __Pyx_GIVEREF(__pyx_kp_s_best_matched_char2vec_word_with);
-        PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_kp_s_best_matched_char2vec_word_with);
-        __Pyx_INCREF(__pyx_v_best_matched_words_char2vec);
-        __Pyx_GIVEREF(__pyx_v_best_matched_words_char2vec);
-        PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_best_matched_words_char2vec);
-        if (__Pyx_PrintOne(0, __pyx_t_7) < 0) __PYX_ERR(0, 350, __pyx_L10_error)
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-        /* "experiments.pyx":352
- *             print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
+        /* "main.pyx":352
+ *             #print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
  * 
  *             if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:             # <<<<<<<<<<<<<<
  *                 best_matched_words_from_symspell_Char2vec = [
@@ -6488,7 +6330,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_9) {
 
-          /* "experiments.pyx":353
+          /* "main.pyx":353
  * 
  *             if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:
  *                 best_matched_words_from_symspell_Char2vec = [             # <<<<<<<<<<<<<<
@@ -6507,7 +6349,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __pyx_v_best_matched_words_from_symspell_Char2vec = ((PyObject*)__pyx_t_7);
           __pyx_t_7 = 0;
 
-          /* "experiments.pyx":357
+          /* "main.pyx":357
  *                     best_matched_words_char2vec,
  *                 ]
  *                 sorted_best_matches_list = sorted(             # <<<<<<<<<<<<<<
@@ -6521,7 +6363,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __Pyx_GIVEREF(__pyx_v_best_matched_words_from_symspell_Char2vec);
           PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_best_matched_words_from_symspell_Char2vec);
 
-          /* "experiments.pyx":359
+          /* "main.pyx":359
  *                 sorted_best_matches_list = sorted(
  *                     best_matched_words_from_symspell_Char2vec,
  *                     key=sort_key             # <<<<<<<<<<<<<<
@@ -6531,12 +6373,12 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __Pyx_TraceLine(359,0,__PYX_ERR(0, 359, __pyx_L10_error))
           __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L10_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_3 = __Pyx_CFunc_tuple____tuple___to_py(__pyx_f_11experiments_sort_key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L10_error)
+          __pyx_t_3 = __Pyx_CFunc_tuple____tuple___to_py(__pyx_f_4main_sort_key); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L10_error)
           __Pyx_GOTREF(__pyx_t_3);
           if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 359, __pyx_L10_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "experiments.pyx":357
+          /* "main.pyx":357
  *                     best_matched_words_char2vec,
  *                 ]
  *                 sorted_best_matches_list = sorted(             # <<<<<<<<<<<<<<
@@ -6549,7 +6391,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "experiments.pyx":360
+          /* "main.pyx":360
  *                     best_matched_words_from_symspell_Char2vec,
  *                     key=sort_key
  *                 )[0]             # <<<<<<<<<<<<<<
@@ -6563,7 +6405,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __pyx_v_sorted_best_matches_list = __pyx_t_1;
           __pyx_t_1 = 0;
 
-          /* "experiments.pyx":361
+          /* "main.pyx":361
  *                     key=sort_key
  *                 )[0]
  *                 return sorted_best_matches_list[2]             # <<<<<<<<<<<<<<
@@ -6578,8 +6420,8 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __pyx_t_1 = 0;
           goto __pyx_L14_try_return;
 
-          /* "experiments.pyx":352
- *             print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
+          /* "main.pyx":352
+ *             #print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
  * 
  *             if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:             # <<<<<<<<<<<<<<
  *                 best_matched_words_from_symspell_Char2vec = [
@@ -6587,7 +6429,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  */
         }
 
-        /* "experiments.pyx":363
+        /* "main.pyx":363
  *                 return sorted_best_matches_list[2]
  * 
  *             elif len(best_matched_words_syms)!= 0 and len(best_matched_words_char2vec)==0:             # <<<<<<<<<<<<<<
@@ -6616,7 +6458,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_L20_bool_binop_done:;
         if (__pyx_t_9) {
 
-          /* "experiments.pyx":364
+          /* "main.pyx":364
  * 
  *             elif len(best_matched_words_syms)!= 0 and len(best_matched_words_char2vec)==0:
  *                 return best_matched_words_syms[2]             # <<<<<<<<<<<<<<
@@ -6635,7 +6477,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __pyx_t_1 = 0;
           goto __pyx_L14_try_return;
 
-          /* "experiments.pyx":363
+          /* "main.pyx":363
  *                 return sorted_best_matches_list[2]
  * 
  *             elif len(best_matched_words_syms)!= 0 and len(best_matched_words_char2vec)==0:             # <<<<<<<<<<<<<<
@@ -6644,7 +6486,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  */
         }
 
-        /* "experiments.pyx":366
+        /* "main.pyx":366
  *                 return best_matched_words_syms[2]
  * 
  *             elif len(best_matched_words_syms) == 0 and (best_matched_words_char2vec)!=0 :             # <<<<<<<<<<<<<<
@@ -6670,7 +6512,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         __pyx_L22_bool_binop_done:;
         if (__pyx_t_9) {
 
-          /* "experiments.pyx":368
+          /* "main.pyx":368
  *             elif len(best_matched_words_syms) == 0 and (best_matched_words_char2vec)!=0 :
  * 
  *                 return best_matched_words_char2vec[2]             # <<<<<<<<<<<<<<
@@ -6689,7 +6531,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
           __pyx_t_1 = 0;
           goto __pyx_L14_try_return;
 
-          /* "experiments.pyx":366
+          /* "main.pyx":366
  *                 return best_matched_words_syms[2]
  * 
  *             elif len(best_matched_words_syms) == 0 and (best_matched_words_char2vec)!=0 :             # <<<<<<<<<<<<<<
@@ -6698,7 +6540,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
  */
         }
 
-        /* "experiments.pyx":371
+        /* "main.pyx":371
  * 
  *             else:
  *                 print("none of the matched word found")             # <<<<<<<<<<<<<<
@@ -6711,7 +6553,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
         }
       }
 
-      /* "experiments.pyx":324
+      /* "main.pyx":324
  *     # print("these are common words", common_words)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -6729,7 +6571,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "experiments.pyx":372
+    /* "main.pyx":372
  *             else:
  *                 print("none of the matched word found")
  *     except Exception as e:             # <<<<<<<<<<<<<<
@@ -6739,7 +6581,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
     __Pyx_TraceLine(372,0,__PYX_ERR(0, 372, __pyx_L12_except_error))
     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_6) {
-      __Pyx_AddTraceback("experiments.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("main.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_7) < 0) __PYX_ERR(0, 372, __pyx_L12_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_3);
@@ -6747,7 +6589,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
       __Pyx_INCREF(__pyx_t_3);
       __pyx_v_e = __pyx_t_3;
 
-      /* "experiments.pyx":373
+      /* "main.pyx":373
  *                 print("none of the matched word found")
  *     except Exception as e:
  *         print("some exception has occured",e)             # <<<<<<<<<<<<<<
@@ -6773,7 +6615,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
     goto __pyx_L12_except_error;
     __pyx_L12_except_error:;
 
-    /* "experiments.pyx":324
+    /* "main.pyx":324
  *     # print("these are common words", common_words)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -6799,7 +6641,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
     __pyx_L15_try_end:;
   }
 
-  /* "experiments.pyx":294
+  /* "main.pyx":294
  *             empty_list=[]
  *             return empty_list
  * def get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -6815,7 +6657,7 @@ static PyObject *__pyx_pf_11experiments_2get_final_similar_word(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("experiments.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("main.get_final_similar_word", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_matched_words_syms);
@@ -7168,7 +7010,7 @@ static void __pyx_tp_dealloc___pyx_scope_struct____Pyx_CFunc_int____tuple___to_p
 
 static PyTypeObject __pyx_scope_struct____Pyx_CFunc_int____tuple___to_py = {
   PyVarObject_HEAD_INIT(0, 0)
-  "experiments.__pyx_scope_struct____Pyx_CFunc_int____tuple___to_py", /*tp_name*/
+  "main.__pyx_scope_struct____Pyx_CFunc_int____tuple___to_py", /*tp_name*/
   sizeof(struct __pyx_obj___pyx_scope_struct____Pyx_CFunc_int____tuple___to_py), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc___pyx_scope_struct____Pyx_CFunc_int____tuple___to_py, /*tp_dealloc*/
@@ -7261,7 +7103,7 @@ static void __pyx_tp_dealloc___pyx_scope_struct____Pyx_CFunc_tuple____tuple___to
 
 static PyTypeObject __pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py = {
   PyVarObject_HEAD_INIT(0, 0)
-  "experiments.__pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py", /*tp_name*/
+  "main.__pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py", /*tp_name*/
   sizeof(struct __pyx_obj___pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc___pyx_scope_struct____Pyx_CFunc_tuple____tuple___to_py, /*tp_dealloc*/
@@ -7335,17 +7177,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_experiments(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_main(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_experiments},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_main},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "experiments",
+    "main",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -7417,8 +7259,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_any_of_first_and_second_characte, __pyx_k_any_of_first_and_second_characte, sizeof(__pyx_k_any_of_first_and_second_characte), 0, 0, 1, 0},
   {&__pyx_n_s_b, __pyx_k_b, sizeof(__pyx_k_b), 0, 0, 1, 1},
   {&__pyx_n_s_batch, __pyx_k_batch, sizeof(__pyx_k_batch), 0, 0, 1, 1},
-  {&__pyx_kp_s_best_matched_char2vec_word_with, __pyx_k_best_matched_char2vec_word_with, sizeof(__pyx_k_best_matched_char2vec_word_with), 0, 0, 1, 0},
-  {&__pyx_kp_s_best_matched_symspell_word_with, __pyx_k_best_matched_symspell_word_with, sizeof(__pyx_k_best_matched_symspell_word_with), 0, 0, 1, 0},
   {&__pyx_n_s_best_matched_words_char2vec, __pyx_k_best_matched_words_char2vec, sizeof(__pyx_k_best_matched_words_char2vec), 0, 0, 1, 1},
   {&__pyx_n_s_best_matched_words_from_symspell, __pyx_k_best_matched_words_from_symspell, sizeof(__pyx_k_best_matched_words_from_symspell), 0, 0, 1, 1},
   {&__pyx_n_s_best_matched_words_syms, __pyx_k_best_matched_words_syms, sizeof(__pyx_k_best_matched_words_syms), 0, 0, 1, 1},
@@ -7451,8 +7291,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_en_core_web_sm, __pyx_k_en_core_web_sm, sizeof(__pyx_k_en_core_web_sm), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
-  {&__pyx_n_s_experiments, __pyx_k_experiments, sizeof(__pyx_k_experiments), 0, 0, 1, 1},
-  {&__pyx_kp_s_experiments_pyx, __pyx_k_experiments_pyx, sizeof(__pyx_k_experiments_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_expiration, __pyx_k_expiration, sizeof(__pyx_k_expiration), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_g, __pyx_k_g, sizeof(__pyx_k_g), 0, 0, 1, 1},
@@ -7481,12 +7319,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_key, __pyx_k_key, sizeof(__pyx_k_key), 0, 0, 1, 1},
   {&__pyx_n_s_l, __pyx_k_l, sizeof(__pyx_k_l), 0, 0, 1, 1},
   {&__pyx_n_s_lemma, __pyx_k_lemma, sizeof(__pyx_k_lemma), 0, 0, 1, 1},
-  {&__pyx_kp_s_lemmatize_matched_words_char2vec, __pyx_k_lemmatize_matched_words_char2vec, sizeof(__pyx_k_lemmatize_matched_words_char2vec), 0, 0, 1, 0},
-  {&__pyx_kp_s_lemmatize_matched_words_syms, __pyx_k_lemmatize_matched_words_syms, sizeof(__pyx_k_lemmatize_matched_words_syms), 0, 0, 1, 0},
-  {&__pyx_n_s_levenshtein_distance_best_common, __pyx_k_levenshtein_distance_best_common, sizeof(__pyx_k_levenshtein_distance_best_common), 0, 0, 1, 1},
   {&__pyx_n_s_load, __pyx_k_load, sizeof(__pyx_k_load), 0, 0, 1, 1},
   {&__pyx_n_s_m, __pyx_k_m, sizeof(__pyx_k_m), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_main_2, __pyx_k_main_2, sizeof(__pyx_k_main_2), 0, 0, 1, 1},
+  {&__pyx_kp_s_main_pyx, __pyx_k_main_pyx, sizeof(__pyx_k_main_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_mark, __pyx_k_mark, sizeof(__pyx_k_mark), 0, 0, 1, 1},
   {&__pyx_n_s_marks, __pyx_k_marks, sizeof(__pyx_k_marks), 0, 0, 1, 1},
   {&__pyx_n_s_matched_word, __pyx_k_matched_word, sizeof(__pyx_k_matched_word), 0, 0, 1, 1},
@@ -7538,8 +7375,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_t, __pyx_k_t, sizeof(__pyx_k_t), 0, 0, 1, 1},
   {&__pyx_n_s_tariff, __pyx_k_tariff, sizeof(__pyx_k_tariff), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_kp_s_this_need_to_be_list_character_t, __pyx_k_this_need_to_be_list_character_t, sizeof(__pyx_k_this_need_to_be_list_character_t), 0, 0, 1, 0},
-  {&__pyx_kp_s_this_need_to_be_print, __pyx_k_this_need_to_be_print, sizeof(__pyx_k_this_need_to_be_print), 0, 0, 1, 0},
   {&__pyx_kp_s_time_lap, __pyx_k_time_lap, sizeof(__pyx_k_time_lap), 0, 0, 1, 0},
   {&__pyx_n_s_timeit, __pyx_k_timeit, sizeof(__pyx_k_timeit), 0, 0, 1, 1},
   {&__pyx_n_s_tons, __pyx_k_tons, sizeof(__pyx_k_tons), 0, 0, 1, 1},
@@ -7575,7 +7410,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "experiments.pyx":150
+  /* "main.pyx":150
  *         for list_ in list_character_to_check:
  *             if len(list_) == 1:
  *                 list_character_length_and_boolean_values.append((1, False))             # <<<<<<<<<<<<<<
@@ -7602,7 +7437,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__10);
   __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_wrap, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(1, 65, __pyx_L1_error)
 
-  /* "experiments.pyx":212
+  /* "main.pyx":212
  * 
  * 
  * cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):             # <<<<<<<<<<<<<<
@@ -7612,9 +7447,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_correct_word_list); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_experiments_pyx, __pyx_n_s_get_word_with_probability_and_ed_3, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_main_pyx, __pyx_n_s_get_word_with_probability_and_ed_3, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 212, __pyx_L1_error)
 
-  /* "experiments.pyx":294
+  /* "main.pyx":294
  *             empty_list=[]
  *             return empty_list
  * def get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -7624,7 +7459,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__13 = PyTuple_Pack(20, __pyx_n_s_white_list_words, __pyx_n_s_incorrect_word, __pyx_n_s_incorrect_word_embedding, __pyx_n_s_white_list_word_embeddings, __pyx_n_s_matched_words_syms, __pyx_n_s_nlp, __pyx_n_s_matched_words_syms_text, __pyx_n_s_matched_words_char2vec, __pyx_n_s_matched_words_char2vec_text, __pyx_n_s_common_words, __pyx_n_s_start, __pyx_n_s_matched_word, __pyx_n_s_end, __pyx_n_s_best_matched_words_syms, __pyx_n_s_best_matched_words_char2vec, __pyx_n_s_best_matched_words_from_symspell, __pyx_n_s_sorted_best_matches_list, __pyx_n_s_e, __pyx_n_s_word, __pyx_n_s_word_2); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(4, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_experiments_pyx, __pyx_n_s_get_final_similar_word, 294, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(4, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_main_pyx, __pyx_n_s_get_final_similar_word, 294, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7743,11 +7578,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initexperiments(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initexperiments(void)
+__Pyx_PyMODINIT_FUNC initmain(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initmain(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_experiments(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_experiments(void)
+__Pyx_PyMODINIT_FUNC PyInit_main(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_main(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -7814,7 +7649,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_experiments(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_main(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -7836,7 +7671,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_experiments(PyObject *__pyx_pyinit
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'experiments' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'main' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -7851,7 +7686,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_experiments(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_main(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -7890,7 +7725,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("experiments", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("main", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -7908,14 +7743,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_experiments) {
-    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  if (__pyx_module_is_main_main) {
+    if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 2, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "experiments")) {
-      if (unlikely(PyDict_SetItemString(modules, "experiments", __pyx_m) < 0)) __PYX_ERR(0, 2, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "main")) {
+      if (unlikely(PyDict_SetItemString(modules, "main", __pyx_m) < 0)) __PYX_ERR(0, 2, __pyx_L1_error)
     }
   }
   #endif
@@ -7935,9 +7770,9 @@ if (!__Pyx_RefNanny) {
   #if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   #endif
-  __Pyx_TraceCall("__Pyx_PyMODINIT_FUNC PyInit_experiments(void)", __pyx_f[0], 2, 0, __PYX_ERR(0, 2, __pyx_L1_error));
+  __Pyx_TraceCall("__Pyx_PyMODINIT_FUNC PyInit_main(void)", __pyx_f[0], 2, 0, __PYX_ERR(0, 2, __pyx_L1_error));
 
-  /* "experiments.pyx":6
+  /* "main.pyx":6
  * # distutils: define_macros=CYTHON_TRACE_NOGIL=1
  * cimport cython
  * import difflib             # <<<<<<<<<<<<<<
@@ -7950,7 +7785,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_difflib, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":7
+  /* "main.pyx":7
  * cimport cython
  * import difflib
  * from symspell import symspell_matched_word             # <<<<<<<<<<<<<<
@@ -7972,7 +7807,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "experiments.pyx":8
+  /* "main.pyx":8
  * import difflib
  * from symspell import symspell_matched_word
  * from Chars2vec import cosine_similar_words             # <<<<<<<<<<<<<<
@@ -7994,7 +7829,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":9
+  /* "main.pyx":9
  * from symspell import symspell_matched_word
  * from Chars2vec import cosine_similar_words
  * import pkg_resources             # <<<<<<<<<<<<<<
@@ -8007,7 +7842,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pkg_resources, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":10
+  /* "main.pyx":10
  * from Chars2vec import cosine_similar_words
  * import pkg_resources
  * from symspellpy import SymSpell, Verbosity             # <<<<<<<<<<<<<<
@@ -8036,7 +7871,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "experiments.pyx":11
+  /* "main.pyx":11
  * import pkg_resources
  * from symspellpy import SymSpell, Verbosity
  * import difflib             # <<<<<<<<<<<<<<
@@ -8049,7 +7884,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_difflib, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "experiments.pyx":12
+  /* "main.pyx":12
  * from symspellpy import SymSpell, Verbosity
  * import difflib
  * from Chars2vec import get_word_embeddings             # <<<<<<<<<<<<<<
@@ -8071,7 +7906,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":13
+  /* "main.pyx":13
  * import difflib
  * from Chars2vec import get_word_embeddings
  * import Levenshtein             # <<<<<<<<<<<<<<
@@ -8084,7 +7919,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_Levenshtein, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":14
+  /* "main.pyx":14
  * from Chars2vec import get_word_embeddings
  * import Levenshtein
  * import spacy             # <<<<<<<<<<<<<<
@@ -8097,7 +7932,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_spacy, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":15
+  /* "main.pyx":15
  * import Levenshtein
  * import spacy
  * import timeit             # <<<<<<<<<<<<<<
@@ -8110,7 +7945,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_timeit, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "experiments.pyx":17
+  /* "main.pyx":17
  * import timeit
  * char_replace_list = [
  *     ["0", "o", "q", "Q", "D", "a"],             # <<<<<<<<<<<<<<
@@ -8139,7 +7974,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_a);
   PyList_SET_ITEM(__pyx_t_1, 5, __pyx_n_s_a);
 
-  /* "experiments.pyx":18
+  /* "main.pyx":18
  * char_replace_list = [
  *     ["0", "o", "q", "Q", "D", "a"],
  *     ["1", "i", "I", "l", "L", "t"],             # <<<<<<<<<<<<<<
@@ -8168,7 +8003,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_t);
   PyList_SET_ITEM(__pyx_t_2, 5, __pyx_n_s_t);
 
-  /* "experiments.pyx":19
+  /* "main.pyx":19
  *     ["0", "o", "q", "Q", "D", "a"],
  *     ["1", "i", "I", "l", "L", "t"],
  *     ["3", "8", "B"],             # <<<<<<<<<<<<<<
@@ -8188,7 +8023,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_B);
   PyList_SET_ITEM(__pyx_t_3, 2, __pyx_n_s_B);
 
-  /* "experiments.pyx":20
+  /* "main.pyx":20
  *     ["1", "i", "I", "l", "L", "t"],
  *     ["3", "8", "B"],
  *     ["2", "z", "Z", "s"],             # <<<<<<<<<<<<<<
@@ -8211,7 +8046,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_s);
   PyList_SET_ITEM(__pyx_t_4, 3, __pyx_n_s_s);
 
-  /* "experiments.pyx":21
+  /* "main.pyx":21
  *     ["3", "8", "B"],
  *     ["2", "z", "Z", "s"],
  *     ["4", "H", "k"],             # <<<<<<<<<<<<<<
@@ -8231,7 +8066,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_k);
   PyList_SET_ITEM(__pyx_t_5, 2, __pyx_n_s_k);
 
-  /* "experiments.pyx":22
+  /* "main.pyx":22
  *     ["2", "z", "Z", "s"],
  *     ["4", "H", "k"],
  *     ["5", "S", "s"],             # <<<<<<<<<<<<<<
@@ -8251,7 +8086,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_s);
   PyList_SET_ITEM(__pyx_t_6, 2, __pyx_n_s_s);
 
-  /* "experiments.pyx":23
+  /* "main.pyx":23
  *     ["4", "H", "k"],
  *     ["5", "S", "s"],
  *     ["6", "b", "G", "C", "d"],             # <<<<<<<<<<<<<<
@@ -8277,7 +8112,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_d);
   PyList_SET_ITEM(__pyx_t_7, 4, __pyx_n_s_d);
 
-  /* "experiments.pyx":24
+  /* "main.pyx":24
  *     ["5", "S", "s"],
  *     ["6", "b", "G", "C", "d"],
  *     ["7", "T", "j"],             # <<<<<<<<<<<<<<
@@ -8297,7 +8132,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_j);
   PyList_SET_ITEM(__pyx_t_8, 2, __pyx_n_s_j);
 
-  /* "experiments.pyx":25
+  /* "main.pyx":25
  *     ["6", "b", "G", "C", "d"],
  *     ["7", "T", "j"],
  *     ["9", "g", "y", "Y"],             # <<<<<<<<<<<<<<
@@ -8320,7 +8155,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_Y);
   PyList_SET_ITEM(__pyx_t_9, 3, __pyx_n_s_Y);
 
-  /* "experiments.pyx":26
+  /* "main.pyx":26
  *     ["7", "T", "j"],
  *     ["9", "g", "y", "Y"],
  *     ["m", "rn", "m"],             # <<<<<<<<<<<<<<
@@ -8340,7 +8175,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_m);
   PyList_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_m);
 
-  /* "experiments.pyx":27
+  /* "main.pyx":27
  *     ["9", "g", "y", "Y"],
  *     ["m", "rn", "m"],
  *     ["w", "vv"],             # <<<<<<<<<<<<<<
@@ -8357,7 +8192,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_n_s_vv);
   PyList_SET_ITEM(__pyx_t_11, 1, __pyx_n_s_vv);
 
-  /* "experiments.pyx":28
+  /* "main.pyx":28
  *     ["m", "rn", "m"],
  *     ["w", "vv"],
  *     ["io", "10"],             # <<<<<<<<<<<<<<
@@ -8374,7 +8209,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_kp_s_10);
   PyList_SET_ITEM(__pyx_t_12, 1, __pyx_kp_s_10);
 
-  /* "experiments.pyx":16
+  /* "main.pyx":16
  * import spacy
  * import timeit
  * char_replace_list = [             # <<<<<<<<<<<<<<
@@ -8423,7 +8258,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_char_replace_list, __pyx_t_13) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":33
+  /* "main.pyx":33
  * 
  * 
  * incorrect_word = "1mvoice"             # <<<<<<<<<<<<<<
@@ -8433,7 +8268,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(33,0,__PYX_ERR(0, 33, __pyx_L1_error))
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_incorrect_word, __pyx_kp_s_1mvoice) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
 
-  /* "experiments.pyx":35
+  /* "main.pyx":35
  * incorrect_word = "1mvoice"
  * 
  * cdef int sort_key_Levenshtein(tuple tup ):             # <<<<<<<<<<<<<<
@@ -8443,7 +8278,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(35,0,__PYX_ERR(0, 35, __pyx_L1_error))
 
 
-  /* "experiments.pyx":38
+  /* "main.pyx":38
  *     return tup[0]
  * 
  * cdef list levenshtein_distance_best_common_words(list list_words):             # <<<<<<<<<<<<<<
@@ -8453,7 +8288,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(38,0,__PYX_ERR(0, 38, __pyx_L1_error))
 
 
-  /* "experiments.pyx":58
+  /* "main.pyx":58
  * 
  * 
  * cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word):             # <<<<<<<<<<<<<<
@@ -8463,7 +8298,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(58,0,__PYX_ERR(0, 58, __pyx_L1_error))
 
 
-  /* "experiments.pyx":87
+  /* "main.pyx":87
  * 
  * 
  * cdef tuple sort_key(tuple element):             # <<<<<<<<<<<<<<
@@ -8473,7 +8308,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(87,0,__PYX_ERR(0, 87, __pyx_L1_error))
 
 
-  /* "experiments.pyx":91
+  /* "main.pyx":91
  * 
  * 
  * cdef bint is_in_same_list(str character1, str character2):             # <<<<<<<<<<<<<<
@@ -8483,7 +8318,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(91,0,__PYX_ERR(0, 91, __pyx_L1_error))
 
 
-  /* "experiments.pyx":103
+  /* "main.pyx":103
  * 
  * @cython.cdivision(True)
  * cdef float get_probability_of_correct_character_replacement(list operations_on_characters):             # <<<<<<<<<<<<<<
@@ -8493,7 +8328,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_TraceLine(103,0,__PYX_ERR(0, 103, __pyx_L1_error))
 
 
-  /* "experiments.pyx":212
+  /* "main.pyx":212
  * 
  * 
  * cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):             # <<<<<<<<<<<<<<
@@ -8502,12 +8337,12 @@ if (!__Pyx_RefNanny) {
  */
   __Pyx_TraceLine(212,0,__PYX_ERR(0, 212, __pyx_L1_error))
 
-  __pyx_t_13 = __Pyx_CyFunction_NewEx(&__pyx_mdef_11experiments_1get_word_with_probability_and_edit_distance, 0, __pyx_n_s_get_word_with_probability_and_ed_3, NULL, __pyx_n_s_experiments, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_CyFunction_NewEx(&__pyx_mdef_4main_1get_word_with_probability_and_edit_distance, 0, __pyx_n_s_get_word_with_probability_and_ed_3, NULL, __pyx_n_s_main, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_word_with_probability_and_ed_3, __pyx_t_13) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":294
+  /* "main.pyx":294
  *             empty_list=[]
  *             return empty_list
  * def get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -8515,12 +8350,12 @@ if (!__Pyx_RefNanny) {
  *     incorrect_word,
  */
   __Pyx_TraceLine(294,0,__PYX_ERR(0, 294, __pyx_L1_error))
-  __pyx_t_13 = __Pyx_CyFunction_NewEx(&__pyx_mdef_11experiments_3get_final_similar_word, 0, __pyx_n_s_get_final_similar_word, NULL, __pyx_n_s_experiments, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_CyFunction_NewEx(&__pyx_mdef_4main_3get_final_similar_word, 0, __pyx_n_s_get_final_similar_word, NULL, __pyx_n_s_main, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_final_similar_word, __pyx_t_13) < 0) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":379
+  /* "main.pyx":379
  * 
  * 
  * white_list_words = [             # <<<<<<<<<<<<<<
@@ -8689,7 +8524,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_white_list_words, __pyx_t_13) < 0) __PYX_ERR(0, 379, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":436
+  /* "main.pyx":436
  * 
  * 
  * incorrect_word_embedding = get_word_embeddings([incorrect_word])             # <<<<<<<<<<<<<<
@@ -8713,7 +8548,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_incorrect_word_embedding, __pyx_t_12) < 0) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "experiments.pyx":437
+  /* "main.pyx":437
  * 
  * incorrect_word_embedding = get_word_embeddings([incorrect_word])
  * white_list_word_embeddings = get_word_embeddings(white_list_words)             # <<<<<<<<<<<<<<
@@ -8732,7 +8567,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_white_list_word_embeddings, __pyx_t_13) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":438
+  /* "main.pyx":438
  * incorrect_word_embedding = get_word_embeddings([incorrect_word])
  * white_list_word_embeddings = get_word_embeddings(white_list_words)
  * start=timeit.default_timer()             # <<<<<<<<<<<<<<
@@ -8751,7 +8586,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_start, __pyx_t_13) < 0) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-  /* "experiments.pyx":439
+  /* "main.pyx":439
  * white_list_word_embeddings = get_word_embeddings(white_list_words)
  * start=timeit.default_timer()
  * word = get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -8762,7 +8597,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_get_final_similar_word); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
 
-  /* "experiments.pyx":440
+  /* "main.pyx":440
  * start=timeit.default_timer()
  * word = get_final_similar_word(
  * white_list_words,             # <<<<<<<<<<<<<<
@@ -8773,7 +8608,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_white_list_words); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
 
-  /* "experiments.pyx":441
+  /* "main.pyx":441
  * word = get_final_similar_word(
  * white_list_words,
  * incorrect_word,             # <<<<<<<<<<<<<<
@@ -8784,7 +8619,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_incorrect_word); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
 
-  /* "experiments.pyx":442
+  /* "main.pyx":442
  * white_list_words,
  * incorrect_word,
  * incorrect_word_embedding,             # <<<<<<<<<<<<<<
@@ -8795,7 +8630,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_incorrect_word_embedding); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "experiments.pyx":443
+  /* "main.pyx":443
  * incorrect_word,
  * incorrect_word_embedding,
  * white_list_word_embeddings,             # <<<<<<<<<<<<<<
@@ -8806,7 +8641,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_white_list_word_embeddings); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "experiments.pyx":439
+  /* "main.pyx":439
  * white_list_word_embeddings = get_word_embeddings(white_list_words)
  * start=timeit.default_timer()
  * word = get_final_similar_word(             # <<<<<<<<<<<<<<
@@ -8835,12 +8670,12 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_word_2, __pyx_t_9) < 0) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "experiments.pyx":445
+  /* "main.pyx":445
  * white_list_word_embeddings,
  * )
  * end=timeit.default_timer()             # <<<<<<<<<<<<<<
  * print("time lap ",end-start)
- * #print("get_final_similar_word",word)
+ * print("get_final_similar_word",word)
  */
   __Pyx_TraceLine(445,0,__PYX_ERR(0, 445, __pyx_L1_error))
   __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_timeit); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 445, __pyx_L1_error)
@@ -8854,11 +8689,11 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_end, __pyx_t_9) < 0) __PYX_ERR(0, 445, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "experiments.pyx":446
+  /* "main.pyx":446
  * )
  * end=timeit.default_timer()
  * print("time lap ",end-start)             # <<<<<<<<<<<<<<
- * #print("get_final_similar_word",word)
+ * print("get_final_similar_word",word)
  * 
  */
   __Pyx_TraceLine(446,0,__PYX_ERR(0, 446, __pyx_L1_error))
@@ -8881,17 +8716,37 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_PrintOne(0, __pyx_t_8) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "experiments.pyx":2
+  /* "main.pyx":447
+ * end=timeit.default_timer()
+ * print("time lap ",end-start)
+ * print("get_final_similar_word",word)             # <<<<<<<<<<<<<<
+ * 
+ */
+  __Pyx_TraceLine(447,0,__PYX_ERR(0, 447, __pyx_L1_error))
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_word_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  __Pyx_INCREF(__pyx_n_s_get_final_similar_word);
+  __Pyx_GIVEREF(__pyx_n_s_get_final_similar_word);
+  PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_get_final_similar_word);
+  __Pyx_GIVEREF(__pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_8);
+  __pyx_t_8 = 0;
+  if (__Pyx_PrintOne(0, __pyx_t_13) < 0) __PYX_ERR(0, 447, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+
+  /* "main.pyx":2
  * 
  * # cython: linetrace=True             # <<<<<<<<<<<<<<
  * # cython: binding=True
  * # distutils: define_macros=CYTHON_TRACE_NOGIL=1
  */
   __Pyx_TraceLine(2,0,__PYX_ERR(0, 2, __pyx_L1_error))
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_8) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_13 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_13) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
   /* "cfunc.to_py":64
  * 
@@ -8924,11 +8779,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_13);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init experiments", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init main", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init experiments");
+    PyErr_SetString(PyExc_ImportError, "init main");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
