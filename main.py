@@ -183,7 +183,7 @@ def get_word_with_probability_and_edit_distance(correct_word_list):
                     operations_on_characters
                 )
                 end=timeit.default_timer()
-                print("get_probability_of_corret_character_replacement used in loop ",probability)
+                print("get_probability_of_corret_character_replacement time taken %s"%(end - start))
                 word_probability.append((word[0], probability, word[1]))
             else:
                 print("edit distance is much bigger for small word")
@@ -196,19 +196,19 @@ def get_word_with_probability_and_edit_distance(correct_word_list):
         # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
         for word in best_match_long_word_edited_distance:
             if word[0] <= 4:
-                print("the wordd is aas",word)
-                start = timeit.default_timer()
+                # print("the wordd is aas",word)
+                # start = timeit.default_timer()
                 operations_on_characters = get_operations_on_characters(
                     [(incorrect_word, word[1])]
                 )
-                end=timeit.default_timer()
-                print("get_operations_on_characters", end-start)
+                # end=timeit.default_timer()
+                # print("get_operations_on_characters %s" %(end-start))
                 start = timeit.default_timer()
                 probability = get_probability_of_corret_character_replacement(
                     operations_on_characters
                 )
                 end=timeit.default_timer()
-                print("get_probability_of_corret_character_replacement used in loop",end-start)
+                print("get_probability_of_corret_character_replacement time taken  %s"%(end-start))
                 word_probability.append((word[0], probability, word[1]))
             else:
                 print("edit distance is much bigger for long word")
@@ -283,15 +283,17 @@ def get_final_similar_word(
             start = timeit.default_timer()
             matched_word = get_word_with_probability_and_edit_distance(common_words)
             end = timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance", end - start)
+            print("get_word_with_probability_and_edit_distance %s" %(end - start))
             # print("this is the common word matched " ,matched_word)
             return matched_word[2]
 
         else:
-
+            start = timeit.default_timer()
             best_matched_words_syms = get_word_with_probability_and_edit_distance(
                 matched_words_syms
             )
+            end= timeit.default_timer()
+            print("get_word_with_probability_and_edit_distance %s " %(end-start))
             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
                 matched_words_char2vec
             )
@@ -405,7 +407,7 @@ if __name__ == "__main__":
     # l.add_function(get_final_similar_word)
     # l.run('get_final_similar_word( white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings, )')
     # import cProfile
-    # cProfile.run("get_final_similar_word (white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
+    # cProfile.run("get_final_similar_word(white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
     # print("get_final_similar_word",end-start)
     # print(word)
     # print(sys.path) 
