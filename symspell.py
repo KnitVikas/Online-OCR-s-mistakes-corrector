@@ -1,7 +1,6 @@
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell, Verbosity
 
-
 def symspell_matched_word(incorrect_word):
     if len(incorrect_word) < 8:
         incorrect_word = [incorrect_word]

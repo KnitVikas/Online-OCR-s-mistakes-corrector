@@ -409,7 +409,7 @@ if __name__ == "__main__":
     # import cProfile
     # cProfile.run("get_final_similar_word(white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
     # print("get_final_similar_word",end-start)
-    print(word)
+    # print(word)
     # print(sys.path) 
     # def cfunc(int n):
 

@@ -18,7 +18,6 @@ def get_word_embeddings(word):
     # pickle.dump(word_embeddings, open(filename, 'wb'))
     return word_embeddings
 
-
 # load the white list word embedding model from disk
 # def load_pickel_emb(path):
 #     loaded_word_embeddings = pickle.load(open(path, 'rb'))
