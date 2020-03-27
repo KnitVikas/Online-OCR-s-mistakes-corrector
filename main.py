@@ -1,6 +1,7 @@
 from symspellpy_analyzer import symspell_matched_word
 from chars2vec_analyzer import cosine_similar_words
-import difflib
+
+# import difflib
 from chars2vec_analyzer import get_word_embeddings
 import spacy
 

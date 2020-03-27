@@ -5,7 +5,7 @@
 .*cache*/
 *venv*/
 
-# cython_utils/*.c
+cython_utils/*.c
 cython_utils/*.html
 cython_utils/*/*.html
 
