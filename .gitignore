@@ -1,3 +1,46 @@
+*.pyc
+*.pyo
+*.o
+
+.*cache*/
+*venv*/
+
+# cython_utils/*.c
+cython_utils/*.html
+cython_utils/*/*.html
+
+Tools/*.elc
+Demos/*.html
+Demos/*/*.html
+
+/TEST_TMP/
+cython_utils/build/
+/wheelhouse*/
+!tests/build/
+cython_utils//dist/
+.gitrev
+.coverage
+*.patch
+*.diff
+*.orig
+*.prof
+*.rej
+*.log
+*.dep
+*.swp
+*~
+callgrind.out.*
+
+docs/build
+
+tags
+TAGS
+
+# Jetbrains IDE project files
+/.idea
+/*.iml
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

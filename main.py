@@ -1,31 +1,31 @@
-from symspell import symspell_matched_word
-from Chars2vec import cosine_similar_words
-import pkg_resources
-from symspellpy import SymSpell, Verbosity
+from symspellpy_analyzer import symspell_matched_word
+from chars2vec_analyzer import cosine_similar_words
 import difflib
-from Chars2vec import get_word_embeddings
-
+from chars2vec_analyzer import get_word_embeddings
 import spacy
-import timeit
+
+# import timeit
 from cython_utils.utils import get_word_with_probability_and_edit_distance
-import sys
+
+# import sys
+
 char_replace_list = [
-    ["0", "o", "q", "Q", "D", "a"],
-    ["1", "i", "I", "l", "L", "t"],
+    ["0", "o", "q", "Q", "D", "a", "G"],
+    ["1", "i", "I", "l", "L", "t", "f", "L"],
     ["3", "8", "B"],
+    ["F", "P"],
     ["2", "z", "Z", "s"],
-    ["4", "H", "k"],
+    ["4", "H", "k", "R"],
     ["5", "S", "s"],
     ["6", "b", "G", "C", "d"],
     ["7", "T", "j"],
     ["9", "g", "y", "Y"],
-    ["m", "rn", "m"],
-    ["w", "vv"],
+    ["m", "rn", "ni"],
+    ["w", "vv", "W", "VV"],
     ["io", "10"],
+    ["#", "H"],
+    ["io", "10", "IO"],
 ]
-
-
-
 
 
 def get_final_similar_word(
@@ -42,7 +42,7 @@ def get_final_similar_word(
     nlp = nlp(matched_words_syms_text)
     # lemmatized the matched words
     matched_words_syms = [word_.lemma_ for word_ in nlp]
-    print("lemmatize matched words syms",matched_words_syms)
+    # print("lemmatize matched words syms", matched_words_syms)
 
     matched_words_char2vec = cosine_similar_words(
         incorrect_word_embedding, white_list_word_embeddings, white_list_words
@@ -52,37 +52,50 @@ def get_final_similar_word(
     nlp = nlp(matched_words_char2vec_text)
     matched_words_char2vec = [word_.lemma_ for word_ in nlp]
 
-    print("lemmatize matched words char2vec",matched_words_char2vec)
+    # print("lemmatize matched words char2vec", matched_words_char2vec)
 
     # finding the common words
-    common_words = [word for word in matched_words_char2vec if word in matched_words_syms]
+    common_words = [
+        word for word in matched_words_char2vec if word in matched_words_syms
+    ]
     # print("these are common words", common_words)
 
     try:
         # if common_words exist
         if common_words:
-            start = timeit.default_timer()
-            matched_word = get_word_with_probability_and_edit_distance(common_words,incorrect_word)
-            end = timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance %s" %(end - start))
+            # start = timeit.default_timer()
+            matched_word = get_word_with_probability_and_edit_distance(
+                common_words, incorrect_word
+            )
+            # end = timeit.default_timer()
+            # print("get_word_with_probability_and_edit_distance %s" % (end - start))
             # print("this is the common word matched " ,matched_word)
             return matched_word[2]
 
         else:
-            start = timeit.default_timer()
+            # start = timeit.default_timer()
             best_matched_words_syms = get_word_with_probability_and_edit_distance(
                 matched_words_syms, incorrect_word
             )
-            end= timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance %s " %(end-start))
+            # end = timeit.default_timer()
+            # print("get_word_with_probability_and_edit_distance %s " % (end - start))
             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
                 matched_words_char2vec, incorrect_word
             )
             # best_matched_words_syms shape (edit distance, probability, word )
-            print("best matched symspell word with probability and edit distance",best_matched_words_syms)
-            print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
-           
-            if len(best_matched_words_syms) != 0 and len(best_matched_words_char2vec) !=0 :
+            # print(
+            #     "best matched symspell word with probability and edit distance",
+            #     best_matched_words_syms,
+            # )
+            # print(
+            #     "best matched char2vec word with probability and edit distance",
+            #     best_matched_words_char2vec,
+            # )
+
+            if (
+                len(best_matched_words_syms) != 0
+                and len(best_matched_words_char2vec) != 0
+            ):
                 best_matched_words_from_symspell_Char2vec = [
                     best_matched_words_syms,
                     best_matched_words_char2vec,
@@ -96,19 +109,25 @@ def get_final_similar_word(
 
                 return sorted_best_matches_list[2]
 
-            elif len(best_matched_words_syms)!=0  and len(best_matched_words_char2vec) == 0:
-                
+            elif (
+                len(best_matched_words_syms) != 0
+                and len(best_matched_words_char2vec) == 0
+            ):
+
                 return best_matched_words_syms[2]
 
-            elif len(best_matched_words_syms) == 0 and len(best_matched_words_char2vec) != 0 :
-            
+            elif (
+                len(best_matched_words_syms) == 0
+                and len(best_matched_words_char2vec) != 0
+            ):
+
                 return best_matched_words_char2vec[2]
 
             else:
-                print("No matched word found !")
+                print("No matched word found!")
                 return None
     except Exception as e:
-        print("Some exception has occured",e)
+        print("Some exception has occured", e)
         return None
 
 
@@ -169,7 +188,7 @@ if __name__ == "__main__":
         "serial",
         "descending",
     ]
-    incorrect_word = "1mp0rtant"
+    incorrect_word = "1mp0rtani"
     incorrect_word_embedding = get_word_embeddings([incorrect_word])
     white_list_word_embeddings = get_word_embeddings(white_list_words)
     # start=timeit.default_timer()
@@ -180,7 +199,6 @@ if __name__ == "__main__":
         white_list_word_embeddings,
     )
     # end=timeit.default_timer()
-    
 
     # import line_profiler
     # l = line_profiler.LineProfiler()
@@ -190,6 +208,5 @@ if __name__ == "__main__":
     # cProfile.run("get_final_similar_word(white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
     # print("get_final_similar_word",end-start)
     print(word)
-    # print(sys.path) 
+    # print(sys.path)
     # def cfunc(int n):
-

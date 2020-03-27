@@ -1,13 +1,15 @@
 import chars2vec
-import sklearn.decomposition
-import matplotlib.pyplot as plt
-import pickle
-import operator
-import numpy as np
+
+# import sklearn.decomposition
+# import matplotlib.pyplot as plt
+# import pickle
+# import operator
+# import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load Inutition Engineering pretrained model
 # Models names: 'eng_50', 'eng_100', 'eng_150', 'eng_200', 'eng_300'
+
 
 def get_word_embeddings(word):
     c2v_model = chars2vec.load_model("eng_300")

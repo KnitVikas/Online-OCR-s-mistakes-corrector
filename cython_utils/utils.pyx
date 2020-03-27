@@ -1,27 +1,21 @@
-
-# cython: linetrace=True
-# cython: binding=True
-# distutils: define_macros=CYTHON_TRACE_NOGIL=1
+# cython: language_level = 3
 cimport cython
 import difflib
-import difflib
-from Chars2vec import get_word_embeddings
-import Levenshtein
-import spacy
-import timeit
+from Levenshtein import distance
+
 char_replace_list = [
-    ["0", "o", "q", "Q", "D", "a"],
-    ["1", "i", "I", "l", "L", "t"],
-    ["3", "8", "B"],
+    ["0", "o", "q", "Q", "D", "a","G"],
+    ["1", "i", "I", "l", "L", "t","f","L"],
+    ["3", "8", "B"],["F","P"],
     ["2", "z", "Z", "s"],
-    ["4", "H", "k"],
+    ["4", "H", "k","R"],
     ["5", "S", "s"],
     ["6", "b", "G", "C", "d"],
     ["7", "T", "j"],
     ["9", "g", "y", "Y"],
-    ["m", "rn", "m"],
-    ["w", "vv"],
-    ["io", "10"],
+    ["m", "rn","ni"],
+    ["w", "vv","W","VV"],
+    ["io", "10"],["#","H"],["io","10","IO"]
 ]
 
 
@@ -42,7 +36,7 @@ cdef list levenshtein_distance_best_common_words(list list_words, str incorrect_
     incorrect_word = incorrect_word
         
     for similar_word in list_words:
-        d = Levenshtein.distance(incorrect_word, similar_word)
+        d = distance(incorrect_word, similar_word)
         edit_distance_and_word.append((d, similar_word))
 
     # print("this is edited distance",edit_distance_and_word)
@@ -51,6 +45,7 @@ cdef list levenshtein_distance_best_common_words(list list_words, str incorrect_
     return sorted_list_incorrect__word_total_change
 
 cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word):
+    #print("entered in list_of_tuple_incorrect_correct_word",list_of_tuple_incorrect_correct_word)
     cdef:
         list list_of_tuple_incorrect_correct_words
         str correct_word
@@ -75,6 +70,7 @@ cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word
             elif operation[0] == "+":
                 # print(u'Add "{}" to position {}'.format(operation[-1],-1))
                 list_of_operations.append((idx, "Add", operation[-1]))
+    #print("list_of_operations found are",list_of_operations)
     return list_of_operations
 
 cdef tuple sort_key(tuple element):
@@ -93,6 +89,7 @@ cdef bint is_in_same_list(str character1, str character2):
 @cython.cdivision(True)
 cdef float get_probability_of_correct_character_replacement(list operations_on_characters):
     # sort the operation on the basis of index of character
+    #print("enterred in get_probability_of_correct_character_replacement",get_probability_of_correct_character_replacement)
     cdef :
         list operations_sorted_index = sorted(operations_on_characters, key=lambda tuple_: tuple_[0])
         int index1
@@ -112,10 +109,8 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
         str operation2
         str character1
         str character2
-     
-       #declare a tuple datatype with name tup_ (int, bool)
+        (int, bint) tup_ 
 
-     
     #print("this need to be print",operations_sorted_index)
     split_at_index = [(index1 + 1) for (index1, operation1, character1), (index2, operation2, character2) in zip(operations_sorted_index, operations_sorted_index[1:]) if (index2 - index1) != 1]
     #print(split_at_index)
@@ -190,7 +185,7 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
         
         probability_of_correct_characters_updated = len([ tup_ for tup_ in list_character_length_and_boolean_values if tup_[1] == True])
         length_list_character_length_and_boolean_values = len(list_character_length_and_boolean_values)
-        
+        #print("found length_list_character_length_and_boolean_values ",length_list_character_length_and_boolean_values)
         if list_character_length_and_boolean_values:
             probability_of_correct_characters_updated = probability_of_correct_characters_updated / length_list_character_length_and_boolean_values
             return probability_of_correct_characters_updated
@@ -198,7 +193,7 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
             return 0.0
 
 cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,str incorrect_word):
-    #print("list of correct words", correct_word_list)
+    #print("entered in get_word_with_probability_and_edit_distance", correct_word_list)
     cdef:
         float probability
         list list_correct_small_words 
@@ -207,16 +202,12 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
         list best_match_small_word_edited_distance
         list word_probability=[]
         list sorted_word_probability
-        str string
+        str  string
         list sorted_best_matches_list
-        tuple word=(int,str)
         
-        # declare word as tuple data type (int, str)
-
-
+        
     incorrect_word = incorrect_word
     # shape of word_probability is [edit_distance , probability of words ,word]
-
     # print("list_correct_small_words",list_correct_small_words)
     # print("list_correct_long_words",list_correct_long_words)
     list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
@@ -229,12 +220,13 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
                 if word[0] <= 2:
 
                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
-                    start = timeit.default_timer()
+                    #start = timeit.default_timer()
                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
-                    end = timeit.default_timer()
-                    print("get_probability_of_correct_character_replacement small words time %s" %(end-start))
+                    #end = timeit.default_timer()
+                    #print("get_probability_of_correct_character_replacement small words time %s" %(end-start))
                     #print("get_probability_of_corret_character_replacement used in loop ",probability)
                     word_probability.append((word[0], probability, word[1]))
+                    #print("the type of the string is ",type(word[0]),type(word[1]))
                     
                 else:
                     print("edit distance is much bigger for small word")
@@ -243,16 +235,16 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
 
     if list_correct_long_words:
         best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words, incorrect_word)
-        # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
+        #print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
         for word in best_match_long_word_edited_distance:
             if word[0] <= 4:
                 operations_on_characters = get_operations_on_characters(
                     [(incorrect_word, word[1])]
                 )
-                start = timeit.default_timer()
+                #start = timeit.default_timer()
                 probability = get_probability_of_correct_character_replacement(operations_on_characters)
-                end = timeit.default_timer()
-                print("get_probability_of_correct_character_replacement time long words  %s"%(end-start))
+                #end = timeit.default_timer()
+                #print("get_probability_of_correct_character_replacement time long words  %s"%(end-start))
                 word_probability.append((word[0], probability, word[1]))
             else:
                 print("edit distance is much bigger for long word")
@@ -267,7 +259,7 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
         for tuple_ in sorted_word_probability
         if tuple_[0] == sorted_word_probability[0][0]
     ]
-    # print("sorted_best_matches_list",sorted_best_matches_list)
+    #print("sorted_best_matches_list",sorted_best_matches_list)
     if sorted_best_matches_list:
         #print("lsit of best matched words are",sorted_best_matches_list)
         return list(sorted_best_matches_list[-1])
