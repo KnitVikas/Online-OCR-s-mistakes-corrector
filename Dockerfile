@@ -6,10 +6,8 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 WORKDIR /app
 
 RUN apt-get update -y \
-    && apt-get install -y software-properties-common \
-    && apt-get clean \
-    && apt-get update -y \
     && apt-get upgrade -y \
+    && apt-get install -y software-properties-common \
     && apt-get install -y python3 python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -23,7 +21,7 @@ RUN chmod +x /tini && \
     chmod +x health.sh && \
     touch demo_logs.log && \
     cd cython_utils && \
-    python3 setupy.py build_ext --inplace
+    python3 setup.py build_ext --inplace
 
 ENTRYPOINT ["/tini", "--"]
 
