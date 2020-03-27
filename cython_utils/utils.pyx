@@ -4,10 +4,6 @@
 # distutils: define_macros=CYTHON_TRACE_NOGIL=1
 cimport cython
 import difflib
-from symspell import symspell_matched_word
-from Chars2vec import cosine_similar_words
-import pkg_resources
-from symspellpy import SymSpell, Verbosity
 import difflib
 from Chars2vec import get_word_embeddings
 import Levenshtein
@@ -30,12 +26,11 @@ char_replace_list = [
 
 
 
-incorrect_word = "1mvoice"
 
 cdef int sort_key_Levenshtein(tuple tup ):
     return tup[0]
 
-cdef list levenshtein_distance_best_common_words(list list_words):
+cdef list levenshtein_distance_best_common_words(list list_words, str incorrect_word):
     cdef:
         list edit_distance_and_word =[]
         list sorted_list_incorrect__word_total_changes 
@@ -44,6 +39,7 @@ cdef list levenshtein_distance_best_common_words(list list_words):
 #         str incorrect_word
 #         list sorted_list_incorrect__word_total_changes
         list sorted_list_incorrect__word_total_change
+    incorrect_word = incorrect_word
         
     for similar_word in list_words:
         d = Levenshtein.distance(incorrect_word, similar_word)
@@ -53,7 +49,6 @@ cdef list levenshtein_distance_best_common_words(list list_words):
     sorted_list_incorrect__word_total_changes = sorted( edit_distance_and_word, key=sort_key_Levenshtein)
     sorted_list_incorrect__word_total_change = [ word for word in sorted_list_incorrect__word_total_changes if word[0] == sorted_list_incorrect__word_total_changes[0][0]]
     return sorted_list_incorrect__word_total_change
-
 
 cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word):
     cdef:
@@ -82,8 +77,6 @@ cdef list get_operations_on_characters(list list_of_tuple_incorrect_correct_word
                 list_of_operations.append((idx, "Add", operation[-1]))
     return list_of_operations
 
-
-
 cdef tuple sort_key(tuple element):
     return (element[0], element[1])
 
@@ -96,8 +89,6 @@ cdef bint is_in_same_list(str character1, str character2):
         if character1 in list_ and character2 in list_:
             return True
     return False
-
-
 
 @cython.cdivision(True)
 cdef float get_probability_of_correct_character_replacement(list operations_on_characters):
@@ -135,7 +126,7 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
         list_character_to_check.append(new_list)
         last_idx += len(new_list)
     list_character_to_check.append([tuple_ for tuple_ in operations_sorted_index[last_idx:]])
-
+    
     #print("this need to be list_character_to_check",list_character_to_check)
     # print("list_character_to_check",list_character_to_check)
     # s=[[(0, 'Delete', '1'), (1, 'Add', 'i')], [(10, 'Delete', '0'), (11, 'Add', 'o')], [(13, 'Delete', 'r'), (14, 'Add', 's')]]
@@ -178,8 +169,7 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
                             print(
                                 "either first_character or second_chacter are not satisfying the condition when operations are  not equal"
                             )
-                # print("first_character","second_character",first_character,second_character)
-#                 cdef int length_first_character = len(first_character)
+
                 if first_character and second_character:
                     
                     if is_in_same_list(first_character, second_character):
@@ -207,48 +197,42 @@ cdef float get_probability_of_correct_character_replacement(list operations_on_c
         else:
             return 0.0
 
+cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,str incorrect_word):
+    #print("list of correct words", correct_word_list)
+    cdef:
+        float probability
+        list list_correct_small_words 
+        list list_correct_long_words
+        list operations_on_characters
+        list best_match_small_word_edited_distance
+        list word_probability=[]
+        list sorted_word_probability
+        str string
+        list sorted_best_matches_list
+        tuple word=(int,str)
+        
+        # declare word as tuple data type (int, str)
 
 
-cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):
-         
-        cdef:
-            float probability
-            list list_correct_small_words 
-            list list_correct_long_words
-            list operations_on_characters
-            list best_match_small_word_edited_distance
-            list word_probability=[]
-            list sorted_word_probability
-            str string
-            list sorted_best_matches_list
-            tuple word=(int,str)
-            
-            # declare word as tuple data type (int, str)
+    incorrect_word = incorrect_word
+    # shape of word_probability is [edit_distance , probability of words ,word]
 
-
-
-        # shape of word_probability is [edit_distance , probability of words ,word]
-
-        # print("list_correct_small_words",list_correct_small_words)
-        # print("list_correct_long_words",list_correct_long_words)
-        list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
-        list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7] 
-        if list_correct_small_words:
-            best_match_small_word_edited_distance = levenshtein_distance_best_common_words(
-                list_correct_small_words)
-
-    #         end = timeit.default_timer()
-            #print("levenshtein_distance_best_common_words")
-
-            # print("best_match_small_word_edited_distance",best_match_small_word_edited_distance)
-            for  word in best_match_small_word_edited_distance:
+    # print("list_correct_small_words",list_correct_small_words)
+    # print("list_correct_long_words",list_correct_long_words)
+    list_correct_small_words = [string for string in correct_word_list if 2 < len(string) < 7]
+    list_correct_long_words  = [string for string in correct_word_list if len(string) >= 7] 
+    if list_correct_small_words:
+        best_match_small_word_edited_distance = levenshtein_distance_best_common_words(
+            list_correct_small_words, incorrect_word)
+        #print("small words are there ")
+        for  word in best_match_small_word_edited_distance:
                 if word[0] <= 2:
 
                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
                     start = timeit.default_timer()
                     probability = get_probability_of_correct_character_replacement(operations_on_characters)
                     end = timeit.default_timer()
-                    print("get_probability_of_correct_character_replacement time %s" %(end-start))
+                    print("get_probability_of_correct_character_replacement small words time %s" %(end-start))
                     #print("get_probability_of_corret_character_replacement used in loop ",probability)
                     word_probability.append((word[0], probability, word[1]))
                     
@@ -257,192 +241,41 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list):
         else:
             print("No small words founds")
 
-        if list_correct_long_words:
-            best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words)
-            # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
-            for word in best_match_long_word_edited_distance:
-                if word[0] <= 4:
-                    operations_on_characters = get_operations_on_characters(
-                        [(incorrect_word, word[1])]
-                    )
-                    start = timeit.default_timer()
-                    probability = get_probability_of_correct_character_replacement(operations_on_characters)
-                    end = timeit.default_timer()
-                    print("get_probability_of_correct_character_replacement time %s"%(end-start))
-                    word_probability.append((word[0], probability, word[1]))
-                else:
-                    print("edit distance is much bigger for long word")
-    #     else:
-            print("No long words founds")
-
-        # print("word_probability ",word_probability)
-
-        sorted_word_probability = sorted(
-            word_probability, key=sort_key
-        )
-        sorted_best_matches_list = [
-            tuple_
-            for tuple_ in sorted_word_probability
-            if tuple_[0] == sorted_word_probability[0][0]
-        ]
-        # print("sorted_best_matches_list",sorted_best_matches_list)
-        if sorted_best_matches_list:
-            return list(sorted_best_matches_list[-1])
-        else:
-            empty_list=[]
-            return empty_list
-def get_final_similar_word(
-    white_list_words,
-    incorrect_word,
-    incorrect_word_embedding,
-    white_list_word_embeddings,
-):
-
-    matched_words_syms = symspell_matched_word(incorrect_word)
-    # print("matched_words_syms",matched_words_syms)
-    nlp = spacy.load("en_core_web_sm")
-    matched_words_syms_text = " ".join(matched_words_syms)
-    nlp = nlp(matched_words_syms_text)
-    # lemmatized the matched words
-    matched_words_syms = [word_.lemma_ for word_ in nlp]
-    #print("lemmatize matched words syms",matched_words_syms)
-
-    matched_words_char2vec = cosine_similar_words(
-        incorrect_word_embedding, white_list_word_embeddings, white_list_words
-    )
-    nlp = spacy.load("en_core_web_sm")
-    matched_words_char2vec_text = " ".join(matched_words_char2vec)
-    nlp = nlp(matched_words_char2vec_text)
-    matched_words_char2vec = [word_.lemma_ for word_ in nlp]
-
-    #print("lemmatize matched words char2vec",matched_words_char2vec)
-
-    # finding the common words
-    common_words = [word for word in matched_words_char2vec if word in matched_words_syms]
-    # print("these are common words", common_words)
-
-    try:
-        # if common_words exist
-        if common_words:
-            start = timeit.default_timer()
-            matched_word = get_word_with_probability_and_edit_distance(common_words)
-            end = timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance %s"%(end - start))
-            # print("this is the common word matched " ,matched_word)
-            return matched_word[2]
-
-        else:
-            start=timeit.default_timer()
-            best_matched_words_syms = get_word_with_probability_and_edit_distance(
-                matched_words_syms
-            )
-            end= timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
-            
-            start= timeit.default_timer()
-            best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
-                matched_words_char2vec
-            )
-            end=timeit.default_timer()
-            print("get_word_with_probability_and_edit_distance time taken %s"%(end-start))
-            # best_matched_words_syms shape (edit distance, probability, word )
-            #print("best matched symspell word with probability and edit distance",best_matched_words_syms)
-            #print("best matched char2vec word with probability and edit distance",best_matched_words_char2vec)
-
-            if len(best_matched_words_syms)!=0 and len(best_matched_words_char2vec)!=0:
-                best_matched_words_from_symspell_Char2vec = [
-                    best_matched_words_syms,
-                    best_matched_words_char2vec,
-                ]
-                sorted_best_matches_list = sorted(
-                    best_matched_words_from_symspell_Char2vec,
-                    key=sort_key
-                )[0]
-                return sorted_best_matches_list[2]
-
-            elif len(best_matched_words_syms)!= 0 and len(best_matched_words_char2vec)==0:
-                return best_matched_words_syms[2]
-
-            elif len(best_matched_words_syms) == 0 and (best_matched_words_char2vec)!=0 :
-        
-                return best_matched_words_char2vec[2]
-
+    if list_correct_long_words:
+        best_match_long_word_edited_distance = levenshtein_distance_best_common_words(list_correct_long_words, incorrect_word)
+        # print("best_match_long_word_edited_distance",best_match_long_word_edited_distance)
+        for word in best_match_long_word_edited_distance:
+            if word[0] <= 4:
+                operations_on_characters = get_operations_on_characters(
+                    [(incorrect_word, word[1])]
+                )
+                start = timeit.default_timer()
+                probability = get_probability_of_correct_character_replacement(operations_on_characters)
+                end = timeit.default_timer()
+                print("get_probability_of_correct_character_replacement time long words  %s"%(end-start))
+                word_probability.append((word[0], probability, word[1]))
             else:
-                print("none of the matched word found")
-    except Exception as e:
-        print("some exception has occured",e)
-        
+                print("edit distance is much bigger for long word")
+    else:
+        print("No long words founds")
 
-#if __name__ == "__main__":
+    sorted_word_probability = sorted(
+    word_probability, key=sort_key
+    )
+    sorted_best_matches_list = [
+        tuple_
+        for tuple_ in sorted_word_probability
+        if tuple_[0] == sorted_word_probability[0][0]
+    ]
+    # print("sorted_best_matches_list",sorted_best_matches_list)
+    if sorted_best_matches_list:
+        #print("lsit of best matched words are",sorted_best_matches_list)
+        return list(sorted_best_matches_list[-1])
+    else:
+        #print("Edit distance is more")
+        return []
 
-
-white_list_words = [
-    "place",
-    "mark",
-    "part",
-    "tariff",
-    "quantity",
-    "packages",
-    "description",
-    "information",
-    "gross",
-    "class",
-    "hazmat",
-    "commodity",
-    "package",
-    "pallet",
-    "value",
-    "marks",
-    "pieces",
-    "type",
-    "parties",
-    "order",
-    "volume",
-    "weight",
-    "numeric",
-    "division",
-    "item",
-    "shipping",
-    "product",
-    "slip",
-    "batch",
-    "partial",
-    "expiration",
-    "unit",
-    "details",
-    "measurement",
-    "count",
-    "nature",
-    "container",
-    "price",
-    "rate",
-    "charge",
-    "packaging",
-    "group",
-    "ordered",
-    "packs",
-    "goods",
-    "amount",
-    "hash",
-    "chargeable",
-    "tons",
-    "total",
-    "serial",
-    "descending",
-]
+   
 
 
-
-incorrect_word_embedding = get_word_embeddings([incorrect_word])
-white_list_word_embeddings = get_word_embeddings(white_list_words)
-start=timeit.default_timer()
-word = get_final_similar_word(
-white_list_words,
-incorrect_word,
-incorrect_word_embedding,
-white_list_word_embeddings,
-)
-end=timeit.default_timer()
-print("time lap ",end-start)
-print("get_final_similar_word",word)
-
+         

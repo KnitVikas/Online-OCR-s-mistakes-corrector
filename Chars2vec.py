@@ -9,7 +9,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load Inutition Engineering pretrained model
 # Models names: 'eng_50', 'eng_100', 'eng_150', 'eng_200', 'eng_300'
 
-
 def get_word_embeddings(word):
     c2v_model = chars2vec.load_model("eng_300")
     # Create word embedding of incorrect word
@@ -73,7 +72,6 @@ def cosine_similar_words(incorrect_word_embedding, words_embedding, white_list_w
 #             s=500 * len(words[0]), label=0,
 #             )
 # plt.show()
-
 # white_list_words=['information', 'nfmc', 'mark', 'part', 'tariff', 'quantity', 'packages', 'description', 'gross', 'class', 'hazmat', 'commodity', 'package', 'pallet', 'value', 'marks', 'pieces', 'type', 'parties', 'order', 'volume', 'weight', 'numeric', 'division', 'item', 'shipping', 'product', 'slip', 'batch', 'partial', 'expiration', 'unit', 'details', 'measurement', 'count', 'nature', 'container', 'price', 'rate', 'charge', 'packaging', 'group', 'ordered', 'packs', 'goods', 'amount', 'hash', 'chargeable', 'tons', 'total', 'serial', 'descending']
 # # incorrect_word=["inform"]
 # print(len(white_list_words))

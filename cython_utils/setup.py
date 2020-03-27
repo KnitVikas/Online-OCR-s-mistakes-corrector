@@ -1,5 +1,4 @@
 from distutils.core import setup
 from Cython.Build import cythonize
 import numpy
-import main
-setup(ext_modules = cythonize('main.pyx'))
+setup(ext_modules = cythonize('*.pyx'), include_dirs=[numpy.get_include()])
