@@ -18,9 +18,6 @@ char_replace_list = [
     ["io", "10"],["#","H"],["io","10","IO"]
 ]
 
-
-
-
 cdef int sort_key_Levenshtein(tuple tup ):
     return tup[0]
 
@@ -266,8 +263,3 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
     else:
         #print("Edit distance is more")
         return []
-
-   
-
-
-         
