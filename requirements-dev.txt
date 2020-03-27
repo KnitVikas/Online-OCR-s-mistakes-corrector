@@ -11,4 +11,5 @@ python-Levenshtein==0.12.0
 python-dotenv==0.12.0
 sentry-sdk==0.14.3
 Cython==0.29.16
+Flask==1.1.1
 pre-commit==2.2.0

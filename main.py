@@ -1,58 +1,40 @@
-from symspellpy_analyzer import symspell_matched_word
-from chars2vec_analyzer import cosine_similar_words
-
-# import difflib
-from chars2vec_analyzer import get_word_embeddings
+# import sys
 import spacy
-
+from pkg_resources import resource_filename as pkg_resources_filename
+from symspellpy import SymSpell
+from symspellpy_analyzer import symspell_matched_word
+from chars2vec import load_model as load_c2v_model
+from utils import cosine_similar_words, get_c2v_word_embeddings
 from cython_utils.utils import get_word_with_probability_and_edit_distance
 
 # import timeit
 
-# import sys
-
-char_replace_list = [
-    ["0", "o", "q", "Q", "D", "a", "G"],
-    ["1", "i", "I", "l", "L", "t", "f", "L"],
-    ["3", "8", "B"],
-    ["F", "P"],
-    ["2", "z", "Z", "s"],
-    ["4", "H", "k", "R"],
-    ["5", "S", "s"],
-    ["6", "b", "G", "C", "d"],
-    ["7", "T", "j"],
-    ["9", "g", "y", "Y"],
-    ["m", "rn", "ni"],
-    ["w", "vv", "W", "VV"],
-    ["io", "10"],
-    ["#", "H"],
-    ["io", "10", "IO"],
-]
-
 
 def get_final_similar_word(
+    spacy_nlp,
+    sym_spell_len5,
+    sym_spell_len7,
     white_list_words,
+    white_list_word_embeddings,
     incorrect_word,
     incorrect_word_embedding,
-    white_list_word_embeddings,
 ):
-
-    matched_words_syms = symspell_matched_word(incorrect_word)
+    matched_words_syms = symspell_matched_word(
+        sym_spell_len5, sym_spell_len7, incorrect_word
+    )
     # print("matched_words_syms",matched_words_syms)
-    nlp = spacy.load("en_core_web_sm")
     matched_words_syms_text = " ".join(matched_words_syms)
-    nlp = nlp(matched_words_syms_text)
+    nlp_output = spacy_nlp(matched_words_syms_text)
     # lemmatized the matched words
-    matched_words_syms = [word_.lemma_ for word_ in nlp]
+    matched_words_syms = [word_.lemma_ for word_ in nlp_output]
     # print("lemmatize matched words syms", matched_words_syms)
 
     matched_words_char2vec = cosine_similar_words(
         incorrect_word_embedding, white_list_word_embeddings, white_list_words
     )
-    nlp = spacy.load("en_core_web_sm")
     matched_words_char2vec_text = " ".join(matched_words_char2vec)
-    nlp = nlp(matched_words_char2vec_text)
-    matched_words_char2vec = [word_.lemma_ for word_ in nlp]
+    nlp_output = spacy_nlp(matched_words_char2vec_text)
+    matched_words_char2vec = [word_.lemma_ for word_ in nlp_output]
 
     # print("lemmatize matched words char2vec", matched_words_char2vec)
 
@@ -73,7 +55,6 @@ def get_final_similar_word(
             # print("get_word_with_probability_and_edit_distance %s" % (end - start))
             # print("this is the common word matched " ,matched_word)
             return matched_word[2]
-
         else:
             # start = timeit.default_timer()
             best_matched_words_syms = get_word_with_probability_and_edit_distance(
@@ -106,25 +87,18 @@ def get_final_similar_word(
                     best_matched_words_from_symspell_Char2vec,
                     key=lambda element: (element[0], element[1]),
                 )[0]
-
                 # print("get in ",sorted_best_matches_list)
-
                 return sorted_best_matches_list[2]
-
             elif (
                 len(best_matched_words_syms) != 0
                 and len(best_matched_words_char2vec) == 0
             ):
-
                 return best_matched_words_syms[2]
-
             elif (
                 len(best_matched_words_syms) == 0
                 and len(best_matched_words_char2vec) != 0
             ):
-
                 return best_matched_words_char2vec[2]
-
             else:
                 print("No matched word found!")
                 return None
@@ -133,8 +107,27 @@ def get_final_similar_word(
         return None
 
 
-if __name__ == "__main__":
+def initialize_models():
+    spacy_nlp = spacy.load("en_core_web_sm")
 
+    dictionary_path = pkg_resources_filename(
+        "symspellpy", "frequency_dictionary_en_82_765.txt"
+    )
+    sym_spell_len5 = SymSpell(max_dictionary_edit_distance=2, prefix_length=5)
+    # term_index is the column of the term and count_index is the column of the term frequency
+    sym_spell_len5.load_dictionary(dictionary_path, term_index=0, count_index=1)
+
+    # The length of word prefixes used for spell checking.
+    sym_spell_len7 = SymSpell(max_dictionary_edit_distance=3, prefix_length=7)
+    # term_index is the column of the term and count_index is the column of the term frequency
+    sym_spell_len7.load_dictionary(dictionary_path, term_index=0, count_index=1)
+
+    c2v_model = load_c2v_model("eng_300")
+
+    return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
+
+
+if __name__ == "__main__":
     white_list_words = [
         "place",
         "mark",
@@ -190,25 +183,20 @@ if __name__ == "__main__":
         "serial",
         "descending",
     ]
+
+    spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
+
     incorrect_word = "1mp0rtani"
-    incorrect_word_embedding = get_word_embeddings([incorrect_word])
-    white_list_word_embeddings = get_word_embeddings(white_list_words)
-    # start=timeit.default_timer()
+    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+    white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
+
     word = get_final_similar_word(
+        spacy_nlp,
+        sym_spell_len5,
+        sym_spell_len7,
         white_list_words,
+        white_list_word_embeddings,
         incorrect_word,
         incorrect_word_embedding,
-        white_list_word_embeddings,
     )
-    # end=timeit.default_timer()
-
-    # import line_profiler
-    # l = line_profiler.LineProfiler()
-    # l.add_function(get_final_similar_word)
-    # l.run('get_final_similar_word( white_list_words,incorrect_word,incorrect_word_embedding,white_list_word_embeddings, )')
-    # import cProfile
-    # cProfile.run("get_final_similar_word(white_list_words, incorrect_word, incorrect_word_embedding,white_list_word_embeddings)" )
-    # print("get_final_similar_word",end-start)
     print(word)
-    # print(sys.path)
-    # def cfunc(int n):

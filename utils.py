@@ -1,29 +1,12 @@
-import chars2vec
-
-# import sklearn.decomposition
-# import matplotlib.pyplot as plt
-# import pickle
-# import operator
-# import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Load Inutition Engineering pretrained model
-# Models names: 'eng_50', 'eng_100', 'eng_150', 'eng_200', 'eng_300'
 
-
-def get_word_embeddings(word):
-    c2v_model = chars2vec.load_model("eng_300")
+def get_c2v_word_embeddings(c2v_model, word):
     # Create word embedding of incorrect word
     word_embeddings = c2v_model.vectorize_words(word)
     # filename = 'word_embeddings.sav'
     # pickle.dump(word_embeddings, open(filename, 'wb'))
     return word_embeddings
-
-
-# load the white list word embedding model from disk
-# def load_pickel_emb(path):
-#     loaded_word_embeddings = pickle.load(open(path, 'rb'))
-#     return loaded_word_embeddings
 
 
 # finding the cosine_similarity
