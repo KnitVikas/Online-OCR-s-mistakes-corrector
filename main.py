@@ -5,8 +5,9 @@ from chars2vec_analyzer import cosine_similar_words
 from chars2vec_analyzer import get_word_embeddings
 import spacy
 
-# import timeit
 from cython_utils.utils import get_word_with_probability_and_edit_distance
+
+# import timeit
 
 # import sys
 
