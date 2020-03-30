@@ -9,3 +9,5 @@ python-Levenshtein==0.12.0
 python-dotenv==0.12.0
 sentry-sdk==0.14.3
 Cython==0.29.16
+flask_api==2.0
+flask==1.1.1
