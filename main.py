@@ -5,6 +5,8 @@ from symspellpy import SymSpell
 from chars2vec import load_model as load_c2v_model
 from cython_utils.utils import get_word_with_probability_and_edit_distance,cosine_similar_words, get_c2v_word_embeddings,symspell_matched_word
 import numpy
+from flask import Flask, request, jsonify,make_response,abort
+from flask_api import status
 # import timeit
 
 
@@ -125,7 +127,39 @@ def initialize_models():
     return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
 
 
+app = Flask(__name__)
+
+@app.route('/', methods=['POST']) 
+def get_prediction():
+    data = request.json
+    
+    
+    
+    try:
+        if data['word']:
+            incorrect_word = data['word']
+            incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+            word = get_final_similar_word(
+                spacy_nlp,
+                sym_spell_len5,
+                sym_spell_len7,
+                white_list_words,
+                white_list_word_embeddings,
+                incorrect_word,
+                incorrect_word_embedding,
+            )
+            return jsonify(word)
+        else:
+            response = make_response(jsonify(message="Value can't be empty!"), 202)
+            abort(response)
+    except:
+            response = make_response(jsonify(message="Bad Request!"), 400)
+            abort(response)
+
+
+
 if __name__ == "__main__":
+     
     white_list_words = [
         "place",
         "mark",
@@ -181,23 +215,10 @@ if __name__ == "__main__":
         "serial",
         "descending",
     ]
-
+   
     spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
 
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
-    
-    
-    incorrect_word = "desctpt0n"
-    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
-    
 
-    word = get_final_similar_word(
-        spacy_nlp,
-        sym_spell_len5,
-        sym_spell_len7,
-        white_list_words,
-        white_list_word_embeddings,
-        incorrect_word,
-        incorrect_word_embedding,
-    )
-    print(word)
+    app.run(debug = True)
+    
