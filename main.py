@@ -184,12 +184,12 @@ if __name__ == "__main__":
 
     spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
 
-    incorrect_word = "1mvoice"
-    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
-
-    # print("incorrect_word_embedding",incorrect_word_embedding)
-    # print("white_list_word_embeddings",white_list_word_embeddings)
+    
+    
+    incorrect_word = "desctpt0n"
+    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+    
 
     word = get_final_similar_word(
         spacy_nlp,

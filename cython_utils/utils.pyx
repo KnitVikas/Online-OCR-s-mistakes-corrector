@@ -98,7 +98,7 @@ cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_wo
 
 
 
-cpdef np.ndarray get_c2v_word_embeddings(c2v_model, list word):
+cpdef np.ndarray[np.float32_t , ndim =2] get_c2v_word_embeddings(c2v_model, list word):
     # Create word embedding of incorrect word
     word_embeddings = c2v_model.vectorize_words(word)
     # filename = 'word_embeddings.sav'
@@ -108,7 +108,7 @@ cpdef np.ndarray get_c2v_word_embeddings(c2v_model, list word):
 cdef float sort_key_cosine_distance (tuple element):
     return element[0]
 
-cpdef list cosine_similar_words(np.ndarray incorrect_word_embedding, np.ndarray words_embedding, list white_list_words):
+cpdef list cosine_similar_words(np.ndarray[dtype=np.float32_t, ndim = 2 ] incorrect_word_embedding, np.ndarray[dtype = np.float32_t, ndim=2 ]  words_embedding, list white_list_words):
     # dist=cosine_similarity([incorrect_word_embedding[0]],[words_embedding[0]])
     cdef :
         list cosine_distance
@@ -120,7 +120,7 @@ cpdef list cosine_similar_words(np.ndarray incorrect_word_embedding, np.ndarray 
     for idx in range(len(words_embedding)):
         dist = cosine_similarity([incorrect_word_embedding[0]], [words_embedding[idx]])
         cosine_distance.append((dist[0][0], words_embedding[idx]))
-
+        
     # print(cosine_distance)
 
     # max_cosine_val=max(cosine_distance,key=lambda item:item[0])[0]
