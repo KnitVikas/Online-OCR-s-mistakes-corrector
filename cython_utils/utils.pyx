@@ -2,6 +2,9 @@
 cimport cython
 import difflib
 from Levenshtein import distance
+cimport numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from symspellpy import Verbosity
 
 char_replace_list = [
     ["0", "o", "q", "Q", "D", "a","G"],
@@ -17,6 +20,127 @@ char_replace_list = [
     ["w", "vv","W","VV"],
     ["io", "10"],["#","H"],["io","10","IO"]
 ]
+
+
+
+
+cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_word):
+            
+    cdef:
+        list incorrect_words
+        list suggested_words
+        str word
+        list symspell_matched_words
+        int idx
+        int max_edit_distance
+        bint transfer_casing
+        list suggestions
+        int length_incorrect_word
+        int length_of_suggested_words
+        
+    length_incorrect_word = len(incorrect_word)      
+    if length_incorrect_word < 8:
+        incorrect_words = [incorrect_word]
+   
+        # lookup suggestions for single-word input strings
+        suggested_words = []
+        for word in incorrect_words:
+            # A Verbosity parameter allows to control the number of returned results:
+            suggestions = sym_spell_len5.lookup(
+                word, Verbosity.CLOSEST, max_edit_distance=2, transfer_casing=True
+            )  # ignore_token = r"\w+\d"
+            # keep the original casing
+            # Avoid correcting phrases matching regex
+            # display suggestion term, term frequency, and edit distance
+            # keep the original casing
+            # Avoid correcting phrases matching regex
+            # display suggestion term, term frequency, and edit distance
+            for suggestion in suggestions:
+
+                # print(suggestion)
+                suggested_words.append((word, suggestion))
+                # print(type(suggestion))
+        symspell_matched_words = []
+        length_of_suggested_words=len(suggested_words)
+        for idx in range(length_of_suggested_words):
+            # print(s[i][0],str(s[i][1]).split()[0][0:-1])
+            symspell_matched_words.append(str(suggested_words[idx][1]).split()[0][0:-1])
+        return symspell_matched_words
+    else:
+        incorrect_words = [incorrect_word]
+
+        # lookup suggestions for single-word input strings
+        suggested_words = []
+        for word in incorrect_words:
+            # A Verbosity parameter allows to control the number of returned results:
+            suggestions = sym_spell_len7.lookup(
+                word, Verbosity.CLOSEST, max_edit_distance=3, transfer_casing=True
+            )  # ignore_token = r"\w+\d"
+            # keep the original casing
+            # Avoid correcting phrases matching regex
+            # display suggestion term, term frequency, and edit distance.
+            for suggestion in suggestions:
+                # print(suggestion)
+                suggested_words.append((word, suggestion))
+                # print(type(suggestion))
+        symspell_matched_words = []
+        length_of_suggested_words=len(suggested_words)
+        for idx in range(length_of_suggested_words):
+
+            # print(s[i][0],str(s[i][1]).split()[0][0:-1])
+            symspell_matched_words.append(str(suggested_words[idx][1]).split()[0][0:-1])
+        return symspell_matched_words
+
+       
+
+
+
+
+
+
+cpdef np.ndarray get_c2v_word_embeddings(c2v_model, list word):
+    # Create word embedding of incorrect word
+    word_embeddings = c2v_model.vectorize_words(word)
+    # filename = 'word_embeddings.sav'
+    # pickle.dump(word_embeddings, open(filename, 'wb'))
+    return word_embeddings
+
+cdef float sort_key_cosine_distance (tuple element):
+    return element[0]
+
+cpdef list cosine_similar_words(np.ndarray incorrect_word_embedding, np.ndarray words_embedding, list white_list_words):
+    # dist=cosine_similarity([incorrect_word_embedding[0]],[words_embedding[0]])
+    cdef :
+        list cosine_distance
+        list cosine_similar_words
+        int idx
+        list sort_cosine_distance
+    
+    cosine_distance = []
+    for idx in range(len(words_embedding)):
+        dist = cosine_similarity([incorrect_word_embedding[0]], [words_embedding[idx]])
+        cosine_distance.append((dist[0][0], words_embedding[idx]))
+
+    # print(cosine_distance)
+
+    # max_cosine_val=max(cosine_distance,key=lambda item:item[0])[0]
+    # print(max_cosine_val)
+    sort_cosine_distance = sorted(cosine_distance, key=sort_key_cosine_distance, reverse=True)[
+        0:3
+    ]
+    # print(len(sort_cosine_distance))
+
+    similar_words = []
+    for idx in range(len(words_embedding)):
+        for i in range(len(sort_cosine_distance)):
+            if (sort_cosine_distance[i][1] == words_embedding[idx]).all():
+                if white_list_words[idx] not in similar_words:
+                    similar_words.append(white_list_words[idx])
+
+    return similar_words
+
+
+
 
 cdef int sort_key_Levenshtein(tuple tup ):
     return tup[0]

@@ -2,11 +2,9 @@
 import spacy
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell
-from symspellpy_analyzer import symspell_matched_word
 from chars2vec import load_model as load_c2v_model
-from utils import cosine_similar_words, get_c2v_word_embeddings
-from cython_utils.utils import get_word_with_probability_and_edit_distance
-
+from cython_utils.utils import get_word_with_probability_and_edit_distance,cosine_similar_words, get_c2v_word_embeddings,symspell_matched_word
+import numpy
 # import timeit
 
 
@@ -186,9 +184,12 @@ if __name__ == "__main__":
 
     spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
 
-    incorrect_word = "1mp0rtani"
+    incorrect_word = "1mvoice"
     incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
+
+    # print("incorrect_word_embedding",incorrect_word_embedding)
+    # print("white_list_word_embeddings",white_list_word_embeddings)
 
     word = get_final_similar_word(
         spacy_nlp,
