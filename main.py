@@ -137,18 +137,21 @@ def get_prediction():
     
     try:
         if data['word']:
-            incorrect_word = data['word']
-            incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
-            word = get_final_similar_word(
-                spacy_nlp,
-                sym_spell_len5,
-                sym_spell_len7,
-                white_list_words,
-                white_list_word_embeddings,
-                incorrect_word,
-                incorrect_word_embedding,
-            )
-            return jsonify(word)
+            list_predicted_word=[]
+            for incorrect_word in data['word']:
+            
+                incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+                word = get_final_similar_word(
+                    spacy_nlp,
+                    sym_spell_len5,
+                    sym_spell_len7,
+                    white_list_words,
+                    white_list_word_embeddings,
+                    incorrect_word,
+                    incorrect_word_embedding,
+                )
+                list_predicted_word.append(word)
+            return jsonify(list_predicted_word)
         else:
             response = make_response(jsonify(message="Value can't be empty!"), 202)
             abort(response)
