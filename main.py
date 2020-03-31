@@ -3,8 +3,14 @@ from white_list_words_ import white_list_words
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell
 from chars2vec import load_model as load_c2v_model
-from cython_utils.utils import get_word_with_probability_and_edit_distance,cosine_similar_words, get_c2v_word_embeddings,symspell_matched_word,get_prediction_on_multi_words
-from flask import Flask, request, jsonify,make_response,abort
+from cython_utils.utils import (
+    get_word_with_probability_and_edit_distance,
+    cosine_similar_words,
+    get_c2v_word_embeddings,
+    symspell_matched_word,
+    get_prediction_on_multi_words,
+)
+from flask import Flask, request, jsonify, make_response, abort
 
 
 def get_final_similar_word(
@@ -124,40 +130,45 @@ def initialize_models():
     return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
 
 
-
 app = Flask(__name__)
 
-@app.route('/', methods=['POST']) 
+
+@app.route("/", methods=["POST"])
 def get_prediction():
     data = request.json
-    
-    
-    
+
     try:
-        if data['ocr']:
+        if data["ocr"]:
             """ """
-            list_of_ocr_words = data['ocr']
-            list_predicted_words = get_prediction_on_multi_words(c2v_model,list_of_ocr_words,spacy_nlp,sym_spell_len5,sym_spell_len7,white_list_words,white_list_word_embeddings)
-             
+            list_of_ocr_words = data["ocr"]
+            list_predicted_words = get_prediction_on_multi_words(
+                c2v_model,
+                list_of_ocr_words,
+                spacy_nlp,
+                sym_spell_len5,
+                sym_spell_len7,
+                white_list_words,
+                white_list_word_embeddings,
+            )
+
             return jsonify(list_predicted_words)
         else:
             response = make_response(jsonify(message="Value can't be empty!"), 400)
             abort(response)
     except Exception as e:
-    
-        print("some exception has occured",e)
+
+        print("some exception has occured", e)
         response = "some exception has occured"
         return jsonify(response)
 
 
 if __name__ == "__main__":
-    
-   
+
     spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
 
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
 
-    app.run(debug = True)
+    app.run(debug=True)
     # incorrect_word="1mvoice"
     # incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     # word = get_final_similar_word(
@@ -171,4 +182,3 @@ if __name__ == "__main__":
     # )
     # # list_predicted_words.append(word)
     # print("word",word)
-    
