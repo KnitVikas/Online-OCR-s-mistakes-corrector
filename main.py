@@ -1,13 +1,10 @@
-# import sys
 import spacy
+from white_list_words_ import white_list_words
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell
 from chars2vec import load_model as load_c2v_model
-from cython_utils.utils import get_word_with_probability_and_edit_distance,cosine_similar_words, get_c2v_word_embeddings,symspell_matched_word
-import numpy
+from cython_utils.utils import get_word_with_probability_and_edit_distance,cosine_similar_words, get_c2v_word_embeddings,symspell_matched_word,get_prediction_on_multi_words
 from flask import Flask, request, jsonify,make_response,abort
-from flask_api import status
-# import timeit
 
 
 def get_final_similar_word(
@@ -101,7 +98,7 @@ def get_final_similar_word(
                 return best_matched_words_char2vec[2]
             else:
                 print("No matched word found!")
-                return None
+                return incorrect_word
     except Exception as e:
         print("Some exception has occured", e)
         return None
@@ -126,26 +123,6 @@ def initialize_models():
 
     return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
 
-def get_prediction_on_multi_words(c2v_model,list_of_ocr_words,spacy_nlp,sym_spell_len5,sym_spell_len7,white_list_words,white_list_word_embeddings):
-    list_predicted_words=[]
-    print("list_of_ocr_words",list_of_ocr_words)
-    for incorrect_word in list_of_ocr_words:
-        incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
-        word = get_final_similar_word(
-            spacy_nlp,
-            sym_spell_len5,
-            sym_spell_len7,
-            white_list_words,
-            white_list_word_embeddings,
-            incorrect_word,
-            incorrect_word_embedding,
-        )
-        list_predicted_words.append(word)
-
-    return list_predicted_words
-
-
-
 
 
 app = Flask(__name__)
@@ -157,82 +134,41 @@ def get_prediction():
     
     
     try:
-        if data['word']:
+        if data['ocr']:
             """ """
-            list_of_ocr_words = data['word']
+            list_of_ocr_words = data['ocr']
             list_predicted_words = get_prediction_on_multi_words(c2v_model,list_of_ocr_words,spacy_nlp,sym_spell_len5,sym_spell_len7,white_list_words,white_list_word_embeddings)
              
             return jsonify(list_predicted_words)
         else:
             response = make_response(jsonify(message="Value can't be empty!"), 400)
             abort(response)
-    except:
-            response = make_response(jsonify(message="Bad Request!"), 400)
-            abort(response)
-
+    except Exception as e:
+    
+        print("some exception has occured",e)
+        response = "some exception has occured"
+        return jsonify(response)
 
 
 if __name__ == "__main__":
-     
-    white_list_words = [
-        "place",
-        "mark",
-        "invoice",
-        "part",
-        "tariff",
-        "quantity",
-        "packages",
-        "description",
-        "information",
-        "gross",
-        "class",
-        "hazmat",
-        "commodity",
-        "package",
-        "pallet",
-        "value",
-        "marks",
-        "pieces",
-        "type",
-        "parties",
-        "order",
-        "volume",
-        "weight",
-        "numeric",
-        "division",
-        "item",
-        "shipping",
-        "product",
-        "slip",
-        "batch",
-        "partial",
-        "expiration",
-        "unit",
-        "details",
-        "measurement",
-        "count",
-        "nature",
-        "container",
-        "price",
-        "rate",
-        "charge",
-        "packaging",
-        "group",
-        "ordered",
-        "packs",
-        "goods",
-        "amount",
-        "hash",
-        "chargeable",
-        "tons",
-        "total",
-        "serial",
-        "descending",
-    ]
+    
    
     spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
 
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
 
     app.run(debug = True)
+    # incorrect_word="1mvoice"
+    # incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+    # word = get_final_similar_word(
+    #     spacy_nlp,
+    #     sym_spell_len5,
+    #     sym_spell_len7,
+    #     white_list_words,
+    #     white_list_word_embeddings,
+    #     incorrect_word,
+    #     incorrect_word_embedding,
+    # )
+    # # list_predicted_words.append(word)
+    # print("word",word)
     

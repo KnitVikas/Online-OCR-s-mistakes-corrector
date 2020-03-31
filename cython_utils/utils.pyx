@@ -5,6 +5,7 @@ from Levenshtein import distance
 cimport numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from symspellpy import Verbosity
+from main import  get_final_similar_word
 
 char_replace_list = [
     ["0", "o", "q", "Q", "D", "a","G"],
@@ -21,7 +22,30 @@ char_replace_list = [
     ["io", "10"],["#","H"],["io","10","IO"]
 ]
 
+cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spacy_nlp, sym_spell_len5, sym_spell_len7, list white_list_words, np.ndarray[dtype = np.float32_t, ndim=2]  white_list_word_embeddings ):
+    
+    cdef :
+        list list_predicted_words
+        np.ndarray[dtype= np.float32_t, ndim=2] incorrect_word_embedding
+        str incorrect_word
+        
 
+    list_predicted_words=[]
+    print("list_of_ocr_words",list_of_ocr_words)    
+    for incorrect_word in list_of_ocr_words:
+        incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+        word = get_final_similar_word(
+            spacy_nlp,
+            sym_spell_len5,
+            sym_spell_len7,
+            white_list_words,
+            white_list_word_embeddings,
+           incorrect_word,
+           incorrect_word_embedding,
+        )
+        list_predicted_words.append(word)
+
+    return list_predicted_words
 
 
 cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_word):
