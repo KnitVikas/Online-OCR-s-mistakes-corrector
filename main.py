@@ -1,5 +1,5 @@
 import spacy
-from white_list_words_ import white_list_words
+from white_and_black_list_words_ import white_list_words, black_list_words
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell
 from chars2vec import load_model as load_c2v_model
@@ -30,6 +30,10 @@ def get_final_similar_word(
     nlp_output = spacy_nlp(matched_words_syms_text)
     # lemmatized the matched words
     matched_words_syms = [word_.lemma_ for word_ in nlp_output]
+    matched_words_syms = [
+        word for word in matched_words_syms if word not in black_list_words
+    ]
+
     # print("lemmatize matched words syms", matched_words_syms)
 
     matched_words_char2vec = cosine_similar_words(
@@ -38,7 +42,9 @@ def get_final_similar_word(
     matched_words_char2vec_text = " ".join(matched_words_char2vec)
     nlp_output = spacy_nlp(matched_words_char2vec_text)
     matched_words_char2vec = [word_.lemma_ for word_ in nlp_output]
-
+    matched_words_char2vec = [
+        word for word in matched_words_char2vec if word not in black_list_words
+    ]
     # print("lemmatize matched words char2vec", matched_words_char2vec)
 
     # finding the common words
@@ -138,7 +144,11 @@ def get_prediction():
     data = request.json
 
     try:
-        if data["ocr"]:
+
+        if (
+            "ocr" in data.keys() and data["ocr"]
+        ):  # check if key entered is correct and list of words is not empty
+
             """ """
             list_of_ocr_words = data["ocr"]
             list_predicted_words = get_prediction_on_multi_words(
@@ -153,7 +163,12 @@ def get_prediction():
 
             return jsonify(list_predicted_words)
         else:
-            response = make_response(jsonify(message="Value can't be empty!"), 400)
+            response = make_response(
+                jsonify(
+                    message="check if key is correct i.e ocr and list of words is not empty !"
+                ),
+                400,
+            )
             abort(response)
     except Exception as e:
 
@@ -169,7 +184,7 @@ if __name__ == "__main__":
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
 
     app.run(debug=True)
-    # incorrect_word="1mvoice"
+    # incorrect_word = "1mvoice"
     # incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     # word = get_final_similar_word(
     #     spacy_nlp,
@@ -180,5 +195,5 @@ if __name__ == "__main__":
     #     incorrect_word,
     #     incorrect_word_embedding,
     # )
-    # # list_predicted_words.append(word)
-    # print("word",word)
+    # list_predicted_words.append(word)
+    # print("word", word)
