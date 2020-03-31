@@ -126,6 +126,27 @@ def initialize_models():
 
     return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
 
+def get_prediction_on_multi_words(c2v_model,list_of_ocr_words,spacy_nlp,sym_spell_len5,sym_spell_len7,white_list_words,white_list_word_embeddings):
+    list_predicted_words=[]
+    print("list_of_ocr_words",list_of_ocr_words)
+    for incorrect_word in list_of_ocr_words:
+        incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+        word = get_final_similar_word(
+            spacy_nlp,
+            sym_spell_len5,
+            sym_spell_len7,
+            white_list_words,
+            white_list_word_embeddings,
+            incorrect_word,
+            incorrect_word_embedding,
+        )
+        list_predicted_words.append(word)
+
+    return list_predicted_words
+
+
+
+
 
 app = Flask(__name__)
 
@@ -137,23 +158,13 @@ def get_prediction():
     
     try:
         if data['word']:
-            list_predicted_word=[]
-            for incorrect_word in data['word']:
-            
-                incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
-                word = get_final_similar_word(
-                    spacy_nlp,
-                    sym_spell_len5,
-                    sym_spell_len7,
-                    white_list_words,
-                    white_list_word_embeddings,
-                    incorrect_word,
-                    incorrect_word_embedding,
-                )
-                list_predicted_word.append(word)
-            return jsonify(list_predicted_word)
+            """ """
+            list_of_ocr_words = data['word']
+            list_predicted_words = get_prediction_on_multi_words(c2v_model,list_of_ocr_words,spacy_nlp,sym_spell_len5,sym_spell_len7,white_list_words,white_list_word_embeddings)
+             
+            return jsonify(list_predicted_words)
         else:
-            response = make_response(jsonify(message="Value can't be empty!"), 202)
+            response = make_response(jsonify(message="Value can't be empty!"), 400)
             abort(response)
     except:
             response = make_response(jsonify(message="Bad Request!"), 400)
