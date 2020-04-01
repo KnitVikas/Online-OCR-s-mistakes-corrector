@@ -12,6 +12,38 @@ from cython_utils.utils import (
 )
 from flask import Flask, request, jsonify, make_response, abort
 
+# def matchsubstring(incorrect_word, suggested_word):
+#     seqMatch = SequenceMatcher(None, incorrect_word, suggested_word)
+#     match = seqMatch.find_longest_match(0, len(incorrect_word), 0, len(suggested_word))
+#     if match.size != 0:
+#         sub_seq = incorrect_word[match.a : match.a + match.size]
+#         return len(sub_seq)
+#     else:
+#         print("No longest common sub-string found")
+#         return 0
+
+
+# def filter_from_symspell_suggested_words(incorrect_word, suggested_list_words):
+#     list_tuple_length_word = []
+#     for suggested_word in suggested_list_words:
+#         defference_in_length = abs(len(incorrect_word) - len(suggested_word))
+#         length_longest_subsequence = matchsubstring(incorrect_word, suggested_word)
+#         length_common_character = len(
+#             [char for char in incorrect_word if char in suggested_word]
+#         )
+#         # print("length_common_character", length_common_character)
+#         length_defferent_character = len(suggested_word) - length_common_character
+#         list_tuple_length_word.append(
+#             (
+#                 defference_in_length,
+#                 length_longest_subsequence,
+#                 length_common_character,
+#                 length_defferent_character,
+#                 suggested_word,
+#             )
+#         )
+#     return list_tuple_length_word
+
 
 def get_final_similar_word(
     spacy_nlp,
