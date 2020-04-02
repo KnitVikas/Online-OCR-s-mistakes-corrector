@@ -7,7 +7,8 @@ from Levenshtein import distance
 cimport numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from symspellpy import Verbosity
-from main import  get_final_similar_word
+from white_and_black_list_words_ import black_list_words
+
 #from main import c2v_model_single_word
 #from main import c2v_model_multi_word
 
@@ -45,7 +46,7 @@ cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spac
    # print("list_of_ocr_words",list_of_ocr_words)    
    # for incorrect_word in list_of_ocr_words:
     final_output= []
-    for word in list_of_ocr_words:
+    for word in list_of_ocr_words:   
         for word_ in word:
             #print(word_)
             list_corrected_word = [word_[0]]
@@ -463,3 +464,106 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
     else:
         #print("Edit distance is more")
         return []
+
+
+
+
+
+
+
+cpdef get_final_similar_word(
+    spacy_nlp,
+    sym_spell_len5,
+    sym_spell_len7,
+    white_list_words,
+    white_list_word_embeddings,
+    incorrect_word,
+    incorrect_word_embedding,
+): 
+    matched_words_syms = symspell_matched_word(
+        sym_spell_len5, sym_spell_len7, incorrect_word
+    )
+    # print("matched_words_syms",matched_words_syms)
+    matched_words_syms_text = " ".join(matched_words_syms)
+    nlp_output = spacy_nlp(matched_words_syms_text)
+    # lemmatized the matched words
+    matched_words_syms = [word_.lemma_ for word_ in nlp_output]
+    print("lemmatize matched words syms", matched_words_syms)
+
+    matched_words_char2vec = cosine_similar_words(
+        incorrect_word_embedding, white_list_word_embeddings, white_list_words
+    )
+    matched_words_char2vec_text = " ".join(matched_words_char2vec)
+    nlp_output = spacy_nlp(matched_words_char2vec_text)
+    matched_words_char2vec = [word_.lemma_ for word_ in nlp_output]
+
+    print("lemmatize matched words char2vec", matched_words_char2vec)
+
+    # finding the common words
+    common_words = [
+        word for word in matched_words_char2vec if word in matched_words_syms
+    ]
+    # print("these are common words", common_words)
+
+    try:
+        # if common_words exist
+        if common_words:
+            # start = timeit.default_timer()
+            matched_word = get_word_with_probability_and_edit_distance(
+                common_words, incorrect_word
+            )
+            # end = timeit.default_timer()
+            # print("get_word_with_probability_and_edit_distance %s" % (end - start))
+            # print("this is the common word matched " ,matched_word)
+            return matched_word[2]
+        else:
+            # start = timeit.default_timer()
+            best_matched_words_syms = get_word_with_probability_and_edit_distance(
+                matched_words_syms, incorrect_word
+            )
+            matched_words_char2vec = [
+                word for word in matched_words_char2vec if word not in black_list_words
+            ]
+
+            # end = timeit.default_timer()
+            # print("get_word_with_probability_and_edit_distance %s " % (end - start))
+            best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
+                matched_words_char2vec, incorrect_word
+            )
+            matched_words_char2vec = [
+                word for word in matched_words_char2vec if word not in black_list_words
+            ]
+
+            # best_matched_words_syms shape (edit distance, probability, word )
+            print(
+                "best matched symspell word with probability and edit distance",
+                best_matched_words_syms,
+            )
+            print(
+                "best matched char2vec word with probability and edit distance",
+                best_matched_words_char2vec,
+            )
+
+            if best_matched_words_syms and best_matched_words_char2vec:
+                best_matched_words_from_symspell_Char2vec = [
+                    best_matched_words_syms,
+                    best_matched_words_char2vec,
+                ]
+                sorted_best_matches_list = sorted(
+                    best_matched_words_from_symspell_Char2vec,
+                    key=lambda element: (element[0], element[1]),
+                )[0]
+                # print("get in ",sorted_best_matches_list)
+                return sorted_best_matches_list[2]
+            elif best_matched_words_syms and not best_matched_words_char2vec:
+                return best_matched_words_syms[2]
+            elif not best_matched_words_syms and best_matched_words_char2vec:
+                return best_matched_words_char2vec[2]
+            else:
+                print("No matched word found!")
+                return incorrect_word
+    except Exception as e:
+        print("Some exception has occured", e)
+        return None
+
+
