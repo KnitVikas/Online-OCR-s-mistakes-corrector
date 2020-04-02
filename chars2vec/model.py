@@ -236,6 +236,7 @@ def load_model(path):
         with open(path_to_model + "/model.pkl", "rb") as f:
             structure = pickle.load(f)
             emb_dim, char_to_ix = structure[0], structure[1]
+            print("embedding loaded..")
 
         c2v_model = Chars2Vec(emb_dim, char_to_ix)
         # multiwordspelling_invoice_date20200325_epoch41_lr0.003_batch64
@@ -244,6 +245,7 @@ def load_model(path):
             path_to_model
             + "/multiwordspelling_invoice_date20200325_epoch41_lr0.003_batch64.h5"
         )
+        print("multi word weights loaded..")
         c2v_model.embedding_model.compile(
             optimizer="adam", loss="mae", metrics=["accuracy"]
         )
@@ -266,6 +268,7 @@ def load_model(path):
         with open(path_to_model + "/model.pkl", "rb") as f:
             structure = pickle.load(f)
             emb_dim, char_to_ix = structure[0], structure[1]
+            print("embedding loaded...")
 
         c2v_model = Chars2Vec(emb_dim, char_to_ix)
         # multiwordspelling_invoice_date20200325_epoch41_lr0.003_batch64
@@ -274,13 +277,14 @@ def load_model(path):
             path_to_model
             + "/singlewordspelling_invoice_date20200323_epoch41_lr0.003_batch64.h5"
         )
+        print("single word weights loaded..")
         c2v_model.embedding_model.compile(
             optimizer="adam", loss="mae", metrics=["accuracy"]
         )
 
         return c2v_model
     else:
-        print("enter the correct path of model please !")
+        print("enter the correct path of model please!")
 
 
 def train_model(

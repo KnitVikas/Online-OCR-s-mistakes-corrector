@@ -178,9 +178,9 @@ def get_prediction():
     data = request.json
 
     try:
-        if (
-            "ocr" in data.keys() and data["ocr"]
-        ):  # check if key entered is correct and list of words is not empty
+        if "ocr" in data.keys():
+
+            # check if key entered is correct and list of words is not empty
 
             list_of_ocr_words = data["ocr"]
             list_predicted_words = get_prediction_on_multi_words(
@@ -192,6 +192,9 @@ def get_prediction():
                 white_list_words,
                 white_list_word_embeddings,
             )
+            # list_predicted_words = data["ocr"]
+            # print("data collected  and type ", data["ocr"], type(data["ocr"]))
+            # list_predicted_words = list_predicted_words
 
             return jsonify(list_predicted_words)
         else:
@@ -220,7 +223,7 @@ if __name__ == "__main__":
 
     app.run(debug=True)
 
-    # incorrect_word="1mvoice"
+    # incorrect_word = "1mvoice"
     # incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     # word = get_final_similar_word(
     #     spacy_nlp,
@@ -232,4 +235,15 @@ if __name__ == "__main__":
     #     incorrect_word_embedding,
     # )
     # # list_predicted_words.append(word)
-    # print("word",word)
+    # print("word", word)
+    # list_of_ocr_words = [[[[594, 83, 748, 115], "Steamship", "primry"]]]
+    # list_predicted_words = get_prediction_on_multi_words(
+    #     c2v_model,
+    #     list_of_ocr_words,
+    #     spacy_nlp,
+    #     sym_spell_len5,
+    #     sym_spell_len7,
+    #     white_list_words,
+    #     white_list_word_embeddings,
+    # )
+    # print("list_predicted_words", list_predicted_words)

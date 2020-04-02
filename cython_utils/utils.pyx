@@ -1,5 +1,7 @@
 # cython: language_level = 3
 cimport cython
+import string
+import re
 import difflib
 from Levenshtein import distance
 cimport numpy as np
@@ -31,24 +33,53 @@ cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spac
         list list_predicted_words
         np.ndarray[dtype= np.float32_t, ndim=2] incorrect_word_embedding
         str incorrect_word
+        list final_output
+        list word
+        list word_
+        list list_corrected_word
+        str cleaned_word
+        str predicted_word
         
 
-    list_predicted_words=[]
-    print("list_of_ocr_words",list_of_ocr_words)    
-    for incorrect_word in list_of_ocr_words:
-        #if " " in incorrect_word:
-        incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
-        word = get_final_similar_word(
-        spacy_nlp,
-        sym_spell_len5,
-        sym_spell_len7,
-        white_list_words,
-        white_list_word_embeddings,
-        incorrect_word,
-        incorrect_word_embedding,
-        )
-        list_predicted_words.append(word)
-    
+    #list_predicted_words=[]
+   # print("list_of_ocr_words",list_of_ocr_words)    
+   # for incorrect_word in list_of_ocr_words:
+    final_output= []
+    for word in list_of_ocr_words:
+        for word_ in word:
+            #print(word_)
+            list_corrected_word = [word_[0]]
+
+            for incorrect_word in word_[1:]:
+                
+                #print(incorrect_word)
+                # get prediction on incorrect_word suppose it is incorrect_word
+                #you can first clean the word and then get predictions
+                
+                if len(incorrect_word)<4:
+                    list_corrected_word.append(incorrect_word)
+                elif re.match('^[0-9]*$', incorrect_word):
+                    list_corrected_word.append(incorrect_word)
+                else:    
+                    cleaned_word = incorrect_word.translate(str.maketrans("", "", string.punctuation)).lower()                
+                    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
+                    predicted_word = get_final_similar_word(
+                    spacy_nlp,
+                    sym_spell_len5,
+                    sym_spell_len7,
+                    white_list_words,
+                    white_list_word_embeddings,
+                    incorrect_word,
+                    incorrect_word_embedding,
+                    )
+                    list_corrected_word.append(predicted_word)
+                    print("list_corrected_word",list_corrected_word)
+            final_output.append([list_corrected_word])
+
+
+       
+
+
         #else:
         
         #    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model_single_word, [incorrect_word])
@@ -63,7 +94,7 @@ cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spac
         #    )
         #    list_predicted_words.append(word)
             
-    return list_predicted_words
+    return final_output
 
 
 
