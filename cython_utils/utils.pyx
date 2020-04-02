@@ -6,6 +6,8 @@ cimport numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from symspellpy import Verbosity
 from main import  get_final_similar_word
+#from main import c2v_model_single_word
+#from main import c2v_model_multi_word
 
 char_replace_list = [
     ["0", "o", "q", "Q", "D", "a","G"],
@@ -22,6 +24,7 @@ char_replace_list = [
     ["io", "10"],["#","H"],["io","10","IO"]
 ]
 
+
 cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spacy_nlp, sym_spell_len5, sym_spell_len7, list white_list_words, np.ndarray[dtype = np.float32_t, ndim=2]  white_list_word_embeddings ):
     
     cdef :
@@ -33,19 +36,35 @@ cpdef list get_prediction_on_multi_words(c2v_model, list list_of_ocr_words, spac
     list_predicted_words=[]
     print("list_of_ocr_words",list_of_ocr_words)    
     for incorrect_word in list_of_ocr_words:
+        #if " " in incorrect_word:
         incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
         word = get_final_similar_word(
-            spacy_nlp,
-            sym_spell_len5,
-            sym_spell_len7,
-            white_list_words,
-            white_list_word_embeddings,
-           incorrect_word,
-           incorrect_word_embedding,
+        spacy_nlp,
+        sym_spell_len5,
+        sym_spell_len7,
+        white_list_words,
+        white_list_word_embeddings,
+        incorrect_word,
+        incorrect_word_embedding,
         )
         list_predicted_words.append(word)
-
+    
+        #else:
+        
+        #    incorrect_word_embedding = get_c2v_word_embeddings(c2v_model_single_word, [incorrect_word])
+        #    word = get_final_similar_word(
+        #        spacy_nlp,
+        #        sym_spell_len5,
+        #        sym_spell_len7,
+        #        white_list_words,
+        #        white_list_word_embeddings,
+        #    incorrect_word,
+        #    incorrect_word_embedding,
+        #    )
+        #    list_predicted_words.append(word)
+            
     return list_predicted_words
+
 
 
 cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_word):
@@ -71,7 +90,7 @@ cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_wo
         for word in incorrect_words:
             # A Verbosity parameter allows to control the number of returned results:
             suggestions = sym_spell_len5.lookup(
-                word, Verbosity.CLOSEST, max_edit_distance=2, transfer_casing=True
+                word, Verbosity.ALL, max_edit_distance= 3, transfer_casing=True
             )  # ignore_token = r"\w+\d"
             # keep the original casing
             # Avoid correcting phrases matching regex
@@ -98,7 +117,7 @@ cpdef list symspell_matched_word(sym_spell_len5, sym_spell_len7,str incorrect_wo
         for word in incorrect_words:
             # A Verbosity parameter allows to control the number of returned results:
             suggestions = sym_spell_len7.lookup(
-                word, Verbosity.CLOSEST, max_edit_distance=3, transfer_casing=True
+                word, Verbosity.ALL, max_edit_distance= 4, transfer_casing=True
             )  # ignore_token = r"\w+\d"
             # keep the original casing
             # Avoid correcting phrases matching regex
@@ -152,7 +171,9 @@ cpdef list cosine_similar_words(np.ndarray[dtype=np.float32_t, ndim = 2 ] incorr
     sort_cosine_distance = sorted(cosine_distance, key=sort_key_cosine_distance, reverse=True)[
         0:3
     ]
-    # print(len(sort_cosine_distance))
+    print([word[0] for word in sort_cosine_distance ])
+    # filter the cosine distance on the basis of threshold value . 
+    # sort_cosine_distance = [word[0] for word in cosine_distance if word[0] > threshold ] 
 
     similar_words = []
     for idx in range(len(words_embedding)):
@@ -362,7 +383,7 @@ cpdef list  get_word_with_probability_and_edit_distance(list correct_word_list,s
             list_correct_small_words, incorrect_word)
         #print("small words are there ")
         for  word in best_match_small_word_edited_distance:
-                if word[0] <= 2:
+                if word[0] <= 3:
 
                     operations_on_characters = get_operations_on_characters([(incorrect_word, word[1])])
                     #start = timeit.default_timer()

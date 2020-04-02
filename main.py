@@ -1,8 +1,8 @@
 import spacy
-from white_list_words_ import white_list_words
+from white_and_black_list_words_ import white_list_words, black_list_words
 from pkg_resources import resource_filename as pkg_resources_filename
 from symspellpy import SymSpell
-from chars2vec import load_model as load_c2v_model
+from chars2vec.model import load_model as load_c2v_model
 from cython_utils.utils import (
     get_word_with_probability_and_edit_distance,
     cosine_similar_words,
@@ -62,7 +62,7 @@ def get_final_similar_word(
     nlp_output = spacy_nlp(matched_words_syms_text)
     # lemmatized the matched words
     matched_words_syms = [word_.lemma_ for word_ in nlp_output]
-    # print("lemmatize matched words syms", matched_words_syms)
+    print("lemmatize matched words syms", matched_words_syms)
 
     matched_words_char2vec = cosine_similar_words(
         incorrect_word_embedding, white_list_word_embeddings, white_list_words
@@ -71,7 +71,7 @@ def get_final_similar_word(
     nlp_output = spacy_nlp(matched_words_char2vec_text)
     matched_words_char2vec = [word_.lemma_ for word_ in nlp_output]
 
-    # print("lemmatize matched words char2vec", matched_words_char2vec)
+    print("lemmatize matched words char2vec", matched_words_char2vec)
 
     # finding the common words
     common_words = [
@@ -95,20 +95,28 @@ def get_final_similar_word(
             best_matched_words_syms = get_word_with_probability_and_edit_distance(
                 matched_words_syms, incorrect_word
             )
+            matched_words_char2vec = [
+                word for word in matched_words_char2vec if word not in black_list_words
+            ]
+
             # end = timeit.default_timer()
             # print("get_word_with_probability_and_edit_distance %s " % (end - start))
             best_matched_words_char2vec = get_word_with_probability_and_edit_distance(
                 matched_words_char2vec, incorrect_word
             )
+            matched_words_char2vec = [
+                word for word in matched_words_char2vec if word not in black_list_words
+            ]
+
             # best_matched_words_syms shape (edit distance, probability, word )
-            # print(
-            #     "best matched symspell word with probability and edit distance",
-            #     best_matched_words_syms,
-            # )
-            # print(
-            #     "best matched char2vec word with probability and edit distance",
-            #     best_matched_words_char2vec,
-            # )
+            print(
+                "best matched symspell word with probability and edit distance",
+                best_matched_words_syms,
+            )
+            print(
+                "best matched char2vec word with probability and edit distance",
+                best_matched_words_char2vec,
+            )
 
             if (
                 len(best_matched_words_syms) != 0
@@ -148,16 +156,16 @@ def initialize_models():
     dictionary_path = pkg_resources_filename(
         "symspellpy", "frequency_dictionary_en_82_765.txt"
     )
-    sym_spell_len5 = SymSpell(max_dictionary_edit_distance=2, prefix_length=5)
+    sym_spell_len5 = SymSpell(max_dictionary_edit_distance=3, prefix_length=5)
     # term_index is the column of the term and count_index is the column of the term frequency
     sym_spell_len5.load_dictionary(dictionary_path, term_index=0, count_index=1)
 
     # The length of word prefixes used for spell checking.
-    sym_spell_len7 = SymSpell(max_dictionary_edit_distance=3, prefix_length=7)
+    sym_spell_len7 = SymSpell(max_dictionary_edit_distance=4, prefix_length=7)
     # term_index is the column of the term and count_index is the column of the term frequency
     sym_spell_len7.load_dictionary(dictionary_path, term_index=0, count_index=1)
 
-    c2v_model = load_c2v_model("eng_300")
+    c2v_model = load_c2v_model("single_word_trained_model")
 
     return spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7
 
@@ -170,8 +178,10 @@ def get_prediction():
     data = request.json
 
     try:
-        if data["ocr"]:
-            """ """
+        if (
+            "ocr" in data.keys() and data["ocr"]
+        ):  # check if key entered is correct and list of words is not empty
+
             list_of_ocr_words = data["ocr"]
             list_predicted_words = get_prediction_on_multi_words(
                 c2v_model,
@@ -185,8 +195,14 @@ def get_prediction():
 
             return jsonify(list_predicted_words)
         else:
-            response = make_response(jsonify(message="Value can't be empty!"), 400)
+            response = make_response(
+                jsonify(
+                    message="check if key is correct i.e ocr and list of words is not empty !"
+                ),
+                400,
+            )
             abort(response)
+
     except Exception as e:
 
         print("some exception has occured", e)
@@ -196,11 +212,14 @@ def get_prediction():
 
 if __name__ == "__main__":
 
-    spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7 = initialize_models()
+    (spacy_nlp, c2v_model, sym_spell_len5, sym_spell_len7,) = initialize_models()
 
     white_list_word_embeddings = get_c2v_word_embeddings(c2v_model, white_list_words)
 
+    c2v_model_multi_word = load_c2v_model("multi_word_trained_medel")
+
     app.run(debug=True)
+
     # incorrect_word="1mvoice"
     # incorrect_word_embedding = get_c2v_word_embeddings(c2v_model, [incorrect_word])
     # word = get_final_similar_word(
